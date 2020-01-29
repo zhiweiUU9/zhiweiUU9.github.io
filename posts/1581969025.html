@@ -1,0 +1,1537 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="php单例模式, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
+    <meta name="description" content="
+  
+  
+    Welcome to my blog, enter password to read.
+    
+  
+  7650a957a2829ead558d1dbc329648dc9798b74ab88debfa1dccffa">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>php单例模式 | 志伟&amp;博客</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+
+<!--    鼠标点击出现文字-->
+    
+        <script type="text/javascript">
+            //只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/js/wenzi.js"><\/script>');
+            }
+        </script>
+    
+
+<!--    页面樱花飘落效果-->
+    
+    <script type="text/javascript">
+        //只在桌面版网页启用特效
+        var windowWidth = $(window).width();
+        if (windowWidth > 768) {
+            document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+        }
+        </script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/447.gif" data-original="/medias/logo1.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">志伟&博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/" class="waves-effect waves-light">
+						
+						<i class="fa fa-home"></i>
+						
+						<span>首页</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/tags" class="waves-effect waves-light">
+						
+						<i class="fa fa-tags"></i>
+						
+						<span>标签</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/categories" class="waves-effect waves-light">
+						
+						<i class="fa fa-bookmark"></i>
+						
+						<span>分类</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+			<a href="javascript:;" class="waves-effect waves-light">
+
+			             
+						     <i class="fa fa-medium"></i>
+						
+						<span>媒体</span>
+						<i class="fa fa-chevron-down" aria-hidden="true"></i>
+			</a>
+            <ul class="sub-nav menus_item_child ">
+              
+                <li>
+                  <a href="/categories/photo" >
+				       
+						<i class="fa fa-picture-o" style="margin-top: -20px;"></i>
+				   
+				   <span>相册</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/archives" class="waves-effect waves-light">
+						
+						<i class="fa fa-archive"></i>
+						
+						<span>归档</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/about" class="waves-effect waves-light">
+						
+						<i class="fa fa-user-circle-o"></i>
+						
+						<span>关于我</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/friends" class="waves-effect waves-light">
+						
+						<i class="fa fa-address-book"></i>
+						
+						<span>友情链接</span>
+					</a>
+          
+        </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/images/447.gif" data-original="/medias/logo1.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">志伟&博客</div>
+        <div class="logo-desc">
+            
+                唐志伟(Shawn Tng)的博客 | 主要记录工作中遇到的问题,以及新的研究发现.主要分享于PHP语言,MySQL数据库的相关技术,新闻和最新动态.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-home"></i>
+                        
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/tags" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-tags"></i>
+                        
+                        标签
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/categories" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-bookmark"></i>
+                        
+                        分类
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+                        
+                            <i class="fa fa-fw fa-medium"></i>
+                        
+                        媒体
+                        <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                    </a>
+                    <ul>
+                        
+                            <li>
+                                <a href="/categories/photo">
+                                    
+                                        <i class="fa fa-picture-o"
+                                           style="left: 18px; position: absolute;"></i>
+                                    
+                                    <span>相册</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-archive"></i>
+                        
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/about" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-user-circle-o"></i>
+                        
+                        关于
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-comments"></i>
+                        
+                        留言板
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/friends" class="waves-effect waves-light">
+                        
+                            <i class="fa fa-fw fa-address-book"></i>
+                        
+                        友情链接
+                    </a>
+                
+            </li>
+        
+        
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a href="https://github.com/zhiweiUU9/" class="waves-effect waves-light" target="_blank">
+                    <i class="fa fa-github-square fa-fw"></i>Fork Me
+                </a>
+            </li>
+        
+    </ul>
+
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/zhiweiUU9/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        php单例模式
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                            <a href="/tags/面向对象/">
+                                <span class="chip bg-color">面向对象</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/PHP/" class="post-category">
+                                PHP
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-10-09
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        9
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        1 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Welcome to my blog, enter password to read.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="40fe4b475c5297c62673dc9626947fbc457306cbc718c9cb3bc04953e53039f5">7650a957a2829ead558d1dbc329648dc9798b74ab88debfa1dccffa35e9dba0ec9808f493789acd74e9686e10b8490fe5da89af9a4a5b3937447628b969fd003eb573e89cc52d2f3ea51e196e3fce4796a283d43257568abfc9a05b45afccc9a3ba9d81062528c212d270ac69b2613159c7697601988448b4d9f1fe8a7976c59be8933576089c79d36b538a43df3c4a1938f38a904bba3d14ee9f89017611fa652638380f64501be4a58907dbed7de7e37ba20de460f6d454793dd1e78fd9948fb67b5ab4f8ae5c566aeebbc3093b8b32d33c6627527280605b7fefd1a50aaddf3c365a9951d53c435c28da16f198dd715331a8a9f3ef5a3afcb4282fc50953ff97781e14aed642b6f96824eda416b44558e3044673640b198f779c2efc9e310d5a58d459820c8e20e4714bd89c3b1f24c109d3588dd652b877b7370af45e10ab971a9f80f42e2410d35ba18c27a9044815c5f727467649b85d0f9d7970305cb3ce37fb4750608b318cecd307a31ec5e35e60caf814a5f6fad77ab4640cbcc75bdd9cb651b47cb7019288978336e3f13dcc4a6c98415bcf71452bd7de5688624898f2563ea623357fc4e79164519b8c0d4f4fd55a45cb6c6e95bc05223b63fd57b986bd99ed7454d85c9a4f3614fd7e58d69ee17eaf2ceb82f72e3759497321b442a0b2d9a76dbf6639953660a89396ae63899807a2a063554c64cdf901d33102690349c0b2b70b4e9f567aee8018f02a7264833be5547693e12aff00942df24aa8481382475466be9b2caabb89828d6756de37e3ebe9a4fdcc08bd1820d669fd354ae20906522df073e213cd8e1b25297c311eb572c572201662de333bc9be9ed6cdcafa6bb8f11c612bb1c5c118022f5f9460f82771cfee14210355ecf7a6559f8e83c94fe2dabd0354f23658de0da70b58b8c603239181a571493fd140e42b861360781dda41883a0905b038c0d25ff805842f24303dffae75be85311d29dc721b23adccd9ee81a5576a0d688add3a070bc35a58b6baf38886ae03321912b32cecfa8d61ce4b03c09a4329cd8b029b3dc65b5b00dc6b854d3a839398969a3b65721313b610415db534d5841024c67baec47f14f089423365815d83244b458e179ebb1837b05a438c79561f1d4b2f8a7ce049c06661b0c68452f1066ac974eb347c5f7de0b3d7e4066e41953110b53854de0c46d58bc61c5ef36f9b641453ca22147b544e6ca590b796faaf1168868a3efd9c42d5d10e127394ce86a76371c05f92c440ec659b0ae9defa74a08631dd6ebf46d3bdc7b719e194d67f165438d40fe8f1204333033ea44e6e8ce46f4a5001398466521282dae1a2fefac4a2be459eb1f351349b2d9b07f7a05b0c12b78dc5359aec3179de669e5a85ee3c77ab724802b21b07e4d6c8293853a61470286cccf51767f9ebc8492eb0aaadd4de9d8130be2b4e0dd83b92280e560794a1e40587ba724b996fe8ee8b2b8e3fb74de1e220958f710737956d253797a76a9b6cf934cc94ec4760ba1220af7c31dcb481b325614a77dbc948b397b533a293982e7cb05eab6e975f76ddaf5ad5a864c87784e95a8a9f2619974482ec21b4453c75143a10d128861afe5066d3849da9ba5bffa2aaa51480d8369ff601b17f9af33543ab49230532cc3c111c2c1874dcb88f8f5ca3b52dfb63dd5fe3271b5ef5f1eb52adf12c10fe8407b07e9cd7c5d005ced2c7fd9cba70c5fd74d86350dab08a3d5a9aacf9b73648b14303edebd678a28e3708857d6d81b147958c65f39a82b9fcdb3ee340b0bacd77bc1322a37162412c6db154aec15c18135bc4359a5d2e70ffa34eea60c536515978bfac3bf5ce3bf0788a679cab0602731c4f6e807279251735faa2ff2aebac4206646d00d453a7b0a453459da87f44c10f1a170a630552a6e555ecfc1c1c8f2a21247f8f5132e79bc148085c18a03e16aa8aa59839454dfd8548119795c20f80c9ba087ed6d44786af117de9bb716ed1a235fdb43e6b92b0cb4fddaaef4450f055ef7e55c1794bbe25226a97663bef05b6c55817719eaa6e06800680777b7399d6805a334c8ffb9e9b8eb287cde074aa3fefd2256f823f464b12006628488e088dc808a661b39ad7f11e1d4767fbb895e3d1f0a679aa3c457d95bf3ae1b50aa1b6a8d6dda7d0f3b5dc5962d592a83956b5870005ea70667946ffdf392a3b03bc30e9b6ed66348cf4ec65561fc49858492e4f3338b9c54f7d26b2138e5085e65aad31970dbe14aec02fc1bf5a7e2329ee471a77d2904e1b84227f8ba81f0662aa5d540a6297f1fd5e62c542b960cfa91b9f61923d187e78d96c905a5552c6ce28621bfcfa8f6768256e42695ec75e1f8cae3b89d6ff5716430be62787ff3009d3b275b18110bad4b8cbafc5f51175a46eb580e7078cc41398fa111a355ea6a1fed372b84d19a36734682887cae6d6ed9afd2ccaab1f7e3ea5c1a18ac233ce6c2bbdb7e864c029fd7a25aca1793385cd06b4647f1ca65da102dd9c6982b00359b059489c47c3c6054458f573d8cc8824c5271627a9429b0ddae26d8b2e8de4bfb428b4d339e8e51b37288fd9cc681a2dbc99aa169952308b09600dccce894e71f1aeb96cba640722e473b6fead5d2dc06bd562ec189a40e7c8f460b8577063043ce164572ab738c8e67e3f9bde3cee87004f2c57fc03734de6d12df271602cb58a74cca46dcfefdbe83feb1418e6def2d38bd3447492dd88f815551a4b19f04297de74e621c0c68237c5b6b05f9f546d0010d2fbc996526d8d7bcfda871c56765578aef9695f16d1a2784dc6a64755ad175a56d1fe2f9cd1e6f043caad7916c89e2706f3f1a7a3b69e81932b749bca7d3da4cfec5eeeb9624f58bc1c40cb49206de08691c62c8735ace931469288561e2ab0cf9901081611392ed570f487dd5dc040d4b360df84cbcf42df55ec6d01c83b416ec51ca661a9b92e6d54bc5eef39b42d4aa58fb88e3b2a15024e2763afceafeb32c7531a4cbdc7039ab32ed3b4c2ce6018836e7ec60e1d2b2fd59ef5345fb547278b34c29b78a7a0589cd90874da05cc2cde80de37252e6bd77337e3fb5f719cdb6128836495046f6939a24667206aa9e10b83cd5c13fc3da5e4b03f60fb2e4bdf9402df337eceae8713116cf03c19c0cec8277f3a14439a802a2477dbe8669ead86de2abe24cbc0b6a372a26e801bac3856788dedadd660a332d10418fb4a3abbe57b486fd6c957d675881c355f5f26c190a32b21025cd2eb08df6a76d546d059513fbbabfde4d77f5338bbeb584be3633c784dd0cb88287153cb77e2f0649dddb67d526d8582dfa21bbb81b4002f83232115f3440f820359065e9947f7d621812480011f9de15efb2952b1e961d07bc11480d9adcff0329151df29a6efe363eca1e8d445b7282fa39f700626dab9fdccef0754737ea8f21898a404182b89d34f25b3d90dc2458b6f511770e97947e75ece7fa53af1282ee39fed90a0cb1d4affa2ddc31cb060cd7f51efa6fc93d60d0717d84ae7474bfd67ca719091c4557d161e5d5af368678bdb4899bd80ac9f2a78d6b5f213d9f202133fad32dbaaa0b6e2e0b5240f5c52148f54dcc057e29a70911e1e665b7f526e260fc86545b3b915192b329aebad3fa7629b72a52eb5e4276896dce810709258c01fb45da6fd8848ab0fe69e0ef7a353d5f65327cfb64342f32745bc7793b52492e0ab3273fa27942daa723298c166a0ab0d95154f36f68acc1ae0eb033155198229f061b82dfc82287f3e0dcc0e84f42d9cfbfa8a0271127fdc76f632d9a7d79e31215d6099d99772d95b7f7366b8ec647e63735eb3d9c22f1b8bed25c71995a4c6b670f2e0e2fea477ee5cc5f1f4f3569a6f7f33e8060fa1ec6c462285328e4ddfb2a0759c153f9c7606315fbe830099e191f4e5bd2c709faca0fee90f5b3bb2d7524b2d179b7880b04a170439335e8699bba77a1a60efd2b4b025e529b155d14eee214f60880e9dc00717738e4bb90652bf8e60b3e04dd11da1b3bb80965812aad38aebef819c61ebadaa43d3dde8dfe257486ff232a34200fc48bef462c0c978af24e4af6d895fe21fe938830259848a8b3b2df58ebb6e44231406d6becf61e62e88e8764bdc733f114f42eaffc501ea35222a63e302d3819b75e8ccf6f85cad8bb45c46cd2a14339bf360e76a41311886414a2b787904cbf31120c7a6a57b603b624a8bff59688bce56808ce70701ad6fdf9ab5b62d277ec64319753df8041415aee2fc675249de1c85ab9c5c38bce924c24d3dcc69d2bfcd2ff7ae9ecb8b90f9d67a3d75418efb27b1c5b99add12f263539d0eb1ef75d65f5e747fe4ae02d57d704d1dfcc7db92d3198b628c05a0d0959ec5d4dba871722a0a58f1eb4f383f70dc7726a0ee9a2203487c1133d3fc12cee3f82b70c514115b891320be5fbd3f90755ba2aa9ffc286b594bbb2c001adf0f7522ffb6d1c55d5e8dfbe6e1e131cf54470ce375d287b9442a9fd2b311d528062996e30261400fba0c38f9dafd9e1c5b98688f7c8716e4c91166ccb85caca8972e9f5e1c0d434c0256fadd56bff6ea297c79a3f0a953b5d0905f2822b6b2d9b09ea98933c81f8df1f02aed1c86f9c7fc601607fb17f578e09986c0ed3d886123fa37bfb8bfe7838c481540a33a783e334af1fa750b4def85405a1ce73feccc8e9f145c3447ce5122257f465a4d81d5f3cf72ebdb94ff1a97afbd094224355c0157725dd68b2eb609faf161f15b4c9fa296ecb34a43ad2c2828462ba791fa1b8dd83a4eaac3663161c42c3b5c070e48c86f27907c46e665d4095a18255192c9f8e36652421b044aa50f075d634101251d554c676f8a6b686622ae4ddb795421b4c8cee304211fbe2b8dfef1bf57fa1c1c3d9a99f26bb2a3c915352393b76ce7e53c5a4d35be57073fd87d53c891d78002cce988a1d44481db8f9732016bde4bae79196d40388c4099d85db9595fa431a4b84b496fe587b46909fdd608db6aded1be9f5f0fd731ce6b55a1b9f563c034923ac93316c46de6e799ad8c5c3dd023f47e401616e6e4ec89d9ecdc27479f6c14c874901ffa052150c6e3c681300614c8855ad7ce3f655e81d5b1af63a59f7bb1c848ee939bdee6fc9a40528a74bfdb146dd998fbf758b38269bab15587922672282e7d8a0329afd8f904c39d3fc4a7364f3182b5629188228dcba2b1b31cdab6e3060d23f2c286106a73ad838eddbce03e7743f7352cf30b47f03d6adc3d8b411444520ae0773242f99fb87d27d26ccca47e3222373329b53d58b9a9368a2be1a6136d062ff157855b200cc62766c5ddcb4b41e123b5ce36fd5a433467200785ae96f3403f51dd76b3eb77ecb57f570d1c8ec30156a4dbae36761fded67d94692aaa05ad9cf41050f03a36b35d31883cc55e68a126f2487e8bcb9bb1210d07d6aae2da4f75dcedd79fa09e94eac793c8303179dc931383c4d168055b2bd56180ad484120ed4038269cc7cfa49da36c1027b95fea77a84b9ab958193b2b1469a25b5df45e3c8d04f7dd06eced6875a15203e8fb1b614075e984a3f709484bccb07a9f98ab65b6606df6cff02e69bfd23f9e486c7c9e9a850da7bdcc636209bbd63d726e38e18a6266bc3fcbe81014662b503bb016ad852d4436ad761a22345539b1e52ef1f6e5cb6a466f88c953ae1593557f285c9d34e3a948319264450b42c273985aa7610916b59440dc343ba6a25a005ceea9e6e8bb4c4e080a4aa167ba919988050873601ba279bb8c64517292e2382eebe06fd641614d9f16f7d59a0453f71a0477b5c0e05c3f2932462eb118a59245abb7735c682434e3856583649201e2cd7e681f69908d2534082f05ac09f8a9808a86ea3e1db5ef54eb290a4d5e5d387201af9b6a1ee6cc9099da91930435ebd173e24206ba98ce70b7cbd6321f874710eeb5c7fa91038c3f50f0c9cd02ba99f78f389f1fa47ee06bad7de15da7ff44e4f3c3025bc5e39274bb1ee91fad1d54522a7f107928b521f0bad1e633712b0863314e664452b801ceba41f410008a0cd9e032d812dc61eeda8ddf8209b36091817433c9b6524d335724c0a849650a0a59521d76ed13562b27c2fe58e53dd775da45600e53ea24f48bfc31fe828a32f516de578185c6083d46bcafbd40db4f1e8cccab0556d76f25244dbfb5c28a473a83af85ff5b225220e16d9bf7955e0bd928b87aadf73c8307a2642e7916688d0e359c3f79877c236fdc9aefd1610fb1bdeda6cf142982603639d461c2c914109c3c4bc861c3b1778f9770fef66837b062728a9f7da6e8240202a81983f4c183008969bcb9f3954b46d435e8764956555ab73a7722400dc95268b315bda2391393571f4f277fc61ec3937e500c23833a0b653631f945a950a2f355efc823efa7da18ff9aabbd8dcdd8d08892608b1fa7c6fa0bc87b0d66d347cda18635ec51022c90fe7ddd2c037b8997dde09cbe70491d35d979ded815362a009b23c903eb61dd9af34b62bde7c105269f8f4ed58ef55382fef61ed56294af5769c5f430b03f7053513e011b53b40ed5306050993afdd25da0e6a93bf1a97ca49c6cc3e573da801243399fd519dbd49e9eba9544749b5da6aaf1b78cd3796408a18b25a4646539249bb6152300967173533c4804c04406179adba77c215100fcb884055a0ccc7dea26f2e39afade58e47e71fd6e40eab336da76db6f334faa28fc07dcc96328a0b1be55f46d2c7312dcb2d4d6705058d2f9876fc9b994f485cbb21b646ad9c21cb9a76bbb7fe50d6440834d3bfba2dbb80ac0ee60b0d9d61ce573f6c5e0d91d993d2e2d2c3093ec68d59e7e39f91ba8f686a6cc5bbb9e8a1c990b3b8aaaa539471b66f2f7a9ced880a609c6eeb1f251a8bb10e74bdd99bfa5783299c69e1dd6748c8861666d3b5f05006cf978a13bd545ace8e47da329bd171675f39a016ce1bc0c45c9db0e73503920536ed95299775bf0993982f867b32ec235ed561c38a2b84f33616f09823af9e3aef7a47e1a354ac719f1bc79b8c92628b70bed5899449886200ff2d406593a4f14e64a225a20f0cce1920d6c4498c5bb3dec9ab6f5a7fbf94587c6292a404a32646eadd884293f0cb63593599d4b0b0c4d0c169bce6a4f3fb20133bdd8eeaf52cbe1727ae7bf50ba3c9ee26909f16b4c31c4f34dcdd23b3c18160a5f210547221f9008a64744e1f9ad6de3367cb6b612535405f57c4710374dff6e5ce8aa7d5d251835f7a243e9c350eefc7e1992c39334be8d7ae2d389610cf2bdaed21de4bdd25af1add5926df255e6b5ac66e26d7be75ccecbe9b05ffe416e5997efc63dcc76f9eddb97580fc0c3dc9fd8e3d461d9bb5ea4b5c43303185bb6c420586e85cfc5bb7c136ed2a616612217ff709eb8433744c4c6def96bb20b427e44e3c74caeb56277fd2be2bb27c69d9ec3835a95b3214635f75fda8b41ce6c55be829e6f56684e33d5f05c87a8d6c278e68bb281afb3b23a335d45826d289a23ce63ecd89c0ca754dad3ef75002f186eb42f86f56cfb759f245b8d24e01bafa0ee2c1e60a5827c1ae6755135f0760edde84febc4420510a6aa55c43ac46ee775d3eadf763577737c9f8fa3183fe765721edb7dd548c61b5daa959da019ac9fbc4800f7f388e256910bfa7e4b43ff38df130a9492975eb72b913cec622e8904e8978f6eac60b9ae75b5de60f5acceab36b10028d444ebc88d7729731faed5e00aa0c77bb3ff50f8aa0cd275a9594bdc113f8022e169e850c168d3ac3653c1dcb083b068ff5fa1b6a8e6f0e4ed119e72369400054ee24e233ba0e43e6d370090652b6eab00fc6dca6032906ed3140a2bffa11b0bd0b4c78200239bd18db58e9fd789f99418561ee85</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/447.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/447.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《php单例模式》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/1581969025.html" property="cc:attributionName"
+               rel="cc:attributionURL">
+                志伟
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'e50fcdf29cfd6b52c49b',
+        clientSecret: 'f7f90ffa6a35ccc24dc6ef735c2286e9e88f7f4f',
+        repo: 'zhiweiuu9.github.io',
+        owner: 'zhiweiUU9',
+        admin: "zhiweiUU9",
+        id: '2019-10-09T13-18-29',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'P2vDiJxOfNrutDJTy5acI5lC-MdYXbMMI',
+        appKey: 'kkg4gJRMuRSzGMmAGQuyWnr8',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'https://secure.gravatar.com/avatar/0d81cdfb0ba62d64e3ab9ed2d7edd584?s=64',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '欢迎交流讨论...'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/4216487372.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/447.gif" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="php工厂模式">
+                        
+                        <span class="card-title">php工厂模式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+  
+  
+    Welcome to my blog, enter password to read.
+    
+  
+  7650a957a2829ead558d1dbc329648dc9798b74ab88debfa1dccffa
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/面向对象/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2672848395.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/447.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="hexo-admin安装使用及遇到的问题">
+                        
+                        <span class="card-title">hexo-admin安装使用及遇到的问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            hexo-admin安装使用及遇到得问题安装hexo-admin1.安装管理&amp;启动npm install --save hexo-admin
+hexo g
+hexo s
+http://localhost:4000/admin
+效果图
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo-admin/">
+                        <span class="chip bg-color">hexo-admin</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 志伟&博客<br />'
+            + '作者: 志伟<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <!--            本站由&nbsp;&copy;<a href="https://chiwai.tang99.club" target="_blank">志伟</a>&nbsp;基于-->
+            <!--            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的-->
+            <!--            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建-->
+            Copyright&copy 2019 Zhiwei.
+            &nbsp<span class="with-love" id="heart"><i class="fa fa-heart" style="color:#FF0000"></i> </span>&nbsp
+            <a href="http://www.beian.miit.gov.cn">冀ICP备19009245号</a>
+            <br>
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">4.3k</span>&nbsp;字
+            
+            
+            
+                
+                <!--                统计-->
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'></span>
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"class="white-color"></span>&nbsp;次
+                
+                
+                    <span id="busuanzi_container_site_uv" style='display:none'></span>
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访客人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                          class="white-color">&nbsp;人
+            </span>
+                    <br>
+                    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                    <script>
+                        var now = new Date();
+
+                        function createtime() {
+                            <!--var grt = new Date("10/1/2019 00:00:00");-->
+                            var grt = new Date("10/1/2019 00:00:00");
+                            now.setTime(now.getTime() + 250);
+                            days = (now - grt) / 1000 / 60 / 60 / 24;
+                            dnum = Math.floor(days);
+                            hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                            hnum = Math.floor(hours);
+                            if (String(hnum).length == 1) {
+                                hnum = "0" + hnum;
+                            }
+                            minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                            mnum = Math.floor(minutes);
+                            if (String(mnum).length == 1) {
+                                mnum = "0" + mnum;
+                            }
+                            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                            snum = Math.round(seconds);
+                            if (String(snum).length == 1) {
+                                snum = "0" + snum;
+                            }
+                            document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                        }
+
+                        setInterval("createtime()", 250);
+                    </script>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zhiweiUU9/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1551685913@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1551685913" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1551685913" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    <!-- 在线聊天工具 -->
+    
+        <script src="//code.tidio.co/jhudb7n7zoqltgpydsyvqrlhwrumcnia.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+            function change_Tidio() {
+                var tidio = $("#tidio-chat iframe");
+                if (tidio.css("display") == "block" && $(window).width() > 977) {
+                    document.getElementById("tidio-chat-iframe").style.bottom = ($("div#backTop.top-scroll")
+                            .css("display") == "none" && $(window).width() > 977) > 0 ? "-40px" : ($(
+                            "div.toc-title").length && $(window).width() > 977) > 0 ?
+                        "85px" : "20px";
+                    document.getElementById("tidio-chat-iframe").style.right = "-15px";
+                    document.getElementById("tidio-chat-iframe").style.height = parseInt(tidio.css("height")) >=
+                        520 ? "520px" : tidio.css("height");
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "997";
+                } else if (tidio.css("display") == "block" && $(window).width() > 601 && $(window).width() <
+                    992) {
+                    document.getElementById("tidio-chat-iframe").style.bottom = ($("div#backTop.top-scroll")
+                        .css("display") == "none" && 601 < $(window).width() < 992) > 0 ? "-40px" : "20px";
+                    document.getElementById("tidio-chat-iframe").style.right = "-15px";
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "997";
+                } else if (tidio.css("display") == "block" && $(window).width() < 601 && parseInt(tidio.css(
+                        "height")) < 230) {
+                    document.getElementById("tidio-chat-iframe").style.bottom = ($("div#backTop.top-scroll")
+                        .css("display") == "none" && $(window).width() < 601) > 0 ? "-15px" : "45px";
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "997";
+                }
+                if (tidio.css("display") == "block" && $(window).width() < 601 && parseInt(tidio.css(
+                        "height")) >= 230) {
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "998";
+                }
+            }
+            });
+        </script>
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+
+<!--    博客动态标签-->
+    <script type="text/javascript">
+        var OriginTitile = document.title,
+            st;
+            document.addEventListener("visibilitychange", function () {
+                document.hidden ? (document.title = "不要走  决战到天亮呀~~🙈~", clearTimeout(st)) : (document.title =
+                    "算了 ✧你走吧～", st = setTimeout(function () {
+                    document.title = OriginTitile
+                }, 3e3))
+            })
+    </script>
+    <!-- 天气 -->
+    <script type="text/javascript">
+        WIDGET = {FID: '1KM7yex7eX'}
+    </script>
+    <script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
+
+    <script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="157069130428" m="1"></script>
+
+
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script></body>
+
+</html>

@@ -546,14 +546,14 @@ TP5 图片上传public function files()
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        2.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        11 分
+                        12 分
                     </div>
                     
                 
@@ -1033,6 +1033,43 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
         <span class="token keyword">return</span> <span class="token function">setReturn</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token string">'查询成功'</span><span class="token punctuation">,</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="TP3表关联查询"><a href="#TP3表关联查询" class="headerlink" title="TP3表关联查询"></a>TP3表关联查询</h1><blockquote>
+<p>以链接4张表为例。<br>  分别为:ce_cost,ce_order,ce_user,ce_r_mechanism<br>  其中，cost为主表</p>
+</blockquote>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$toll_list</span> <span class="token operator">=</span> <span class="token function">M</span><span class="token punctuation">(</span><span class="token string">'cost'</span><span class="token punctuation">)</span>
+    <span class="token operator">-</span><span class="token operator">></span><span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">)</span>
+    <span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'ce_order o on c.oid = o.id'</span><span class="token punctuation">)</span>
+    <span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'ce_user u on o.user = u.id'</span><span class="token punctuation">)</span>
+    <span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'ce_r_mechanism r on o.xmec = r.id'</span><span class="token punctuation">)</span>
+    <span class="token operator">-</span><span class="token operator">></span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'c.*,o.number,o.user,o.xmec,u.id,u.name,r.id,r.uname'</span><span class="token punctuation">)</span>
+    <span class="token operator">-</span><span class="token operator">></span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="PHP实现二维数组去重"><a href="#PHP实现二维数组去重" class="headerlink" title="PHP实现二维数组去重"></a>PHP实现二维数组去重</h1><h2 id="一维数组去重，PHP内置了去重函数。"><a href="#一维数组去重，PHP内置了去重函数。" class="headerlink" title="一维数组去重，PHP内置了去重函数。"></a>一维数组去重，PHP内置了去重函数。</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token function">array_unique</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="二维数组去重"><a href="#二维数组去重" class="headerlink" title="二维数组去重"></a>二维数组去重</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">0</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">[</span>
+        <span class="token string">'sp_id'</span><span class="token operator">=</span><span class="token operator">></span><span class="token number">1</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token number">1</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">[</span>
+        <span class="token string">'sp_id'</span><span class="token operator">=</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token number">2</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">[</span>
+        <span class="token string">'sp_id'</span><span class="token operator">=</span><span class="token operator">></span><span class="token number">1</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token number">3</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">[</span>
+        <span class="token string">'sp_id'</span><span class="token operator">=</span><span class="token operator">></span><span class="token number">2</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token number">4</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">[</span>
+        <span class="token string">'sp_id'</span><span class="token operator">=</span><span class="token operator">></span><span class="token number">2</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$sp_list_value</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$key</span> <span class="token operator">=</span> <span class="token string">'sp_id'</span><span class="token punctuation">;</span>
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$arr</span> <span class="token keyword">as</span> <span class="token variable">$k</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token variable">$sp_list_value</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">unset</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">[</span><span class="token variable">$k</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token variable">$sp_list_value</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$v</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1517,58 +1554,50 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/346954664.html">
+                <a href="/posts/1554494174.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP简单功能汇总">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="Js+Jquery简单功能汇总">
                         
-                        <span class="card-title">PHP简单功能汇总</span>
+                        <span class="card-title">Js+Jquery简单功能汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-简单做个记录，初学者，也算是记录成长的过程！
-
-TP5 图片上传public function files()
-    {
-        $file = request()->file('file');
-        if (!$fi
+                            Jq实现动态删除元素后，重新排列序号option_select_id = $(this).parents(".model-select-group-content").find(" .model-select-group").length+
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-29
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/PHP/" class="post-category">
-                                    PHP
+                            <a href="/categories/前端/" class="post-category">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/Javascript/">
+                        <span class="chip bg-color">Javascript</span>
                     </a>
                     
-                    <a href="/tags/汇总/">
-                        <span class="chip bg-color">汇总</span>
+                    <a href="/tags/Jquery/">
+                        <span class="chip bg-color">Jquery</span>
                     </a>
                     
                 </div>
@@ -1794,7 +1823,7 @@ TP5 图片上传public function files()
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.3k</span>&nbsp;字
+                        class="white-color">5.1k</span>&nbsp;字
             
             
             
@@ -1999,6 +2028,6 @@ $(function () {
     <script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="157069130428" m="1"></script>
 
 
-<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>

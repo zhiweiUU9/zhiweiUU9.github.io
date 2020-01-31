@@ -546,14 +546,14 @@ TP5 图片上传public function files()
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.2k
+                        2.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        12 分
+                        13 分
                     </div>
                     
                 
@@ -1070,6 +1070,71 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
         <span class="token variable">$sp_list_value</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$v</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="PHP上传视频"><a href="#PHP上传视频" class="headerlink" title="PHP上传视频"></a>PHP上传视频</h1><blockquote>
+<p>上传视频可以使用之前的上传多图片的方法，还可以同时上传多个视频</p>
+</blockquote>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ *视频上传
+ * @param $files
+ * @param string $path
+ * @param array $imagesExt
+ * @return string
+ */</span>
+<span class="token keyword">function</span> <span class="token function">upload_file</span><span class="token punctuation">(</span><span class="token variable">$files</span><span class="token punctuation">,</span> <span class="token variable">$path</span> <span class="token operator">=</span> <span class="token string">"./upload/video"</span><span class="token punctuation">,</span><span class="token variable">$imagesExt</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'mp4'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 判断错误号</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$files</span><span class="token punctuation">[</span><span class="token string">'error'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">00</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$ext</span> <span class="token operator">=</span> <span class="token function">strtolower</span><span class="token punctuation">(</span><span class="token function">pathinfo</span><span class="token punctuation">(</span><span class="token variable">$files</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token constant">PATHINFO_EXTENSION</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 判断文件类型</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$ext</span><span class="token punctuation">,</span><span class="token variable">$imagesExt</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">1000</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//非法文件类型</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 判断是否存在上传到的目录</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_dir</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">,</span><span class="token number">0777</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 生成唯一的文件名</span>
+        <span class="token variable">$fileName</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token function">uniqid</span><span class="token punctuation">(</span><span class="token function">microtime</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'.'</span><span class="token punctuation">.</span><span class="token variable">$ext</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 将文件名拼接到指定的目录下</span>
+        <span class="token variable">$destName</span> <span class="token operator">=</span> <span class="token variable">$path</span><span class="token punctuation">.</span><span class="token string">"/"</span><span class="token punctuation">.</span><span class="token variable">$fileName</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 进行文件移动</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$files</span><span class="token punctuation">[</span><span class="token string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token variable">$destName</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">1001</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//文件上传失败</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token variable">$destName</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//上传成功，返回上传路径</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 根据错误号返回提示信息</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$files</span><span class="token punctuation">[</span><span class="token string">'error'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                <span class="token keyword">echo</span> <span class="token number">2000</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+                <span class="token keyword">echo</span> <span class="token number">2001</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//上传文件的大小超过了 HTML 表单中 MAX_FILE_SIZE 选项指定的值</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                <span class="token keyword">echo</span> <span class="token number">2002</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//文件只有部分被上传</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
+                <span class="token keyword">echo</span> <span class="token number">2003</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//没有文件被上传</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">6</span><span class="token punctuation">:</span>
+                <span class="token keyword">echo</span> <span class="token number">2004</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//找不到临时文件夹</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">7</span><span class="token punctuation">:</span>
+                <span class="token keyword">echo</span> <span class="token number">2005</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//文件写入错误</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+ <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">video_add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">isPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$video</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string">'video'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">upload_file</span><span class="token punctuation">(</span><span class="token variable">$video</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1823,7 +1888,7 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.1k</span>&nbsp;字
+                        class="white-color">7.8k</span>&nbsp;字
             
             
             

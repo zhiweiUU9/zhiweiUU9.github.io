@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Win10 Nginx+PHP+MySQL 开机自启, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
-    <meta name="description" content="Win10 Nginx+PHP+MySQL 开机自启1.MySQL如: 用管理员运行cmd到MySql目录 C:\WNPM\MySQL\bin 
-    执行 mysqld install 生成windows服务  2.Nginx将 win">
+    <meta name="keywords" content="PHP基于phpqrcode类生成二维码, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
+    <meta name="description" content="phpqrcode下载地址
+地址：http://phpqrcode.sourceforge.net/下载：http://sourceforge.net/projects/phpqrcode/
+
+&amp;emsp;&amp;emsp;下载官网提供的类库后，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Win10 Nginx+PHP+MySQL 开机自启 | 志伟&amp;博客</title>
+    <title>PHP基于phpqrcode类生成二维码 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -388,13 +390,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Win10 Nginx+PHP+MySQL 开机自启
+                        PHP基于phpqrcode类生成二维码
                     </div>
                 </div>
             </div>
@@ -506,8 +508,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/环境搭建/">
-                                <span class="chip bg-color">环境搭建</span>
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                            <a href="/tags/二维码/">
+                                <span class="chip bg-color">二维码</span>
                             </a>
                         
                     </div>
@@ -518,8 +524,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/配置/" class="post-category">
-                                配置
+                            <a href="/categories/PHP/" class="post-category">
+                                PHP
                             </a>
                         
                     </div>
@@ -530,14 +536,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-08
+                    2020-01-31
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        506
+                        601
                     </div>
                     
 
@@ -560,78 +566,86 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Win10-Nginx-PHP-MySQL-开机自启"><a href="#Win10-Nginx-PHP-MySQL-开机自启" class="headerlink" title="Win10 Nginx+PHP+MySQL 开机自启"></a>Win10 Nginx+PHP+MySQL 开机自启</h3><h5 id="1-MySQL"><a href="#1-MySQL" class="headerlink" title="1.MySQL"></a>1.MySQL</h5><pre><code>如: 用管理员运行cmd到MySql目录 C:\WNPM\MySQL\bin 
-    执行 mysqld install 生成windows服务  </code></pre><h5 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2.Nginx"></a>2.Nginx</h5><pre><code>将 winsw-1.18-bin.exe 复制到Nginx根目录 重命名为 nginx-service.exe
-并创建nginx-service.exe.config、nginx-service.xml两个文件
+                <h1 id="phpqrcode下载地址"><a href="#phpqrcode下载地址" class="headerlink" title="phpqrcode下载地址"></a>phpqrcode下载地址</h1><blockquote>
+<p>地址：<a href="http://phpqrcode.sourceforge.net/" target="_blank" rel="noopener">http://phpqrcode.sourceforge.net/</a><br>下载：<a href="http://sourceforge.net/projects/phpqrcode/" target="_blank" rel="noopener">http://sourceforge.net/projects/phpqrcode/</a></p>
+</blockquote>
+<p>&emsp;&emsp;下载官网提供的类库后，只需要使用<span style="color:red;font-weight:bold;">phpqrcode.php</span>就可以生成二维码了，当然您的PHP环境必须开启支持GD2。它是一个多个类的集合文件，我们需要用到里边的<span style="color:red;font-weight:bold;">QRcode类的png()</span>方法;</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">png</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token variable">$outfile</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token variable">$level</span> <span class="token operator">=</span> <span class="token constant">QR_ECLEVEL_L</span><span class="token punctuation">,</span> <span class="token variable">$size</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">$margin</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token variable">$saveandprint</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token variable">$enc</span> <span class="token operator">=</span> QRencode<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">factory</span><span class="token punctuation">(</span><span class="token variable">$level</span><span class="token punctuation">,</span> <span class="token variable">$size</span><span class="token punctuation">,</span> <span class="token variable">$margin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$enc</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">encodePNG</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token variable">$outfile</span><span class="token punctuation">,</span> <span class="token variable">$saveandprint</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h1><blockquote>
+<p><span style="color:red;font-weight:bold;">$text</span>表示生成二位的的信息文本<br> <span style="color:red;font-weight:bold;">$outfile</span>表示是否输出二维码图片文件，默认否<br> <span style="color:red;font-weight:bold;">$level</span>表示容错率，也就是有被覆盖的区域还能识别，分别:L（QR_ECLEVEL_L，7%），M（QR_ECLEVEL_M，15%），Q（QR_ECLEVEL_Q，25%），H（QR_ECLEVEL_H，30%）<br> <span style="color:red;font-weight:bold;">$size</span>表示生成图片大小，默认是3<br> <span style="color:red;font-weight:bold;">$margin</span>表示二维码周围边框空白区域间距值<br> <span style="color:red;font-weight:bold;">$saveandprint</span>表示是否保存二维码并显示</p>
+</blockquote>
+<h1 id="调用-PHP-QRcode类"><a href="#调用-PHP-QRcode类" class="headerlink" title="调用 PHP QRcode类"></a>调用 PHP QRcode类</h1><pre class="line-numbers language-php"><code class="language-php">Loader<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">import</span><span class="token punctuation">(</span><span class="token string">'phpqrcode.phpqrcode'</span><span class="token punctuation">,</span><span class="token constant">EXTEND_PATH</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h1><h2 id="生成带有LOGO的二维码"><a href="#生成带有LOGO的二维码" class="headerlink" title="生成带有LOGO的二维码"></a>生成带有LOGO的二维码</h2><p>&emsp;&emsp;其实原理很简单，先使用QRcode类生成一张二维码图片，然后再利用php的image相关函数，将事先准备好的logo图片加入到刚生成的原始二维码图片中间，然后重新生成一张新的二维码图片。</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">code</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//二维码内容</span>
+        <span class="token variable">$value</span> <span class="token operator">=</span> 'https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//chiwai.tang99.club';</span>
+        <span class="token variable">$errorCorrectionLevel</span> <span class="token operator">=</span> <span class="token string">'L'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//容错级别</span>
+        <span class="token variable">$matrixPointSize</span> <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//生成图片大小</span>
+        <span class="token comment" spellcheck="true">//生成二维码图片</span>
+        <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token string">'./qrcode/'</span><span class="token punctuation">.</span><span class="token function">RoundNum</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token string">'number'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'.png'</span><span class="token punctuation">;</span>
+        <span class="token variable">$path</span> <span class="token operator">=</span> <span class="token string">'./qrcode'</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 判断是否存在上传到的目录</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_dir</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">,</span><span class="token number">0777</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
+        \<span class="token package">QRcode</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">png</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">,</span> <span class="token variable">$filename</span><span class="token punctuation">,</span> <span class="token variable">$errorCorrectionLevel</span><span class="token punctuation">,</span> <span class="token variable">$matrixPointSize</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//准备好的logo图片</span>
+        <span class="token variable">$logo</span> <span class="token operator">=</span> <span class="token string">'./static/logo1.png'</span><span class="token punctuation">;</span>
 
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$logo</span> <span class="token operator">!==</span> <span class="token constant">FALSE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-内容如下：
-nginx-service.exe.config
-    &lt;configuration&gt;
-        &lt;startup&gt;
-            &lt;supportedRuntime version=&quot;v2.0.50727&quot; /&gt;
-            &lt;supportedRuntime version=&quot;v4.0&quot; /&gt;
-        &lt;/startup&gt;
-        &lt;runtime&gt;
-            &lt;generatePublisherEvidence enabled=&quot;false&quot;/&gt;
-        &lt;/runtime&gt;
-    &lt;/configuration&gt;    
+            <span class="token variable">$QR</span> <span class="token operator">=</span> <span class="token function">imagecreatefromstring</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+            <span class="token variable">$logo</span> <span class="token operator">=</span> <span class="token function">imagecreatefromstring</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$logo</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//二维码图片宽度</span>
+            <span class="token variable">$QR_width</span> <span class="token operator">=</span> <span class="token function">imagesx</span><span class="token punctuation">(</span><span class="token variable">$QR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//二维码图片高度</span>
+            <span class="token variable">$QR_height</span> <span class="token operator">=</span> <span class="token function">imagesy</span><span class="token punctuation">(</span><span class="token variable">$QR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//logo图片宽度</span>
+            <span class="token variable">$logo_width</span> <span class="token operator">=</span> <span class="token function">imagesx</span><span class="token punctuation">(</span><span class="token variable">$logo</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//logo图片高度</span>
+            <span class="token variable">$logo_height</span> <span class="token operator">=</span> <span class="token function">imagesy</span><span class="token punctuation">(</span><span class="token variable">$logo</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+            <span class="token variable">$logo_qr_width</span> <span class="token operator">=</span> <span class="token variable">$QR_width</span> <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">;</span>
 
-nginx-service.xml
-    &lt;service&gt;
-        &lt;id&gt;nginx&lt;/id&gt;
-        &lt;name&gt;Nginx Service&lt;/name&gt;
-        &lt;description&gt;High Performance Nginx Service&lt;/description&gt;
-        &lt;logpath&gt;C:\WNPM\nginx\logs&lt;/logpath&gt;
-        &lt;log mode=&quot;roll-by-size&quot;&gt;
-            &lt;sizeThreshold&gt;10240&lt;/sizeThreshold&gt;
-            &lt;keepFiles&gt;8&lt;/keepFiles&gt;
-        &lt;/log&gt;
-        &lt;executable&gt;C:\WNPM\nginx\nginx.exe&lt;/executable&gt;
-        &lt;startarguments&gt;C:\WNPM\nginx\nginx&lt;/startarguments&gt;
-        &lt;stopexecutable&gt;C:\WNPM\nginx\nginx.exe&lt;/stopexecutable&gt;
-        &lt;stoparguments&gt;-p C:\WNPM\nginx -s stop&lt;/stoparguments&gt;
-    &lt;/service&gt;
+            <span class="token variable">$scale</span> <span class="token operator">=</span> <span class="token variable">$logo_width</span><span class="token operator">/</span><span class="token variable">$logo_qr_width</span><span class="token punctuation">;</span>
 
+            <span class="token variable">$logo_qr_height</span> <span class="token operator">=</span> <span class="token variable">$logo_height</span><span class="token operator">/</span><span class="token variable">$scale</span><span class="token punctuation">;</span>
 
-执行 nginx-service.exe install 生成windows服务     </code></pre><h5 id="3-PHP"><a href="#3-PHP" class="headerlink" title="3.PHP"></a>3.PHP</h5><pre><code>将 WinSW.NET4.exe、xxfpm.exe、pthreadGC2.dll复制到PHP根目录 
-WinSW.NET4.exe 重命名为 php-cgi-servic.exe
-(xxfpm，用来开启 php-cgi 多进程)
-并创建php-cgi-service.xml文件
+            <span class="token variable">$from_width</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$QR_width</span> <span class="token operator">-</span> <span class="token variable">$logo_qr_width</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
 
+            <span class="token comment" spellcheck="true">//重新组合图片并调整大小</span>
+            <span class="token function">imagecopyresampled</span><span class="token punctuation">(</span><span class="token variable">$QR</span><span class="token punctuation">,</span> <span class="token variable">$logo</span><span class="token punctuation">,</span> <span class="token variable">$from_width</span><span class="token punctuation">,</span> <span class="token variable">$from_width</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token variable">$logo_qr_width</span><span class="token punctuation">,</span> <span class="token variable">$logo_qr_height</span><span class="token punctuation">,</span> <span class="token variable">$logo_width</span><span class="token punctuation">,</span> <span class="token variable">$logo_height</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//输出图片</span>
+        <span class="token function">imagepng</span><span class="token punctuation">(</span><span class="token variable">$QR</span><span class="token punctuation">,</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'&lt;img src="'</span> <span class="token punctuation">.</span> <span class="token variable">$filename</span> <span class="token punctuation">.</span> <span class="token string">'">'</span><span class="token punctuation">;</span>
 
-php-cgi-service.xml
-&lt;service&gt;
-    &lt;id&gt;php-cgi&lt;/id&gt;
-    &lt;name&gt;php-cgi&lt;/name&gt;
-    &lt;description&gt;PHP-CGI.&lt;/description&gt;
-    &lt;executable&gt;xxfpm.exe&lt;/executable&gt;
-    &lt;!-- 启动参数 --&gt;
-    &lt;startargument&gt;&quot;C:\WNPM\php-7.2.1\php-cgi.exe -c C:\WNPM\php-            7.2.1\php.ini&quot;&lt;/startargument&gt;
-    &lt;startargument&gt;-n&lt;/startargument&gt;
-    &lt;!-- 启动进程数量，可修改，建议大于 1 --&gt;
-    &lt;startargument&gt;3&lt;/startargument&gt;
-    &lt;startargument&gt;-i&lt;/startargument&gt;
-    &lt;!-- 监听IP，默认一般都用 127.0.0.1 --&gt;
-    &lt;startargument&gt;127.0.0.1&lt;/startargument&gt;
-    &lt;startargument&gt;-p&lt;/startargument&gt;
-    &lt;!-- 监听端口，默认一般都用 9000 --&gt;
-    &lt;startargument&gt;9000&lt;/startargument&gt;
-    &lt;!-- 停止参数 --&gt;
-    &lt;stopexecutable&gt;taskkill&lt;/stopexecutable&gt;
-    &lt;stopargument&gt;/F&lt;/stopargument&gt;
-    &lt;stopargument&gt;/IM&lt;/stopargument&gt;
-    &lt;stopargument&gt;xxfpm.exe&lt;/stopargument&gt;
-    &lt;logpath&gt;logs&lt;/logpath&gt;
-&lt;/service&gt;
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="生成二维码直接输出"><a href="#生成二维码直接输出" class="headerlink" title="生成二维码直接输出"></a>生成二维码直接输出</h2><blockquote>
+<p>直接输出二维码只需要将参数二改为false。写die()是因为防止乱码</p>
+</blockquote>
+<pre class="line-numbers language-php"><code class="language-php">        <span class="token variable">$value</span><span class="token operator">=</span>"https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//chiwai.tang99.club";</span>
+        <span class="token variable">$errorCorrectionLevel</span><span class="token operator">=</span><span class="token string">"L"</span><span class="token punctuation">;</span>
+        <span class="token variable">$matrixPointSize</span><span class="token operator">=</span><span class="token string">"4"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//生成图片大小 ：1到10</span>
+        \<span class="token package">QRcode</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">png</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token variable">$errorCorrectionLevel</span><span class="token punctuation">,</span><span class="token variable">$matrixPointSize</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="更改二维码的颜色"><a href="#更改二维码的颜色" class="headerlink" title="更改二维码的颜色"></a>更改二维码的颜色</h2><blockquote>
+<p>$QR表示生成的二维码</p>
+</blockquote>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$indexColor</span> <span class="token operator">=</span> <span class="token function">imagecolorexact</span><span class="token punctuation">(</span><span class="token variable">$QR</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">imagecolorset</span><span class="token punctuation">(</span><span class="token variable">$QR</span><span class="token punctuation">,</span><span class="token variable">$indexColor</span><span class="token punctuation">,</span><span class="token number">148</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">211</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>参考资料:<br> <a href="http://phpqrcode.sourceforge.net/examples/index.php" target="_blank" rel="noopener">http://phpqrcode.sourceforge.net/examples/index.php</a><br> <a href="https://www.php.cn/php-weizijiaocheng-402924.html" target="_blank" rel="noopener">https://www.php.cn/php-weizijiaocheng-402924.html</a></p>
+</blockquote>
 
-
-
-php-cgi-service.exe install，生成windows服务</code></pre>
             </div>
             <hr/>
 
@@ -793,9 +807,9 @@ php-cgi-service.exe install，生成windows服务</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Win10 Nginx+PHP+MySQL 开机自启》
+                    《PHP基于phpqrcode类生成二维码》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2324507981.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/123876002.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -836,7 +850,7 @@ php-cgi-service.exe install，生成windows服务</code></pre>
         repo: 'zhiweiuu9.github.io',
         owner: 'zhiweiUU9',
         admin: "zhiweiUU9",
-        id: '2019-12-08T22-57-08',
+        id: '2020-01-31T14-06-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1115,98 +1129,32 @@ php-cgi-service.exe install，生成windows服务</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/3149816056.html">
+                <a href="/posts/123876002.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="php将导出文件生成压缩包并下载">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="PHP基于phpqrcode类生成二维码">
                         
-                        <span class="card-title">php将导出文件生成压缩包并下载</span>
+                        <span class="card-title">PHP基于phpqrcode类生成二维码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            #php实现将导出文件生成压缩包并下载
+                            phpqrcode下载地址
+地址：http://phpqrcode.sourceforge.net/下载：http://sourceforge.net/projects/phpqrcode/
 
-这里我用到了模板，首先获取其数据，加载模板，生成excel文件，获取其路径，将生成的excel文件生成压缩包。
-
-    //血糖数据
-    public function ExportXueta
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-09
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/php/" class="post-category">
-                                    php
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
-                    </a>
-                    
-                    <a href="/tags/Excel/">
-                        <span class="chip bg-color">Excel</span>
-                    </a>
-                    
-                    <a href="/tags/压缩包/">
-                        <span class="chip bg-color">压缩包</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/4119388635.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/images/447.gif" data-original="/medias/featureimages/13.jpg" class="responsive-img" alt="php导出excel方法">
-                        
-                        <span class="card-title">php导出excel方法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            php实现Excel导出方法工作中用到的功能，记录一下！
-实例:
- /**
-     * 导出机构信息
-     */
-
-    public function daochu(){
-        //用户名
-        if(!emp
+&emsp;&emsp;下载官网提供的类库后，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-31
                             </span>
                         <span class="publish-author">
                             
@@ -1220,6 +1168,7 @@ php-cgi-service.exe install，生成windows服务</code></pre>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1227,12 +1176,62 @@ php-cgi-service.exe install，生成windows服务</code></pre>
                         <span class="chip bg-color">PHP</span>
                     </a>
                     
-                    <a href="/tags/Excel/">
-                        <span class="chip bg-color">Excel</span>
+                    <a href="/tags/二维码/">
+                        <span class="chip bg-color">二维码</span>
                     </a>
                     
-                    <a href="/tags/导出/">
-                        <span class="chip bg-color">导出</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2780046153.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/447.gif" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Vue简单功能汇总">
+                        
+                        <span class="card-title">Vue简单功能汇总</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            下拉刷新 加载分页
+引入两个文件flush.jsPullUpReload.js
+
+flush.jsVue.component("flush", {
+    template: `
+&lt;div class="refresh-moudle"
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>

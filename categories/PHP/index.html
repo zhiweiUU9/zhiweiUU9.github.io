@@ -430,11 +430,11 @@
                 
                 
                 
-                <a href="/categories/前端/" title="前端: 1">
+                <a href="/categories/PHP/" title="PHP: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">前端
-                        <span class="tag-length">1</span>
+                            style="background-color: #F9EBEA;">PHP
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -466,10 +466,10 @@
                 </a>
                 
                 
-                <a href="/categories/PHP/" title="PHP: 2">
+                <a href="/categories/前端/" title="前端: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">PHP
+                            style="background-color: #FEF9E7;">前端
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -572,7 +572,7 @@
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.1k</span>&nbsp;字
+                        class="white-color">7.8k</span>&nbsp;字
             
             
             
@@ -780,7 +780,41 @@ $(function () {
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>
-});
+��聊天工具 -->
+    
+        <script src="//code.tidio.co/jhudb7n7zoqltgpydsyvqrlhwrumcnia.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+            function change_Tidio() {
+                var tidio = $("#tidio-chat iframe");
+                if (tidio.css("display") == "block" && $(window).width() > 977) {
+                    document.getElementById("tidio-chat-iframe").style.bottom = ($("div#backTop.top-scroll")
+                            .css("display") == "none" && $(window).width() > 977) > 0 ? "-40px" : ($(
+                            "div.toc-title").length && $(window).width() > 977) > 0 ?
+                        "85px" : "20px";
+                    document.getElementById("tidio-chat-iframe").style.right = "-15px";
+                    document.getElementById("tidio-chat-iframe").style.height = parseInt(tidio.css("height")) >=
+                        520 ? "520px" : tidio.css("height");
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "997";
+                } else if (tidio.css("display") == "block" && $(window).width() > 601 && $(window).width() <
+                    992) {
+                    document.getElementById("tidio-chat-iframe").style.bottom = ($("div#backTop.top-scroll")
+                        .css("display") == "none" && 601 < $(window).width() < 992) > 0 ? "-40px" : "20px";
+                    document.getElementById("tidio-chat-iframe").style.right = "-15px";
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "997";
+                } else if (tidio.css("display") == "block" && $(window).width() < 601 && parseInt(tidio.css(
+                        "height")) < 230) {
+                    document.getElementById("tidio-chat-iframe").style.bottom = ($("div#backTop.top-scroll")
+                        .css("display") == "none" && $(window).width() < 601) > 0 ? "-15px" : "45px";
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "997";
+                }
+                if (tidio.css("display") == "block" && $(window).width() < 601 && parseInt(tidio.css(
+                        "height")) >= 230) {
+                    document.getElementById("tidio-chat-iframe").style.zIndex = "998";
+                }
+            }
+            });
         </script>
     
 

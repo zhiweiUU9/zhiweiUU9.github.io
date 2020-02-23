@@ -541,14 +541,14 @@ flush.jsVue.component(&#34;flush&#34;, {
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.8k
+                        2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        9 分
+                        10 分
                     </div>
                     
                 
@@ -1042,6 +1042,25 @@ flush.jsVue.component(&#34;flush&#34;, {
 
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="在滑动加载分页数据时遇到的问题！"><a href="#在滑动加载分页数据时遇到的问题！" class="headerlink" title="在滑动加载分页数据时遇到的问题！"></a>在滑动加载分页数据时遇到的问题！</h2><blockquote>
+<p>&emsp;&emsp;默认情况下，向上滑动加载分页的承载体默认会找到body元素。但是由于我们的页面书写方式变化多样，会导致承载体发生改变，会出现滑动时滚动载体触发无效果！</p>
+</blockquote>
+<p>解决方式如下:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%871.png" alt></p>
+<blockquote>
+<p>以div class=”main_content”为载体，创建一个id=”main_content”,名字可以随便取<span style="color:red;">(创建id的原因是不影响其它地方使用)</span></p>
+</blockquote>
+<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%872.png" alt></p>
+<blockquote>
+<p>增加getid=”main_content”，getid名字任意，是为了要向组件传递main_content这个信息，要以这个为载体。</p>
+</blockquote>
+<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%873.png" alt></p>
+<blockquote>
+<p>在pullupreload.js这个文件内接收创建的getid信息。这里的require参数的意思是不是必须的</p>
+</blockquote>
+<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%874.png" alt></p>
+<blockquote>
+<p>加了个if判断，如果body不存在，使用默认的方法，否则使用我们自定义的元素为载体</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -1789,7 +1808,7 @@ flush.jsVue.component(&#34;flush&#34;, {
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">7.8k</span>&nbsp;字
+                        class="white-color">8.2k</span>&nbsp;字
             
             
             
@@ -1994,6 +2013,6 @@ $(function () {
     <script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="157069130428" m="1"></script>
 
 
-<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>

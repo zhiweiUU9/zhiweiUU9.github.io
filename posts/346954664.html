@@ -546,14 +546,14 @@ TP5 图片上传public function files()
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.5k
+                        2.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        13 分
+                        14 分
                     </div>
                     
                 
@@ -1135,6 +1135,58 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="PHP时间字段查询方法"><a href="#PHP时间字段查询方法" class="headerlink" title="PHP时间字段查询方法"></a>PHP时间字段查询方法</h1><blockquote>
+<p>一般用做查询 开始时间和结束时间</p>
+</blockquote>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ * 时间字段查询方法
+ * @param $stime 开始时间
+ * @param $etime 结束时间
+ * @return array 获得可放入where中的数组
+ */</span>
+<span class="token keyword">function</span> <span class="token function">SearchTime</span><span class="token punctuation">(</span><span class="token variable">$stime</span><span class="token punctuation">,</span> <span class="token variable">$etime</span><span class="token punctuation">,</span> <span class="token variable">$type</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$stime</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$etime</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$stime</span> <span class="token operator">=</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token variable">$stime</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'egt'</span><span class="token punctuation">,</span> <span class="token variable">$stime</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$stime</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$etime</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$etime</span> <span class="token operator">=</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token variable">$etime</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'elt'</span><span class="token punctuation">,</span> <span class="token variable">$etime</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$stime</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$etime</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$stime</span> <span class="token operator">=</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token variable">$stime</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$etime</span> <span class="token operator">=</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token variable">$etime</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'between'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token variable">$stime</span><span class="token punctuation">,</span> <span class="token variable">$etime</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="PHP-递归树方法"><a href="#PHP-递归树方法" class="headerlink" title="PHP 递归树方法"></a>PHP 递归树方法</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ * 递归树
+ * @param $data
+ * @param $pId
+ * @return array
+ */</span>
+<span class="token keyword">function</span> <span class="token function">getTree</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">,</span> <span class="token variable">$pId</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$tree</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$data</span> <span class="token keyword">as</span> <span class="token variable">$k</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token string">'pid'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable">$pId</span> <span class="token punctuation">.</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//父亲找到儿子</span>
+            <span class="token variable">$v</span><span class="token punctuation">[</span><span class="token string">'children'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">getTree</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">,</span> <span class="token variable">$v</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token string">'children'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">unset</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token string">'children'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token variable">$tree</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$v</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$tree</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1888,7 +1940,7 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">7.8k</span>&nbsp;字
+                        class="white-color">8.2k</span>&nbsp;字
             
             
             
@@ -2093,6 +2145,6 @@ $(function () {
     <script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="157069130428" m="1"></script>
 
 
-<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"dialog":{"enable":true}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>

@@ -29,6 +29,33 @@
     
     
     <entry>
+      <title>Windows2012安装IIS中.NET Framework3.5报错</title>
+      <link href="/posts/724213894.html"/>
+      <url>/posts/724213894.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&nbsp;&nbsp;&nbsp;&nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失败或者一个或多个安装选项在目标服务器上缺少源文件，或者找不到源文件等错误信息。<br>原因是.net framework3.5程序源文件找不到所导致的。<br>如图所示:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/2017525170334427.jpg" alt><br>解决方法为可以通过PowerShell 脚本进行安装。<br>1.在开始菜单中找到PowerShell，右键单击选择以管理员身份运行。<br>2.输入以下脚本，按回车执行。</p><pre class="line-numbers language-ini"><code class="language-ini">Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' -Name UseWUServer -Value 0Restart-Service -Name wuauservInstall-WindowsFeature Net-Framework-CoreSet-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' -Name UseWUServer -Value 1Restart-Service -Name wuauserv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>此刻再回到服务管理器-&gt;添加角色功能-&gt;功能中，就看到.Net Framework 3.5安装成功。</p><p>参考文章:<br><a href="https://www.wanweiwang.cn/FAQ/view/1006.html" target="_blank" rel="noopener">https://www.wanweiwang.cn/FAQ/view/1006.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 服务器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安装 </tag>
+            
+            <tag> IIS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PHP导入功能</title>
       <link href="/posts/549686560.html"/>
       <url>/posts/549686560.html</url>

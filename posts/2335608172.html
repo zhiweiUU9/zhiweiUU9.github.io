@@ -4,12 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo-admin安装使用及遇到的问题, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
-    <meta name="description" content="hexo-admin安装使用及遇到得问题安装hexo-admin1.安装管理&amp;amp;启动npm install --save hexo-admin
-hexo g
-hexo s
-http://localhost:4000/admin
-效果图">
+    <meta name="keywords" content="TP5定时任务, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
+    <meta name="description" content="TP5+windows 定时任务1.建立command文件夹，与controller文件夹同级，创建PHP文件，文件名称任意。2.在Task.php文件下写入以下内容
+&amp;lt;?php
+namespace app\index\command">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +15,7 @@ http://localhost:4000/admin
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo-admin安装使用及遇到的问题 | 志伟&amp;博客</title>
+    <title>TP5定时任务 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -391,13 +389,13 @@ http://localhost:4000/admin
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo-admin安装使用及遇到的问题
+                        TP5定时任务
                     </div>
                 </div>
             </div>
@@ -509,8 +507,12 @@ http://localhost:4000/admin
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo-admin/">
-                                <span class="chip bg-color">hexo-admin</span>
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                            <a href="/tags/定时任务/">
+                                <span class="chip bg-color">定时任务</span>
                             </a>
                         
                     </div>
@@ -518,29 +520,20 @@ http://localhost:4000/admin
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/hexo/" class="post-category">
-                                hexo
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-08
+                    2020-03-19
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        347
+                        281
                     </div>
                     
 
@@ -563,36 +556,76 @@ http://localhost:4000/admin
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="hexo-admin安装使用及遇到得问题"><a href="#hexo-admin安装使用及遇到得问题" class="headerlink" title="hexo-admin安装使用及遇到得问题"></a>hexo-admin安装使用及遇到得问题</h1><h1 id="安装hexo-admin"><a href="#安装hexo-admin" class="headerlink" title="安装hexo-admin"></a>安装hexo-admin</h1><h2 id="1-安装管理-amp-启动"><a href="#1-安装管理-amp-启动" class="headerlink" title="1.安装管理&amp;启动"></a>1.安装管理&amp;启动</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save hexo-admin
-hexo g
-hexo s
-http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>效果图:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008203407.png" alt="效果图"></p>
-<h2 id="2-设置密码"><a href="#2-设置密码" class="headerlink" title="2.设置密码"></a>2.设置密码</h2><blockquote>
-<p>点击Settings &gt; Setup authentification  </p>
-</blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008204004.png" alt="按照顺序点击"></p>
-<h2 id="3-填写用户名和密码"><a href="#3-填写用户名和密码" class="headerlink" title="3.填写用户名和密码"></a>3.填写用户名和密码</h2><p> <img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008204649.png" alt="填写相应功能"></p>
+                <h1 id="TP5-windows-定时任务"><a href="#TP5-windows-定时任务" class="headerlink" title="TP5+windows 定时任务"></a>TP5+windows 定时任务</h1><p>1.建立command文件夹，与controller文件夹同级，创建PHP文件，文件名称任意。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/b5a85b2e1d339afa166b1b20e6126d6.png" alt><br>2.在Task.php文件下写入以下内容</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>index<span class="token punctuation">\</span>command</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">think<span class="token punctuation">\</span>console<span class="token punctuation">\</span>Command</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">think<span class="token punctuation">\</span>console<span class="token punctuation">\</span>Input</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">think<span class="token punctuation">\</span>console<span class="token punctuation">\</span>Output</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token keyword">extends</span> <span class="token class-name">Command</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 命令名称
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">'Task'</span><span class="token punctuation">)</span>          <span class="token comment" spellcheck="true">//设置指令名称</span>
+            <span class="token operator">-</span><span class="token operator">></span><span class="token function">setDescription</span><span class="token punctuation">(</span><span class="token string">'每天统计数据'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//设置描述信息</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * @param Input $input
+     * @param Output $output
+     * @return int|void|null
+     * 设置执行代码
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>Input <span class="token variable">$input</span><span class="token punctuation">,</span> Output <span class="token variable">$output</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 输出到日志文件</span>
+        <span class="token variable">$output</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">"start..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$output</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">"end..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+            <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+                        <span class="token string">'title'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'zxm22'</span><span class="token punctuation">,</span>
+                        <span class="token string">'content'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'上海'</span>
+            <span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">db</span><span class="token punctuation">(</span><span class="token string">'documents'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3.找到command.php<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/b0e3613ce1a65737dec7e2a348ada05.png" alt><br>command.php:</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token comment" spellcheck="true">// +----------------------------------------------------------------------</span>
+<span class="token comment" spellcheck="true">// | ThinkPHP [ WE CAN DO IT JUST THINK ]</span>
+<span class="token comment" spellcheck="true">// +----------------------------------------------------------------------</span>
+<span class="token comment" spellcheck="true">// | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.</span>
+<span class="token comment" spellcheck="true">// +----------------------------------------------------------------------</span>
+<span class="token comment" spellcheck="true">// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )</span>
+<span class="token comment" spellcheck="true">// +----------------------------------------------------------------------</span>
+<span class="token comment" spellcheck="true">// | Author: </span>
+<span class="token comment" spellcheck="true">// +----------------------------------------------------------------------</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">[</span>
+    <span class="token string">'app\index\command\Task'</span><span class="token comment" spellcheck="true">//这里把上面的任务PHP文件填上</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>4.windows下创建.bat脚本,脚本中填入以下内容:</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">//进入E盘</span>
+E<span class="token punctuation">:</span>
+<span class="token comment" spellcheck="true">//cd命令后面是项目文件根目录</span>
+cd \<span class="token package">phpstudy<span class="token punctuation">\</span>PHPTutorial<span class="token punctuation">\</span>www<span class="token punctuation">\</span>lianxi</span>
+<span class="token comment" spellcheck="true">//用php.exe 打开think Task任务</span>
+E<span class="token punctuation">:</span>\<span class="token package">phpstudy<span class="token punctuation">\</span>PHPTutorial<span class="token punctuation">\</span>php<span class="token punctuation">\</span>php</span><span class="token operator">-</span><span class="token number">7.0</span><span class="token punctuation">.</span><span class="token number">12</span><span class="token operator">-</span>nts\<span class="token package">php</span><span class="token punctuation">.</span>exe think Task<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>5.打开计算机管理应用,创建任务<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/21bab926183eb12edb041e564106049.png" alt="创建任务"><br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/a31f18b5edaee4450301faec4f5925c.png" alt="常规"><br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/e6914d023c0f1963c3e90dc9ab15d27.png" alt="触发器"><br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/fa945ad63d70e725b4d33793afea198.png" alt="操作"></p>
 <blockquote>
-<p>username 表示你的用户名<br>  password 你的密码<br>  将信息添加到根目录下_config.yml文件内</p>
+<p>初学者，入门级！</p>
 </blockquote>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="1-错误信息-Config-value-“admin-deployCommand”-not-found"><a href="#1-错误信息-Config-value-“admin-deployCommand”-not-found" class="headerlink" title="1.错误信息:Config value “admin.deployCommand” not found"></a>1.错误信息:Config value “admin.deployCommand” not found</h2><p>当你第一次点击 Deploy 按钮时,可能会遇到上面的问题，是因为缺少了执行的deploy命令,如图:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008205553.png" alt="错误信息"><br>解决方法:<br>在项目中创建hexo-deploy.sh文件并设置权限  </p>
-<blockquote>
-<p>$ touch hexo-deploy.sh; chmod a+x hexo-deploy.sh</p>
-</blockquote>
-<p>在文件内写入一下内容</p>
-<blockquote>
-<p>  hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
-</blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008210152.png" alt="写入以上内容"></p>
-<p>编辑配置文件<br>在根目录_config.yml配置文件中，在之前配置的admin配置信息下加入<code>deployCommand: &#39;./hexo-deploy.sh&#39;</code> 信息<br>如图所示:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008211142.png" alt="添加以上信息"></p>
-<h2 id="2-错误信息deploy-Error-spawn-UNKNOWN"><a href="#2-错误信息deploy-Error-spawn-UNKNOWN" class="headerlink" title="2.错误信息deploy Error: spawn UNKNOWN"></a>2.错误信息deploy Error: spawn UNKNOWN</h2><p>在解决完上述错误信息后，将会报出<em>deploy Error: spawn UNKNOWN</em>错误信息<br>解决方法:  </p>
-<blockquote>
-<p>打开node_modules目录下hexo-admin目录下deploy.js<br>  将<code>var proc = spawn(command, [message], {detached: true});</code>改为<br>  <code>var proc = spawn((process.platform === &quot;win32&quot; ? &quot;hexo.cmd&quot; : &quot;hexo&quot;), [&#39;d&#39;]);</code></p>
-</blockquote>
-<p>如图所示:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008212700.png" alt="更改以上信息"></p>
-<p>改完之后就ok啦，上图庆祝一下<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008212954.png" alt="该内容为成功"></p>
-<p>参考以下资料信息:<br><a href="https://github.com/jaredly/hexo-admin/issues/70" target="_blank" rel="noopener">错误信息:Config value “admin.deployCommand” not found</a><br><a href="https://github.com/jaredly/hexo-admin/issues/94" target="_blank" rel="noopener">错误信息:deploy Error: spawn UNKNOWN</a></p>
 
             </div>
             <hr/>
@@ -755,9 +788,9 @@ http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><s
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《hexo-admin安装使用及遇到的问题》
+                    《TP5定时任务》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2672848395.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2335608172.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -798,7 +831,7 @@ http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><s
         repo: 'zhiweiuu9.github.io',
         owner: 'zhiweiUU9',
         admin: "zhiweiUU9",
-        id: '2019-10-08T18-10-24',
+        id: '2020-03-19T15-14-43',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1077,47 +1110,50 @@ http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/3524924122.html">
+                <a href="/posts/2335608172.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="js遍历数组输出进行排序方法">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/19.jpg" class="responsive-img" alt="TP5定时任务">
                         
-                        <span class="card-title">js遍历数组输出进行排序方法</span>
+                        <span class="card-title">TP5定时任务</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js遍历对象输出时真的是按照顺序输出的吗？&nbsp;&nbsp;&nbsp;前两天在工作中遇到一个问题，js在获取后端数据遍历输出时，要根据自定义属性进行规则排序，可在排序时就发生了顺序颠倒的问题。先来两个实例:
-    var obj=
+                            TP5+windows 定时任务1.建立command文件夹，与controller文件夹同级，创建PHP文件，文件名称任意。2.在Task.php文件下写入以下内容
+&lt;?php
+namespace app\index\command
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/前端/" class="post-category">
-                                    前端
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            志伟
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Js数组排序/">
-                        <span class="chip bg-color">Js数组排序</span>
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/定时任务/">
+                        <span class="chip bg-color">定时任务</span>
                     </a>
                     
                 </div>
@@ -1128,50 +1164,45 @@ http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><s
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/2672848395.html">
+                <a href="/posts/2687365199.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="hexo-admin安装使用及遇到的问题">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="openlayers3简单demo实现">
                         
-                        <span class="card-title">hexo-admin安装使用及遇到的问题</span>
+                        <span class="card-title">openlayers3简单demo实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hexo-admin安装使用及遇到得问题安装hexo-admin1.安装管理&amp;启动npm install --save hexo-admin
-hexo g
-hexo s
-http://localhost:4000/admin
-效果图
+                            &nbsp;&nbsp;&nbsp;&nbsp;OpenLayers 初始化一幅地图(map)，至少需要一个可视区域(view)，一个或多个图层( layer)， 和 一个地图加载的目标 HTML 标签(target)，其中最重要的是图层(
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
+                            <a href="/categories/地图/" class="post-category">
+                                    地图
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo-admin/">
-                        <span class="chip bg-color">hexo-admin</span>
+                    <a href="/tags/Openlayers3/">
+                        <span class="chip bg-color">Openlayers3</span>
                     </a>
                     
                 </div>

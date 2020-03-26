@@ -269,7 +269,7 @@
     <link href="https://chiwai.tang99.club/posts/2416442789.html"/>
     <id>https://chiwai.tang99.club/posts/2416442789.html</id>
     <published>2019-11-15T11:38:01.000Z</published>
-    <updated>2020-03-24T02:44:43.169Z</updated>
+    <updated>2020-03-25T09:14:41.822Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>完整Laravel笔记,纯个人手工打造</p></blockquote><p>附件下载<br><a href="/download/Laravel框架.docx" ">点击下载</a></p>]]></content>
     
@@ -283,7 +283,7 @@
     </summary>
     
     
-      <category term="后端笔记" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://chiwai.tang99.club/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="Laravel" scheme="https://chiwai.tang99.club/tags/Laravel/"/>
@@ -399,6 +399,32 @@
     
     
       <category term="hexo-admin" scheme="https://chiwai.tang99.club/tags/hexo-admin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FlashFXP连接服务器的方法</title>
+    <link href="https://chiwai.tang99.club/posts/913190664.html"/>
+    <id>https://chiwai.tang99.club/posts/913190664.html</id>
+    <published>2019-09-15T08:26:29.000Z</published>
+    <updated>2020-03-25T10:46:04.280Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下使用FlashFXP连接服务器的方法。</p><p>1.打开FlashFXP -&gt;站点-&gt;站点管理器<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20200325172906.png" alt="站点管理器"><br>2.新建站点 -&gt; 填写站点名称<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/62GK0DO1IMPE.png" alt="站点名称"><br>3.常规 -&gt; 连接类型选择SFTP over SSH连接<br>       -&gt;地址填写服务器端公网IP地址<br>       -&gt; 端口号默认22 (不用改)<br>       -&gt; 登录类型选择默认即可<br>       -&gt; 用户名称是服务器端登录的用户,密码是对应密码<br>       -&gt; 都输入正确后，正常点连接就可以连接到服务器了。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/xlash.png" alt="连接"></p><blockquote><p>也可以选择会话 -&gt; 快速连接 -&gt; 填写步骤和上面一样。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://chiwai.tang99.club/tags/Linux/"/>
     
   </entry>
   

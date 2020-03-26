@@ -252,7 +252,7 @@
       
       <categories>
           
-          <category> 后端笔记 </category>
+          <category> 笔记 </category>
           
       </categories>
       
@@ -368,6 +368,31 @@
         <tags>
             
             <tag> hexo-admin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>FlashFXP连接服务器的方法</title>
+      <link href="/posts/913190664.html"/>
+      <url>/posts/913190664.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下使用FlashFXP连接服务器的方法。</p><p>1.打开FlashFXP -&gt;站点-&gt;站点管理器<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20200325172906.png" alt="站点管理器"><br>2.新建站点 -&gt; 填写站点名称<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/62GK0DO1IMPE.png" alt="站点名称"><br>3.常规 -&gt; 连接类型选择SFTP over SSH连接<br>       -&gt;地址填写服务器端公网IP地址<br>       -&gt; 端口号默认22 (不用改)<br>       -&gt; 登录类型选择默认即可<br>       -&gt; 用户名称是服务器端登录的用户,密码是对应密码<br>       -&gt; 都输入正确后，正常点连接就可以连接到服务器了。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/xlash.png" alt="连接"></p><blockquote><p>也可以选择会话 -&gt; 快速连接 -&gt; 填写步骤和上面一样。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
             
         </tags>
       

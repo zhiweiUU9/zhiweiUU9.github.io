@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="纯手工Laravel笔记, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
-    <meta name="description" content="
-完整Laravel笔记,纯个人手工打造
-
-附件下载">
+    <meta name="keywords" content="thinkphp5+workerman的定时器实现定时任务, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
+    <meta name="description" content="1.首先需要安装，或者下载完整版tp框架里面会自带。(tp5教程https://www.kancloud.cn/manual/thinkphp5/235128)
+composer require topthink/think-worker
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>纯手工Laravel笔记 | 志伟&amp;博客</title>
+    <title>thinkphp5+workerman的定时器实现定时任务 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -390,13 +389,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        纯手工Laravel笔记
+                        thinkphp5+workerman的定时器实现定时任务
                     </div>
                 </div>
             </div>
@@ -419,12 +418,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Laravel/">
-                                <span class="chip bg-color">Laravel</span>
+                            <a href="/tags/Tp5-0/">
+                                <span class="chip bg-color">Tp5.0</span>
                             </a>
                         
-                            <a href="/tags/笔记/">
-                                <span class="chip bg-color">笔记</span>
+                            <a href="/tags/Workerman定时器/">
+                                <span class="chip bg-color">Workerman定时器</span>
                             </a>
                         
                     </div>
@@ -435,8 +434,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/笔记/" class="post-category">
-                                笔记
+                            <a href="/categories/后端/" class="post-category">
+                                后端
                             </a>
                         
                     </div>
@@ -447,14 +446,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-15
+                    2020-01-13
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        16
+                        297
                     </div>
                     
 
@@ -477,10 +476,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>完整Laravel笔记,纯个人手工打造</p>
+                <p>1.首先需要安装，或者下载完整版tp框架里面会自带。(tp5教程<a href="https://www.kancloud.cn/manual/thinkphp5/235128" target="_blank" rel="noopener">https://www.kancloud.cn/manual/thinkphp5/235128</a>)</p>
+<pre class="line-numbers language-text"><code class="language-text">composer require topthink/think-worker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>2.在项目根目录(不是public目录)创建服务启动文件 server.php<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/PUXM%5DYsdsdsCJ517I$BIJT8YI.png" alt></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'APP_PATH'</span><span class="token punctuation">,</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/application/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"BIND_MODULE"</span><span class="token punctuation">,</span> <span class="token string">"server/Worker"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 加载框架引导文件</span>
+<span class="token keyword">require</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/thinkphp/start.php'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3.在application里创建server模块，并在server里创建控制器 Worker.php<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/G335WKEG~%5BBDWMN9%5DV1%5DA%7DK.png" alt></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>server<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">think<span class="token punctuation">\</span>worker<span class="token punctuation">\</span>Server</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">app<span class="token punctuation">\</span>index<span class="token punctuation">\</span>controller<span class="token punctuation">\</span>Index</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Worker</span> <span class="token keyword">extends</span> <span class="token class-name">Server</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token variable">$processes</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onWorkerStart</span><span class="token punctuation">(</span><span class="token variable">$work</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$handle</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$handle</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">add_timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>4.创建Index.php控制器.定义一个每秒钟执行一次的定时器，在定时器里增加条件判断，如果当前时间等于要执行的时间时，就执行此任务<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%5B$ZM9U78N~7B3WBABTM64.png" alt></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>index<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Workerman<span class="token punctuation">\</span>Lib<span class="token punctuation">\</span>Timer</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Index</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">add_timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Timer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">,</span> <span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">//每天0点执行任务</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">86400</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d H:i:s"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//每天8点执行任务</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">86400</span> <span class="token operator">===</span> <span class="token number">28800</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d H:i:s"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>5.启动服务 <b>php server.php start -d</b><br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/C3OK9RZ0G%7B0A4S1G4X0%%5DHE.png" alt></p>
+<blockquote>
+<p>workerman定时器方法不止这些，具体可以看看文档。<br><a href="http://doc3.workerman.net/315179" target="_blank" rel="noopener">http://doc3.workerman.net/315179</a></p>
 </blockquote>
-<p>附件下载<br><a href="/download/Laravel框架.docx" ">点击下载</a></p>
+<p>参考资料:<br><a href="https://www.cnblogs.com/goufugui/p/9391035.html" target="_blank" rel="noopener">https://www.cnblogs.com/goufugui/p/9391035.html</a></p>
 
             </div>
             <hr/>
@@ -643,9 +694,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《纯手工Laravel笔记》
+                    《thinkphp5+workerman的定时器实现定时任务》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2416442789.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2129457668.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -686,7 +737,7 @@
         repo: 'zhiweiuu9.github.io',
         owner: 'zhiweiUU9',
         admin: "zhiweiUU9",
-        id: '2019-11-15T19-38-01',
+        id: '2020-01-13T20-07-19',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -969,32 +1020,37 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2324507981.html">
+                <a href="/posts/346954664.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/22.jpg" class="responsive-img" alt="Win10 Nginx+PHP+MySQL 开机自启">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP简单功能汇总">
                         
-                        <span class="card-title">Win10 Nginx+PHP+MySQL 开机自启</span>
+                        <span class="card-title">PHP简单功能汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Win10 Nginx+PHP+MySQL 开机自启1.MySQL如: 用管理员运行cmd到MySql目录 C:\WNPM\MySQL\bin 
-    执行 mysqld install 生成windows服务  2.Nginx将 win
+                            
+简单做个记录，初学者，也算是记录成长的过程！
+
+TP5 图片上传public function files()
+    {
+        $file = request()->file('file');
+        if (!$fi
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-08
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-26
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/配置/" class="post-category">
-                                    配置
+                            <a href="/categories/后端/" class="post-category">
+                                    后端
                                 </a>
                             
                             
@@ -1004,8 +1060,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/环境搭建/">
-                        <span class="chip bg-color">环境搭建</span>
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/汇总/">
+                        <span class="chip bg-color">汇总</span>
                     </a>
                     
                 </div>
@@ -1019,26 +1079,29 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/2335608172.html">
+                <a href="/posts/3149816056.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/19.jpg" class="responsive-img" alt="TP5定时任务">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="php将导出文件生成压缩包并下载">
                         
-                        <span class="card-title">TP5定时任务</span>
+                        <span class="card-title">php将导出文件生成压缩包并下载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TP5+windows 定时任务1.建立command文件夹，与controller文件夹同级，创建PHP文件，文件名称任意。2.在Task.php文件下写入以下内容
-&lt;?php
-namespace app\index\command
+                            #php实现将导出文件生成压缩包并下载
+
+这里我用到了模板，首先获取其数据，加载模板，生成excel文件，获取其路径，将生成的excel文件生成压缩包。
+
+    //血糖数据
+    public function ExportXueta
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-09
                             </span>
                         <span class="publish-author">
                             
@@ -1059,8 +1122,12 @@ namespace app\index\command
                         <span class="chip bg-color">PHP</span>
                     </a>
                     
-                    <a href="/tags/定时任务/">
-                        <span class="chip bg-color">定时任务</span>
+                    <a href="/tags/Excel/">
+                        <span class="chip bg-color">Excel</span>
+                    </a>
+                    
+                    <a href="/tags/压缩包/">
+                        <span class="chip bg-color">压缩包</span>
                     </a>
                     
                 </div>

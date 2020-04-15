@@ -4,9 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="FlashFXP连接服务器的方法, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
-    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一下使用FlashFXP连接服务器的方法。
-1.打开FlashFXP -&amp;gt;站点-&amp;gt;站点管理器2.新建站点 -&amp;gt; 填写站点名称3.常规 -&amp;gt; 连接类型选择SFTP o">
+    <meta name="keywords" content="微信公众号封装CURL请求, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
+    <meta name="description" content="
+微信公众号封装CURL请求方法，结合Redis缓存获取access_token
+
+封装CURL请求方法/**
+ * @param $api 接口地址
+ * @param array $data 数据信息
+ * @param string ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>FlashFXP连接服务器的方法 | 志伟&amp;博客</title>
+    <title>微信公众号封装CURL请求 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -416,13 +421,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        FlashFXP连接服务器的方法
+                        微信公众号封装CURL请求
                     </div>
                 </div>
             </div>
@@ -433,10 +438,99 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -445,8 +539,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/FlashFXP/">
-                                <span class="chip bg-color">FlashFXP</span>
+                            <a href="/tags/CURL/">
+                                <span class="chip bg-color">CURL</span>
+                            </a>
+                        
+                            <a href="/tags/获取token/">
+                                <span class="chip bg-color">获取token</span>
                             </a>
                         
                     </div>
@@ -457,8 +555,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/微信公众号/" class="post-category">
+                                微信公众号
                             </a>
                         
                     </div>
@@ -469,14 +567,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-15
+                    2020-04-15
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        160
+                        278
                     </div>
                     
 
@@ -499,11 +597,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下使用FlashFXP连接服务器的方法。</p>
-<p>1.打开FlashFXP -&gt;站点-&gt;站点管理器<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20200325172906.png" alt="站点管理器"><br>2.新建站点 -&gt; 填写站点名称<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/62GK0DO1IMPE.png" alt="站点名称"><br>3.常规 -&gt; 连接类型选择SFTP over SSH连接<br>       -&gt;地址填写服务器端公网IP地址<br>       -&gt; 端口号默认22 (不用改)<br>       -&gt; 登录类型选择默认即可<br>       -&gt; 用户名称是服务器端登录的用户,密码是对应密码<br>       -&gt; 都输入正确后，正常点连接就可以连接到服务器了。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/xlash.png" alt="连接"></p>
-<blockquote>
-<p>也可以选择会话 -&gt; 快速连接 -&gt; 填写步骤和上面一样。</p>
+                <blockquote>
+<p>微信公众号封装CURL请求方法，结合Redis缓存获取access_token</p>
 </blockquote>
+<h1 id="封装CURL请求方法"><a href="#封装CURL请求方法" class="headerlink" title="封装CURL请求方法"></a>封装CURL请求方法</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ * @param $api 接口地址
+ * @param array $data 数据信息
+ * @param string $method 请求方法
+ * @param string $returnType 返回类型
+ */</span>
+<span class="token keyword">function</span> <span class="token function">http_url</span><span class="token punctuation">(</span><span class="token variable">$api</span><span class="token punctuation">,</span><span class="token variable">$data</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token variable">$method</span> <span class="token operator">=</span> <span class="token string">"get"</span><span class="token punctuation">,</span><span class="token variable">$returnType</span> <span class="token operator">=</span> <span class="token string">"json"</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//开启会话</span>
+    <span class="token variable">$ch</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//设置url</span>
+    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span><span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span><span class="token variable">$api</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//设置数据流不直接输出</span>
+    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span><span class="token constant">CURLOPT_RETURNTRANSFER</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//规避ssl证书检查</span>
+    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_SSL_VERIFYPEER</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//跳过host验证</span>
+    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_SSL_VERIFYHOST</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$method</span> <span class="token operator">!=</span> <span class="token string">'get'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//如果你想PHP去做一个正规的HTTP POST，设置这个选项为一个非零值</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span><span class="token constant">CURLOPT_POST</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//传递一个作为HTTP “POST”操作的所有数据的字符串。</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span><span class="token constant">CURLOPT_POSTFIELDS</span><span class="token punctuation">,</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//执行会话</span>
+    <span class="token variable">$jsonInfo</span> <span class="token operator">=</span> <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//关闭会话</span>
+    <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$returnType</span> <span class="token operator">==</span> <span class="token string">'json'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$jsonInfo</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$jsonInfo</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Redis缓存获取access-token"><a href="#Redis缓存获取access-token" class="headerlink" title="Redis缓存获取access_token"></a>Redis缓存获取access_token</h1><blockquote>
+<p>access_token的有效期为2小时，每天请求次数有限，所以存到redis里面。</p>
+</blockquote>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">get_access_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//微信appid</span>
+    <span class="token variable">$appid</span> <span class="token operator">=</span> <span class="token string">'你的微信appid'</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//用户唯一凭证密钥</span>
+    <span class="token variable">$secret</span> <span class="token operator">=</span> <span class="token string">'你的密钥'</span><span class="token punctuation">;</span>
+    <span class="token variable">$get_access_token</span> <span class="token operator">=</span> \<span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>Redis</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'get_access_token'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$get_access_token</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$api</span> <span class="token operator">=</span> 'https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid='.$appid .'&amp;secret='.$secret;</span>
+        <span class="token variable">$get_access_token</span> <span class="token operator">=</span> <span class="token function">http_url</span><span class="token punctuation">(</span><span class="token variable">$api</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        \<span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>Redis</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">setex</span><span class="token punctuation">(</span><span class="token string">'get_access_token'</span><span class="token punctuation">,</span><span class="token number">7200</span><span class="token punctuation">,</span><span class="token variable">$get_access_token</span><span class="token punctuation">[</span><span class="token string">'access_token'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$get_access_token</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -666,9 +813,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《FlashFXP连接服务器的方法》
+                    《微信公众号封装CURL请求》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/913190664.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/1881859890.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -966,89 +1113,42 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/2672848395.html">
+                <a href="/posts/1881859890.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="hexo-admin安装使用及遇到的问题">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/20.jpg" class="responsive-img" alt="微信公众号封装CURL请求">
                         
-                        <span class="card-title">hexo-admin安装使用及遇到的问题</span>
+                        <span class="card-title">微信公众号封装CURL请求</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hexo-admin安装使用及遇到得问题安装hexo-admin1.安装管理&amp;启动npm install --save hexo-admin
-hexo g
-hexo s
-http://localhost:4000/admin
-效果图
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-08
-                        </span>
-                        <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo-admin/">
-                        <span class="chip bg-color">hexo-admin</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/913190664.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/images/447.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="FlashFXP连接服务器的方法">
-                        
-                        <span class="card-title">FlashFXP连接服务器的方法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            &nbsp;&nbsp;&nbsp;&nbsp;记录一下使用FlashFXP连接服务器的方法。
-1.打开FlashFXP -&gt;站点-&gt;站点管理器2.新建站点 -&gt; 填写站点名称3.常规 -&gt; 连接类型选择SFTP o
+微信公众号封装CURL请求方法，结合Redis缓存获取access_token
+
+封装CURL请求方法/**
+ * @param $api 接口地址
+ * @param array $data 数据信息
+ * @param string 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/微信公众号/" class="post-category">
+                                    微信公众号
                                 </a>
                             
                             
@@ -1059,8 +1159,62 @@ http://localhost:4000/admin
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/FlashFXP/">
-                        <span class="chip bg-color">FlashFXP</span>
+                    <a href="/tags/CURL/">
+                        <span class="chip bg-color">CURL</span>
+                    </a>
+                    
+                    <a href="/tags/获取token/">
+                        <span class="chip bg-color">获取token</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/3559721766.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/447.gif" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="git操作实战">
+                        
+                        <span class="card-title">git操作实战</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            &nbsp;&nbsp;&nbsp;&nbsp;实战模拟场景说明，创建w1(组长),w2(组员)两个工作区。
+1.组长在w1工作区搭建一个Laravel项目。1.1安装laravel命令Composer create-project Lar
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git实战/">
+                        <span class="chip bg-color">Git实战</span>
                     </a>
                     
                 </div>
@@ -1111,6 +1265,100 @@ http://localhost:4000/admin
     });
 </script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 

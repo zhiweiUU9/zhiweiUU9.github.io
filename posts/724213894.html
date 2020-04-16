@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Windows2012安装IIS中.NET Framework3.5报错, php,php应用,随笔,mysql,javascript,jquery,thinkphp,laravel,转载.">
-    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失败或者一个或多个安装选项在目标服务器上缺少源文件，或者找不到源文件等错误">
+    <meta name="description" content="Windows2012安装IIS中.NET Framework3.5报错&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -479,7 +479,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        230
+                        239
                     </div>
                     
 
@@ -502,7 +502,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失败或者一个或多个安装选项在目标服务器上缺少源文件，或者找不到源文件等错误信息。<br>原因是.net framework3.5程序源文件找不到所导致的。<br>如图所示:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/2017525170334427.jpg" alt><br>解决方法为可以通过PowerShell 脚本进行安装。<br>1.在开始菜单中找到PowerShell，右键单击选择以管理员身份运行。<br>2.输入以下脚本，按回车执行。</p>
+                <h3 id="Windows2012安装IIS中-NET-Framework3-5报错"><a href="#Windows2012安装IIS中-NET-Framework3-5报错" class="headerlink" title="Windows2012安装IIS中.NET Framework3.5报错"></a>Windows2012安装IIS中.NET Framework3.5报错</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失败或者一个或多个安装选项在目标服务器上缺少源文件，或者找不到源文件等错误信息。<br>原因是.net framework3.5程序源文件找不到所导致的。<br>如图所示:<br><img src="/images/447.gif" data-original="http://q8vv1mqm9.bkt.clouddn.com/myblog_picgo/20200416222213.png" alt><br>解决方法为可以通过PowerShell 脚本进行安装。<br>1.在开始菜单中找到PowerShell，右键单击选择以管理员身份运行。<br>2.输入以下脚本，按回车执行。</p>
 <pre class="line-numbers language-ini"><code class="language-ini">Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' -Name UseWUServer -Value 0
 Restart-Service -Name wuauserv
 Install-WindowsFeature Net-Framework-Core

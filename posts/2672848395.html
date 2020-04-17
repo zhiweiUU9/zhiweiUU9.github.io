@@ -595,16 +595,16 @@ http://localhost:4000/admin
 hexo g
 hexo s
 http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>效果图:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008203407.png" alt="效果图"></p>
+<p>效果图:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145252.png" alt="效果图"></p>
 <h2 id="2-设置密码"><a href="#2-设置密码" class="headerlink" title="2.设置密码"></a>2.设置密码</h2><blockquote>
 <p>点击Settings &gt; Setup authentification  </p>
 </blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008204004.png" alt="按照顺序点击"></p>
-<h2 id="3-填写用户名和密码"><a href="#3-填写用户名和密码" class="headerlink" title="3.填写用户名和密码"></a>3.填写用户名和密码</h2><p> <img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008204649.png" alt="填写相应功能"></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145324.png" alt="按照顺序点击"></p>
+<h2 id="3-填写用户名和密码"><a href="#3-填写用户名和密码" class="headerlink" title="3.填写用户名和密码"></a>3.填写用户名和密码</h2><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145351.png" alt="填写相应功能"></p>
 <blockquote>
 <p>username 表示你的用户名<br>  password 你的密码<br>  将信息添加到根目录下_config.yml文件内</p>
 </blockquote>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="1-错误信息-Config-value-“admin-deployCommand”-not-found"><a href="#1-错误信息-Config-value-“admin-deployCommand”-not-found" class="headerlink" title="1.错误信息:Config value “admin.deployCommand” not found"></a>1.错误信息:Config value “admin.deployCommand” not found</h2><p>当你第一次点击 Deploy 按钮时,可能会遇到上面的问题，是因为缺少了执行的deploy命令,如图:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008205553.png" alt="错误信息"><br>解决方法:<br>在项目中创建hexo-deploy.sh文件并设置权限  </p>
+<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="1-错误信息-Config-value-“admin-deployCommand”-not-found"><a href="#1-错误信息-Config-value-“admin-deployCommand”-not-found" class="headerlink" title="1.错误信息:Config value “admin.deployCommand” not found"></a>1.错误信息:Config value “admin.deployCommand” not found</h2><p>当你第一次点击 Deploy 按钮时,可能会遇到上面的问题，是因为缺少了执行的deploy命令,如图:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145423.png" alt="错误信息"><br>解决方法:<br>在项目中创建hexo-deploy.sh文件并设置权限  </p>
 <blockquote>
 <p>$ touch hexo-deploy.sh; chmod a+x hexo-deploy.sh</p>
 </blockquote>
@@ -612,14 +612,13 @@ http://localhost:4000/admin<span aria-hidden="true" class="line-numbers-rows"><s
 <blockquote>
 <p>  hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
 </blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008210152.png" alt="写入以上内容"></p>
-<p>编辑配置文件<br>在根目录_config.yml配置文件中，在之前配置的admin配置信息下加入<code>deployCommand: &#39;./hexo-deploy.sh&#39;</code> 信息<br>如图所示:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008211142.png" alt="添加以上信息"></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145445.png" alt="写入以上内容"><br>编辑配置文件<br>在根目录_config.yml配置文件中，在之前配置的admin配置信息下加入<code>deployCommand: &#39;./hexo-deploy.sh&#39;</code> 信息<br>如图所示:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145509.png" alt="添加以上信息"></p>
 <h2 id="2-错误信息deploy-Error-spawn-UNKNOWN"><a href="#2-错误信息deploy-Error-spawn-UNKNOWN" class="headerlink" title="2.错误信息deploy Error: spawn UNKNOWN"></a>2.错误信息deploy Error: spawn UNKNOWN</h2><p>在解决完上述错误信息后，将会报出<em>deploy Error: spawn UNKNOWN</em>错误信息<br>解决方法:  </p>
 <blockquote>
 <p>打开node_modules目录下hexo-admin目录下deploy.js<br>  将<code>var proc = spawn(command, [message], {detached: true});</code>改为<br>  <code>var proc = spawn((process.platform === &quot;win32&quot; ? &quot;hexo.cmd&quot; : &quot;hexo&quot;), [&#39;d&#39;]);</code></p>
 </blockquote>
-<p>如图所示:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008212700.png" alt="更改以上信息"></p>
-<p>改完之后就ok啦，上图庆祝一下<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20191008212954.png" alt="该内容为成功"></p>
+<p>如图所示:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145536.png" alt="更改以上信息"></p>
+<p>改完之后就ok啦，上图庆祝一下<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417151513.png" alt="该内容为成功"></p>
 <p>参考以下资料信息:<br><a href="https://github.com/jaredly/hexo-admin/issues/70" target="_blank" rel="noopener">错误信息:Config value “admin.deployCommand” not found</a><br><a href="https://github.com/jaredly/hexo-admin/issues/94" target="_blank" rel="noopener">错误信息:deploy Error: spawn UNKNOWN</a></p>
 
             </div>

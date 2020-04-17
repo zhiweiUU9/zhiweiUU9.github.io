@@ -506,13 +506,13 @@ composer require topthink/think-worker
             <div id="articleContent">
                 <p>1.首先需要安装，或者下载完整版tp框架里面会自带。(tp5教程<a href="https://www.kancloud.cn/manual/thinkphp5/235128" target="_blank" rel="noopener">https://www.kancloud.cn/manual/thinkphp5/235128</a>)</p>
 <pre class="line-numbers language-text"><code class="language-text">composer require topthink/think-worker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>2.在项目根目录(不是public目录)创建服务启动文件 server.php<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/PUXM%5DYsdsdsCJ517I$BIJT8YI.png" alt></p>
+<p>2.在项目根目录(不是public目录)创建服务启动文件 server.php<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132312.png" alt></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'APP_PATH'</span><span class="token punctuation">,</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/application/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"BIND_MODULE"</span><span class="token punctuation">,</span> <span class="token string">"server/Worker"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// 加载框架引导文件</span>
 <span class="token keyword">require</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/thinkphp/start.php'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>3.在application里创建server模块，并在server里创建控制器 Worker.php<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/G335WKEG~%5BBDWMN9%5DV1%5DA%7DK.png" alt></p>
+<p>3.在application里创建server模块，并在server里创建控制器 Worker.php<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132352.png" alt></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>server<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
 
@@ -527,7 +527,8 @@ composer require topthink/think-worker
         <span class="token variable">$handle</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">add_timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>4.创建Index.php控制器.定义一个每秒钟执行一次的定时器，在定时器里增加条件判断，如果当前时间等于要执行的时间时，就执行此任务<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%5B$ZM9U78N~7B3WBABTM64.png" alt></p>
+<p>4.创建Index.php控制器.定义一个每秒钟执行一次的定时器，在定时器里增加条件判断，如果当前时间等于要执行的时间时，就执行此任务</p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132416.png" alt></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>index<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
@@ -555,7 +556,8 @@ composer require topthink/think-worker
 
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>5.启动服务 <b>php server.php start -d</b><br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/C3OK9RZ0G%7B0A4S1G4X0%%5DHE.png" alt></p>
+<p>5.启动服务 <b>php server.php start -d</b></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132724.png" alt></p>
 <blockquote>
 <p>workerman定时器方法不止这些，具体可以看看文档。<br><a href="http://doc3.workerman.net/315179" target="_blank" rel="noopener">http://doc3.workerman.net/315179</a></p>
 </blockquote>

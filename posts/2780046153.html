@@ -1073,19 +1073,19 @@ flush.jsVue.component(&#34;flush&#34;, {
 <h2 id="在滑动加载分页数据时遇到的问题！"><a href="#在滑动加载分页数据时遇到的问题！" class="headerlink" title="在滑动加载分页数据时遇到的问题！"></a>在滑动加载分页数据时遇到的问题！</h2><blockquote>
 <p>&emsp;&emsp;默认情况下，向上滑动加载分页的承载体默认会找到body元素。但是由于我们的页面书写方式变化多样，会导致承载体发生改变，会出现滑动时滚动载体触发无效果！</p>
 </blockquote>
-<p>解决方式如下:<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%871.png" alt></p>
+<p>解决方式如下:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417122959.png" alt></p>
 <blockquote>
 <p>以div class=”main_content”为载体，创建一个id=”main_content”,名字可以随便取<span style="color:red;">(创建id的原因是不影响其它地方使用)</span></p>
 </blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%872.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417125243.png" alt></p>
 <blockquote>
 <p>增加getid=”main_content”，getid名字任意，是为了要向组件传递main_content这个信息，要以这个为载体。</p>
 </blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%873.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417125222.png" alt></p>
 <blockquote>
 <p>在pullupreload.js这个文件内接收创建的getid信息。这里的require参数的意思是不是必须的</p>
 </blockquote>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%E5%9B%BE%E7%89%874.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417123223.png" alt></p>
 <blockquote>
 <p>加了个if判断，如果body不存在，使用默认的方法，否则使用我们自定义的元素为载体</p>
 </blockquote>

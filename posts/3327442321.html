@@ -598,11 +598,11 @@ yum -y install git
 <p>使用yum安装的缺点是版本不好控制，安装的版本比较旧。</p>
 </blockquote>
 <pre class="line-numbers language-text"><code class="language-text">yum -y install git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/20200asdasdasdas328130751.png" alt></p>
-<p>输入 <b>git - -version</b>查看git安装的版本号<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/4Y99YBR%5DIA%60%HUGX4.png" alt><br>这里由于我已经通过下载源码方式安装了最新的版本，正常使用yum安装完后版本不会这么高，例如下面图片是安装时显示的版本号。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/P4IDN60ZFZ$ST73JYYH.png" alt></p>
-<p>作为了解，使用yum安装git的安装路径为<b>/usr/libexec/git-core</b>目录下。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/asdasdasdasasddas.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417144630.png" alt></p>
+<p>输入 <b>git - -version</b>查看git安装的版本号<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417144741.png" alt><br>这里由于我已经通过下载源码方式安装了最新的版本，正常使用yum安装完后版本不会这么高，例如下面图片是安装时显示的版本号。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417144704.png" alt></p>
+<p>作为了解，使用yum安装git的安装路径为<b>/usr/libexec/git-core</b>目录下。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417144814.png" alt></p>
 <p>到这里就已经安装完成。</p>
-<h1 id="二、在GitHub上下载最新的源码进行安装。"><a href="#二、在GitHub上下载最新的源码进行安装。" class="headerlink" title="二、在GitHub上下载最新的源码进行安装。"></a>二、在GitHub上下载最新的源码进行安装。</h1><p>1.进入git在GitHub发布的版本页面<b><a href="https://github.com/git/git/releases" target="_blank" rel="noopener">https://github.com/git/git/releases</a></b>,在里面找到找到想要安装的版本，然后下载tar.gz包到本地。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/B0FP2VJQL%60LZDVYCQ~9H5GR.png" alt><br>2.使用FlashFXP工具将下载好的压缩包上传到Linux服务器的<b>/usr</b>目录下<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/4$HPYB9%5DXKTS4DL7_%5DQ6WY.png" alt><br>3.解压压缩包</p>
+<h1 id="二、在GitHub上下载最新的源码进行安装。"><a href="#二、在GitHub上下载最新的源码进行安装。" class="headerlink" title="二、在GitHub上下载最新的源码进行安装。"></a>二、在GitHub上下载最新的源码进行安装。</h1><p>1.进入git在GitHub发布的版本页面<b><a href="https://github.com/git/git/releases" target="_blank" rel="noopener">https://github.com/git/git/releases</a></b>,在里面找到找到想要安装的版本，然后下载tar.gz包到本地。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417144842.png" alt><br>2.使用FlashFXP工具将下载好的压缩包上传到Linux服务器的<b>/usr</b>目录下<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417144905.png" alt><br>3.解压压缩包</p>
 <pre class="line-numbers language-text"><code class="language-text">tar -zxvf git-2.26.0.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>4.进入到解压后的文件夹</p>
 <pre class="line-numbers language-text"><code class="language-text">cd git-2.26.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -625,7 +625,7 @@ yum -y install git
 <p>至此，使用下载源码方式安装完成。</p>
 <h1 id="三、git生成密钥"><a href="#三、git生成密钥" class="headerlink" title="三、git生成密钥"></a>三、git生成密钥</h1><p>1.查看是否有密钥文件,如果存在密钥，将密钥复制粘贴到git云上。</p>
 <pre class="line-numbers language-text"><code class="language-text">ls -al ~/.ssh/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/QQWHZI6JC36NX%7DMD4U%63XI.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145026.png" alt></p>
 <p>2.配置git</p>
 <pre class="line-numbers language-text"><code class="language-text">git config --global user.name "名称"
 git config --global user.email "邮箱"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -635,14 +635,13 @@ git config --global user.email "邮箱"<span aria-hidden="true" class="line-numb
 <pre class="line-numbers language-text"><code class="language-text">find / -name id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>5.进入文件，复制密钥</p>
 <pre class="line-numbers language-text"><code class="language-text">vi ~/.ssh/id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/R84%5DNJ4WBP%5DRN45ANJ8HKAA.png" alt></p>
-<p>6.将内容复制到git云上，例如码云。<br><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/$E5W@THP$8%N$JEST52.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145053.png" alt><br>6.将内容复制到git云上，例如码云。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145127.png" alt></p>
 <h1 id="四、git拉取远程代码"><a href="#四、git拉取远程代码" class="headerlink" title="四、git拉取远程代码"></a>四、git拉取远程代码</h1><p>1.拉取远程代码</p>
 <pre class="line-numbers language-text"><code class="language-text">git clone 这里填写要拉取项目的ssh链接<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2.(进入到工程目录下)查看本地分支和远程分支</p>
 <pre class="line-numbers language-text"><code class="language-text">cd tejian
 git branch -al 查看本地和远程的所有分支<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="https://raw.githubusercontent.com/zhiweiUU9/Figure_bed/master/blog_files/img/PicGo-Github-PicBed/%60AP0Y4S8LLLHF0JAH25O7P9.png" alt></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417145155.png" alt></p>
 <blockquote>
 <p>master表示本地分支，前面*号表示正在使用的分支<br>  带有remotes的分支都是远程分支。</p>
 </blockquote>

@@ -502,7 +502,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Windows2012安装IIS中-NET-Framework3-5报错"><a href="#Windows2012安装IIS中-NET-Framework3-5报错" class="headerlink" title="Windows2012安装IIS中.NET Framework3.5报错"></a>Windows2012安装IIS中.NET Framework3.5报错</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失败或者一个或多个安装选项在目标服务器上缺少源文件，或者找不到源文件等错误信息。<br>原因是.net framework3.5程序源文件找不到所导致的。<br>如图所示:<br><img src="/images/447.gif" data-original="http://q8vv1mqm9.bkt.clouddn.com/myblog_picgo/20200416222213.png" alt><br>解决方法为可以通过PowerShell 脚本进行安装。<br>1.在开始菜单中找到PowerShell，右键单击选择以管理员身份运行。<br>2.输入以下脚本，按回车执行。</p>
+                <h3 id="Windows2012安装IIS中-NET-Framework3-5报错"><a href="#Windows2012安装IIS中-NET-Framework3-5报错" class="headerlink" title="Windows2012安装IIS中.NET Framework3.5报错"></a>Windows2012安装IIS中.NET Framework3.5报错</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;windows2012安装IIS中.net framework3.5报错，提示：安装安装一个或多个角色、角色服务或功能失败或者一个或多个安装选项在目标服务器上缺少源文件，或者找不到源文件等错误信息。<br>原因是.net framework3.5程序源文件找不到所导致的。<br>如图所示:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417122913.png" alt><br>解决方法为可以通过PowerShell 脚本进行安装。<br>1.在开始菜单中找到PowerShell，右键单击选择以管理员身份运行。<br>2.输入以下脚本，按回车执行。</p>
 <pre class="line-numbers language-ini"><code class="language-ini">Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU' -Name UseWUServer -Value 0
 Restart-Service -Name wuauserv
 Install-WindowsFeature Net-Framework-Core

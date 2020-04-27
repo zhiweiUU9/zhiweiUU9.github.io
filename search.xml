@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Linux下安装nginx</title>
+      <link href="/posts/3979785611.html"/>
+      <url>/posts/3979785611.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Linux-下安装nginx"><a href="#Linux-下安装nginx" class="headerlink" title="Linux 下安装nginx"></a>Linux 下安装nginx</h1><h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><p><b style="font-size:18px;">1.</b> 通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">http://nginx.org/en/linux_packages.html#stable</a></p><p><b style="font-size:18px;">2.</b>进来后将看到以下页面：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428013835.png" alt><br>找到以下位置：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428014416.png" alt><br><b style="font-size:16px;">2.1.</b>上面有写安装说明，然后对应的下面分为几种不同的操作系统安装方式，这里我选择第一个，执行以下命令。<br><code>sudo yum install yum-utils</code><br><span style="color:red;">yum-utils</span>表示是用于管理yum 存储库，安装调试软件包，源软件包，来自存储库的扩展信息和管理的工具和程序的集合。</p><p><b style="font-size:16px;">2.2.</b>To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents<br>意思是在<code>/etc/yum.repos.d</code>这个目录下创建<code>nginx.repo</code>文件，并填写以下内容,其中<code>[nginx-stable]</code>表示稳定仓库，而<code>[nginx-mainline]</code>表示主线仓库，<br>根据自己要求设置。</p><pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[nginx-stable]</span><span class="token constant">name</span><span class="token attr-value"><span class="token punctuation">=</span>nginx stable repo</span><span class="token constant">baseurl</span><span class="token attr-value"><span class="token punctuation">=</span>http://nginx.org/packages/centos/$releasever/$basearch/</span><span class="token constant">gpgcheck</span><span class="token attr-value"><span class="token punctuation">=</span>1</span><span class="token constant">enabled</span><span class="token attr-value"><span class="token punctuation">=</span>1</span><span class="token constant">gpgkey</span><span class="token attr-value"><span class="token punctuation">=</span>https://nginx.org/keys/nginx_signing.key</span><span class="token constant">module_hotfixes</span><span class="token attr-value"><span class="token punctuation">=</span>true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:16px;">2.3.</b>执行以下命令安装nginx<br><code>sudo yum install nginx</code></p><p><b style="font-size:16px;">2.4.</b>查看nginx版本</p><pre class="line-numbers language-ini"><code class="language-ini"># 查看nginx版本nginx -v# 查看编译参数nginx -V<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:16px;">2.5.</b>查看安装目录<br><code>rpm -ql nginx</code></p><p><b style="font-size:18px;">3.</b>安装依赖包，执行以下命令:<br><code>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</code></p><p><b style="font-size:18px;">4.</b>测试一下是否安装成功，进入<code>cd usr/sbin/</code>这个目录，不一定都是这个目录，根据你安装路径来确定。<br><code>nginx -t</code><br>出现以下内容，及成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021621.png" alt></p><p><b style="font-size:18px;">5.</b>查看nginx进程是否启动：<br><code>ps -ef | grep nginx</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021750.png" alt></p><p>如果没启动，启动nginx<br>/usr/sbin/nginx -s reload</p><p><b style="font-size:18px;">6.</b>这个时候，如果你想要在浏览器中访问nginx是访问不了的，需要关闭虚拟机的防火墙。</p><pre class="line-numbers language-ini"><code class="language-ini">centOS6及以前版本使用命令： systemctl stop iptables.servicecentOS7关闭防火墙命令： systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>随后访问该ip即可看到nginx界面。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428022324.png" alt></p><p>常用命令说明:</p><p>进入到安装目录中,<code>cd usr/sbin/</code>。</p><pre class="line-numbers language-ini"><code class="language-ini">./nginx 启动./nginx -s stop 关闭./nginx -s reload 重启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>参考：<br><a href="https://www.cnblogs.com/xxoome/p/5866475.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxoome/p/5866475.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安装nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7 ip addr 无法查看虚拟机IP解决办法</title>
+      <link href="/posts/3053597239.html"/>
+      <url>/posts/3053597239.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="centos7-ip-addr-无法查看虚拟机IP解决办法"><a href="#centos7-ip-addr-无法查看虚拟机IP解决办法" class="headerlink" title="centos7 ip addr 无法查看虚拟机IP解决办法"></a>centos7 ip addr 无法查看虚拟机IP解决办法</h1><p>在centos7中查看ip地址，输入<code>ifconfig</code>命令会报以下错误:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/1587995740(1).jpg" alt></p><p>原因是centos7中已经不适用<code>ifconfig</code>命令。已经用<span style="color:red;">ip addr</span>命令代替，同时网卡名也由eth0改为eno。但是以往输入ip addr 会出现以下结果:<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200427223713.png" alt><br>会发现ens33没有inet这个属性，那么就没法通过IP地址连接虚拟机。</p><p>解决方式:<br>进入到网卡目录<br><code>cd /etc/sysconfig/network-scripts/</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200427224125.png" alt><br>编辑<code>ifcfg-ens33</code>这个文件,输入<code>vi ifcfg-ens33</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200427224547.png" alt></p><p>从以上配置信息中可以发现 CentOS 7 默认是不启动网卡的(ONBOOT=no),把这一项改为YES(ONBOOT=yes)即可。</p><p>然后重启网络服务： <code>sudo service network restart</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200427224920.png" alt></p><p>重启后在输入<code>ip addr</code>命令后会看到ens33下面 inet后面就是ip地址</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中间出现了个小插曲，虚拟机异常关机,再次打开后出现以下错误:<span style="color:red;">该虚拟机似乎正在使用中。如果该虚拟机未在使用，请按“获取所有权(T)”按钮获取它的所有权</span>的错误。</p><p>经过百度得知，这是虚拟机的锁机制导致，同时在虚拟机的安装目录生成带.lck后缀的文件名。</p><p>解决办法:<br><span style="color:red;">找到虚拟机的安装目录下，删除带有.lck的文件，重启虚拟机即可。</span></p><p>参考<br><a href="https://blog.csdn.net/anshengsuiyeu/article/details/83549438" target="_blank" rel="noopener">https://blog.csdn.net/anshengsuiyeu/article/details/83549438</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 无法查看虚拟机IP解决办法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux Crontab 定时任务</title>
       <link href="/posts/2326891732.html"/>
       <url>/posts/2326891732.html</url>

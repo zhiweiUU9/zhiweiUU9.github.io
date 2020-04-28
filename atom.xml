@@ -5,9 +5,9 @@
   <subtitle>Zhi-wei blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="%5Bobject%20Object%5D" rel="hub"/>
-  <link href="https://chiwai.tang99.club/"/>
-  <updated>2020-04-27T23:26:31.485Z</updated>
-  <id>https://chiwai.tang99.club/</id>
+  <link href="http://chiwai.tang99.club/"/>
+  <updated>2020-04-28T15:37:17.064Z</updated>
+  <id>http://chiwai.tang99.club/</id>
   
   <author>
     <name>志伟</name>
@@ -17,13 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Linux下安装nginx</title>
-    <link href="https://chiwai.tang99.club/posts/3979785611.html"/>
-    <id>https://chiwai.tang99.club/posts/3979785611.html</id>
-    <published>2020-04-27T17:27:23.000Z</published>
-    <updated>2020-04-27T23:26:31.485Z</updated>
+    <title>nginx+keepalived可用热备负载均衡</title>
+    <link href="http://chiwai.tang99.club/posts/2236109518.html"/>
+    <id>http://chiwai.tang99.club/posts/2236109518.html</id>
+    <published>2020-04-28T15:33:28.000Z</published>
+    <updated>2020-04-28T15:37:17.064Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Linux-下安装nginx"><a href="#Linux-下安装nginx" class="headerlink" title="Linux 下安装nginx"></a>Linux 下安装nginx</h1><h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><p><b style="font-size:18px;">1.</b> 通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">http://nginx.org/en/linux_packages.html#stable</a></p><p><b style="font-size:18px;">2.</b>进来后将看到以下页面：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428013835.png" alt><br>找到以下位置：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428014416.png" alt><br><b style="font-size:16px;">2.1.</b>上面有写安装说明，然后对应的下面分为几种不同的操作系统安装方式，这里我选择第一个，执行以下命令。<br><code>sudo yum install yum-utils</code><br><span style="color:red;">yum-utils</span>表示是用于管理yum 存储库，安装调试软件包，源软件包，来自存储库的扩展信息和管理的工具和程序的集合。</p><p><b style="font-size:16px;">2.2.</b>To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents<br>意思是在<code>/etc/yum.repos.d</code>这个目录下创建<code>nginx.repo</code>文件，并填写以下内容,其中<code>[nginx-stable]</code>表示稳定仓库，而<code>[nginx-mainline]</code>表示主线仓库，<br>根据自己要求设置。</p><pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[nginx-stable]</span><span class="token constant">name</span><span class="token attr-value"><span class="token punctuation">=</span>nginx stable repo</span><span class="token constant">baseurl</span><span class="token attr-value"><span class="token punctuation">=</span>http://nginx.org/packages/centos/$releasever/$basearch/</span><span class="token constant">gpgcheck</span><span class="token attr-value"><span class="token punctuation">=</span>1</span><span class="token constant">enabled</span><span class="token attr-value"><span class="token punctuation">=</span>1</span><span class="token constant">gpgkey</span><span class="token attr-value"><span class="token punctuation">=</span>https://nginx.org/keys/nginx_signing.key</span><span class="token constant">module_hotfixes</span><span class="token attr-value"><span class="token punctuation">=</span>true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:16px;">2.3.</b>执行以下命令安装nginx<br><code>sudo yum install nginx</code></p><p><b style="font-size:16px;">2.4.</b>查看nginx版本</p><pre class="line-numbers language-ini"><code class="language-ini"># 查看nginx版本nginx -v# 查看编译参数nginx -V<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:16px;">2.5.</b>查看安装目录<br><code>rpm -ql nginx</code></p><p><b style="font-size:18px;">3.</b>安装依赖包，执行以下命令:<br><code>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</code></p><p><b style="font-size:18px;">4.</b>测试一下是否安装成功，进入<code>cd usr/sbin/</code>这个目录，不一定都是这个目录，根据你安装路径来确定。<br><code>nginx -t</code><br>出现以下内容，及成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021621.png" alt></p><p><b style="font-size:18px;">5.</b>查看nginx进程是否启动：<br><code>ps -ef | grep nginx</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021750.png" alt></p><p>如果没启动，启动nginx<br>/usr/sbin/nginx -s reload</p><p><b style="font-size:18px;">6.</b>这个时候，如果你想要在浏览器中访问nginx是访问不了的，需要关闭虚拟机的防火墙。</p><pre class="line-numbers language-ini"><code class="language-ini">centOS6及以前版本使用命令： systemctl stop iptables.servicecentOS7关闭防火墙命令： systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>随后访问该ip即可看到nginx界面。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428022324.png" alt></p><p>常用命令说明:</p><p>进入到安装目录中,<code>cd usr/sbin/</code>。</p><pre class="line-numbers language-ini"><code class="language-ini">./nginx 启动./nginx -s stop 关闭./nginx -s reload 重启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>参考：<br><a href="https://www.cnblogs.com/xxoome/p/5866475.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxoome/p/5866475.html</a></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
     
     <summary type="html">
     
@@ -35,17 +35,43 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
+      <category term="nginx" scheme="http://chiwai.tang99.club/categories/nginx/"/>
     
     
-      <category term="安装nginx" scheme="https://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85nginx/"/>
+      <category term="负载均衡" scheme="http://chiwai.tang99.club/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下安装nginx</title>
+    <link href="http://chiwai.tang99.club/posts/3979785611.html"/>
+    <id>http://chiwai.tang99.club/posts/3979785611.html</id>
+    <published>2020-04-27T17:27:23.000Z</published>
+    <updated>2020-04-28T15:00:14.229Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Linux-下安装nginx"><a href="#Linux-下安装nginx" class="headerlink" title="Linux 下安装nginx"></a>Linux 下安装nginx</h1><p>两种安装方式:第一种是通过nginx官网提供的存储库安装，第二种是编译安装。</p><h1 id="存储库安装nginx"><a href="#存储库安装nginx" class="headerlink" title="存储库安装nginx"></a>存储库安装nginx</h1><p><b style="font-size:18px;">1.</b>&nbsp;&nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">http://nginx.org/en/linux_packages.html#stable</a></p><p><b style="font-size:18px;">2.</b>&nbsp;&nbsp;进来后将看到以下页面：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428013835.png" alt><br>找到以下位置：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428014416.png" alt><br><b style="font-size:16px;">2.1.</b>&nbsp;&nbsp;上面有写安装说明，然后对应的下面分为几种不同的操作系统安装方式，这里我选择第一个，执行以下命令。<br><code>sudo yum install yum-utils</code><br><span style="color:red;">yum-utils</span>表示是用于管理yum 存储库，安装调试软件包，源软件包，来自存储库的扩展信息和管理的工具和程序的集合。</p><p><b style="font-size:16px;">2.2.</b>&nbsp;&nbsp;To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents<br>意思是在<code>/etc/yum.repos.d</code>这个目录下创建<code>nginx.repo</code>文件，并填写以下内容,其中<code>[nginx-stable]</code>表示稳定仓库，而<code>[nginx-mainline]</code>表示主线仓库，<br>根据自己要求设置。</p><pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[nginx-stable]</span><span class="token constant">name</span><span class="token attr-value"><span class="token punctuation">=</span>nginx stable repo</span><span class="token constant">baseurl</span><span class="token attr-value"><span class="token punctuation">=</span>http://nginx.org/packages/centos/$releasever/$basearch/</span><span class="token constant">gpgcheck</span><span class="token attr-value"><span class="token punctuation">=</span>1</span><span class="token constant">enabled</span><span class="token attr-value"><span class="token punctuation">=</span>1</span><span class="token constant">gpgkey</span><span class="token attr-value"><span class="token punctuation">=</span>https://nginx.org/keys/nginx_signing.key</span><span class="token constant">module_hotfixes</span><span class="token attr-value"><span class="token punctuation">=</span>true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:16px;">2.3.</b>&nbsp;&nbsp;执行以下命令安装nginx<br><code>sudo yum install nginx</code></p><p><b style="font-size:16px;">2.4.</b>&nbsp;&nbsp;查看nginx版本</p><pre class="line-numbers language-ini"><code class="language-ini"># 查看nginx版本nginx -v# 查看编译参数nginx -V<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:16px;">2.5.</b>&nbsp;&nbsp;查看安装目录<br><code>rpm -ql nginx</code></p><p><b style="font-size:18px;">3.</b>&nbsp;&nbsp;一键安装依赖包，执行以下命令:<br><code>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</code></p><p><b style="font-size:18px;">4.</b>&nbsp;&nbsp;测试一下是否安装成功，进入<code>cd usr/sbin/</code>这个目录，不一定都是这个目录，根据你安装路径来确定。<br><code>nginx -t</code><br>出现以下内容，及成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021621.png" alt></p><p><b style="font-size:18px;">5.</b>&nbsp;&nbsp;查看nginx进程是否启动：<br><code>ps -ef | grep nginx</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021750.png" alt></p><p>如果没启动，启动nginx<br>/usr/sbin/nginx -s reload</p><p><b style="font-size:18px;">6.</b>&nbsp;&nbsp;这个时候，如果你想要在浏览器中访问nginx是访问不了的，需要关闭虚拟机的防火墙。</p><pre class="line-numbers language-ini"><code class="language-ini">centOS6及以前版本使用命令： systemctl stop iptables.servicecentOS7关闭防火墙命令： systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>随后访问该ip即可看到nginx界面。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428022324.png" alt></p><h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><p><b style="font-size:18px;">1.</b>&nbsp;&nbsp;一键安装依赖包，执行以下命令:<br><code>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</code></p><p><b style="font-size:18px;">2.</b>&nbsp;&nbsp;在usr/local目录下新建nginx文件夹</p><pre class="line-numbers language-ini"><code class="language-ini">cd /usr/localmkdir nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><b style="font-size:18px;">3.</b>&nbsp;&nbsp;进入nginx文件夹，下载nginx的tar包，可以去<a href="http://nginx.org" target="_blank" rel="noopener">http://nginx.org</a> 里面找你想要的版本。</p><pre class="line-numbers language-ini"><code class="language-ini">cd nginxwget http://nginx.org/download/nginx-1.18.0.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><b style="font-size:18px;">4.</b>&nbsp;&nbsp;解压tar<br><code>tar -xvf nginx-1.18.0.tar.gz</code><br><b style="font-size:18px;">5.</b>&nbsp;&nbsp;配置安装nginx，执行make，执行make install</p><pre class="line-numbers language-ini"><code class="language-ini">./configure --prefix<span class="token attr-value"><span class="token punctuation">=</span>/usr/local/nginx</span>makemake install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><b style="font-size:18px;">6.</b>&nbsp;&nbsp;测试是否安装成功,进入到刚才配置的安装目录<br><code>./sbin/nginx -t</code></p><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224426.png" alt="表示安装成功!"></p><p><b style="font-size:18px;">7.</b>&nbsp;&nbsp;启动nginx</p><pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local/nginx/sbin./nginx //启动nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><b style="font-size:18px;">8.</b>&nbsp;&nbsp;这个时候如果你去网页上输入ip地址是打不开的，因为你的80端口还没有启动。<br>因为我使用的linux系统版本是CentOS7，所以可以在服务器中执行如下命令来验证</p><pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --query-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224920.png" alt><br>显然80端口没有开启</p><p><b style="font-size:18px;">9.</b>&nbsp;&nbsp;开启80端口,重启防火墙</p><pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --add-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp --permanent //开端口, --permanent表示永久生效，没有此参数重启后失效</span>systemctl restart firewalld     //重启防火墙<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428225218.png" alt><br>访问成功!</p><p><b style="font-size:18px;">10.</b>&nbsp;&nbsp;配置开机自启</p><pre class="line-numbers language-ini"><code class="language-ini">vi /etc/rc.d/rc.local/usr/local/nginx/sbin/nginx   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428225728.png" alt></p><p>常用命令说明:</p><p>进入到安装目录中,<code>cd usr/sbin/</code>。</p><pre class="line-numbers language-ini"><code class="language-ini">./nginx 启动./nginx -s stop 关闭./nginx -s reload 重启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>参考：<br><a href="https://www.cnblogs.com/xxoome/p/5866475.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxoome/p/5866475.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="http://chiwai.tang99.club/categories/nginx/"/>
+    
+    
+      <category term="安装nginx" scheme="http://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85nginx/"/>
     
   </entry>
   
   <entry>
     <title>centos7 ip addr 无法查看虚拟机IP解决办法</title>
-    <link href="https://chiwai.tang99.club/posts/3053597239.html"/>
-    <id>https://chiwai.tang99.club/posts/3053597239.html</id>
+    <link href="http://chiwai.tang99.club/posts/3053597239.html"/>
+    <id>http://chiwai.tang99.club/posts/3053597239.html</id>
     <published>2020-04-27T13:12:11.000Z</published>
     <updated>2020-04-27T17:28:43.258Z</updated>
     
@@ -61,17 +87,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
+      <category term="Linux" scheme="http://chiwai.tang99.club/categories/Linux/"/>
     
     
-      <category term="无法查看虚拟机IP解决办法" scheme="https://chiwai.tang99.club/tags/%E6%97%A0%E6%B3%95%E6%9F%A5%E7%9C%8B%E8%99%9A%E6%8B%9F%E6%9C%BAIP%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <category term="无法查看虚拟机IP解决办法" scheme="http://chiwai.tang99.club/tags/%E6%97%A0%E6%B3%95%E6%9F%A5%E7%9C%8B%E8%99%9A%E6%8B%9F%E6%9C%BAIP%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>Linux Crontab 定时任务</title>
-    <link href="https://chiwai.tang99.club/posts/2326891732.html"/>
-    <id>https://chiwai.tang99.club/posts/2326891732.html</id>
+    <link href="http://chiwai.tang99.club/posts/2326891732.html"/>
+    <id>http://chiwai.tang99.club/posts/2326891732.html</id>
     <published>2020-04-18T13:50:43.000Z</published>
     <updated>2020-04-18T16:01:07.788Z</updated>
     
@@ -87,17 +113,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
+      <category term="Linux" scheme="http://chiwai.tang99.club/categories/Linux/"/>
     
     
-      <category term="定时任务" scheme="https://chiwai.tang99.club/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+      <category term="定时任务" scheme="http://chiwai.tang99.club/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
   <entry>
     <title>微信公众号封装CURL请求</title>
-    <link href="https://chiwai.tang99.club/posts/1881859890.html"/>
-    <id>https://chiwai.tang99.club/posts/1881859890.html</id>
+    <link href="http://chiwai.tang99.club/posts/1881859890.html"/>
+    <id>http://chiwai.tang99.club/posts/1881859890.html</id>
     <published>2020-04-15T08:39:25.000Z</published>
     <updated>2020-04-17T10:09:39.752Z</updated>
     
@@ -113,19 +139,19 @@
     </summary>
     
     
-      <category term="微信公众号" scheme="https://chiwai.tang99.club/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+      <category term="微信公众号" scheme="http://chiwai.tang99.club/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
     
     
-      <category term="CURL" scheme="https://chiwai.tang99.club/tags/CURL/"/>
+      <category term="CURL" scheme="http://chiwai.tang99.club/tags/CURL/"/>
     
-      <category term="获取token" scheme="https://chiwai.tang99.club/tags/%E8%8E%B7%E5%8F%96token/"/>
+      <category term="获取token" scheme="http://chiwai.tang99.club/tags/%E8%8E%B7%E5%8F%96token/"/>
     
   </entry>
   
   <entry>
     <title>git操作实战</title>
-    <link href="https://chiwai.tang99.club/posts/3559721766.html"/>
-    <id>https://chiwai.tang99.club/posts/3559721766.html</id>
+    <link href="http://chiwai.tang99.club/posts/3559721766.html"/>
+    <id>http://chiwai.tang99.club/posts/3559721766.html</id>
     <published>2020-04-03T04:26:41.000Z</published>
     <updated>2020-04-17T08:06:59.247Z</updated>
     
@@ -141,17 +167,17 @@
     </summary>
     
     
-      <category term="Git" scheme="https://chiwai.tang99.club/categories/Git/"/>
+      <category term="Git" scheme="http://chiwai.tang99.club/categories/Git/"/>
     
     
-      <category term="Git实战" scheme="https://chiwai.tang99.club/tags/Git%E5%AE%9E%E6%88%98/"/>
+      <category term="Git实战" scheme="http://chiwai.tang99.club/tags/Git%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>openlayers3简单demo实现</title>
-    <link href="https://chiwai.tang99.club/posts/2687365199.html"/>
-    <id>https://chiwai.tang99.club/posts/2687365199.html</id>
+    <link href="http://chiwai.tang99.club/posts/2687365199.html"/>
+    <id>http://chiwai.tang99.club/posts/2687365199.html</id>
     <published>2020-03-13T01:34:02.000Z</published>
     <updated>2020-03-16T08:05:31.160Z</updated>
     
@@ -167,17 +193,17 @@
     </summary>
     
     
-      <category term="地图" scheme="https://chiwai.tang99.club/categories/%E5%9C%B0%E5%9B%BE/"/>
+      <category term="地图" scheme="http://chiwai.tang99.club/categories/%E5%9C%B0%E5%9B%BE/"/>
     
     
-      <category term="Openlayers3" scheme="https://chiwai.tang99.club/tags/Openlayers3/"/>
+      <category term="Openlayers3" scheme="http://chiwai.tang99.club/tags/Openlayers3/"/>
     
   </entry>
   
   <entry>
     <title>Windows2012安装IIS中.NET Framework3.5报错</title>
-    <link href="https://chiwai.tang99.club/posts/724213894.html"/>
-    <id>https://chiwai.tang99.club/posts/724213894.html</id>
+    <link href="http://chiwai.tang99.club/posts/724213894.html"/>
+    <id>http://chiwai.tang99.club/posts/724213894.html</id>
     <published>2020-03-06T13:29:36.000Z</published>
     <updated>2020-04-17T04:29:25.517Z</updated>
     
@@ -193,19 +219,19 @@
     </summary>
     
     
-      <category term="服务器" scheme="https://chiwai.tang99.club/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="服务器" scheme="http://chiwai.tang99.club/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="安装" scheme="https://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85/"/>
+      <category term="安装" scheme="http://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85/"/>
     
-      <category term="IIS" scheme="https://chiwai.tang99.club/tags/IIS/"/>
+      <category term="IIS" scheme="http://chiwai.tang99.club/tags/IIS/"/>
     
   </entry>
   
   <entry>
     <title>PHP导入功能</title>
-    <link href="https://chiwai.tang99.club/posts/549686560.html"/>
-    <id>https://chiwai.tang99.club/posts/549686560.html</id>
+    <link href="http://chiwai.tang99.club/posts/549686560.html"/>
+    <id>http://chiwai.tang99.club/posts/549686560.html</id>
     <published>2020-03-02T00:42:19.000Z</published>
     <updated>2020-03-14T00:52:41.919Z</updated>
     
@@ -221,19 +247,19 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="导入" scheme="https://chiwai.tang99.club/tags/%E5%AF%BC%E5%85%A5/"/>
+      <category term="导入" scheme="http://chiwai.tang99.club/tags/%E5%AF%BC%E5%85%A5/"/>
     
   </entry>
   
   <entry>
     <title>Linux系统上安装git</title>
-    <link href="https://chiwai.tang99.club/posts/3327442321.html"/>
-    <id>https://chiwai.tang99.club/posts/3327442321.html</id>
+    <link href="http://chiwai.tang99.club/posts/3327442321.html"/>
+    <id>http://chiwai.tang99.club/posts/3327442321.html</id>
     <published>2020-02-16T04:51:37.000Z</published>
     <updated>2020-04-17T06:52:06.817Z</updated>
     
@@ -249,17 +275,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
+      <category term="Linux" scheme="http://chiwai.tang99.club/categories/Linux/"/>
     
     
-      <category term="Git" scheme="https://chiwai.tang99.club/tags/Git/"/>
+      <category term="Git" scheme="http://chiwai.tang99.club/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>PHP基于phpqrcode类生成二维码</title>
-    <link href="https://chiwai.tang99.club/posts/123876002.html"/>
-    <id>https://chiwai.tang99.club/posts/123876002.html</id>
+    <link href="http://chiwai.tang99.club/posts/123876002.html"/>
+    <id>http://chiwai.tang99.club/posts/123876002.html</id>
     <published>2020-01-31T06:06:29.000Z</published>
     <updated>2020-01-31T12:40:06.606Z</updated>
     
@@ -275,19 +301,19 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="二维码" scheme="https://chiwai.tang99.club/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+      <category term="二维码" scheme="http://chiwai.tang99.club/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>Vue简单功能汇总</title>
-    <link href="https://chiwai.tang99.club/posts/2780046153.html"/>
-    <id>https://chiwai.tang99.club/posts/2780046153.html</id>
+    <link href="http://chiwai.tang99.club/posts/2780046153.html"/>
+    <id>http://chiwai.tang99.club/posts/2780046153.html</id>
     <published>2020-01-30T08:40:05.000Z</published>
     <updated>2020-04-17T04:52:49.818Z</updated>
     
@@ -303,17 +329,17 @@
     </summary>
     
     
-      <category term="前端" scheme="https://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="Vue" scheme="https://chiwai.tang99.club/tags/Vue/"/>
+      <category term="Vue" scheme="http://chiwai.tang99.club/tags/Vue/"/>
     
   </entry>
   
   <entry>
     <title>Js+Jquery简单功能汇总</title>
-    <link href="https://chiwai.tang99.club/posts/1554494174.html"/>
-    <id>https://chiwai.tang99.club/posts/1554494174.html</id>
+    <link href="http://chiwai.tang99.club/posts/1554494174.html"/>
+    <id>http://chiwai.tang99.club/posts/1554494174.html</id>
     <published>2020-01-29T06:43:11.000Z</published>
     <updated>2020-01-29T07:30:26.975Z</updated>
     
@@ -329,19 +355,19 @@
     </summary>
     
     
-      <category term="前端" scheme="https://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="Javascript" scheme="https://chiwai.tang99.club/tags/Javascript/"/>
+      <category term="Javascript" scheme="http://chiwai.tang99.club/tags/Javascript/"/>
     
-      <category term="Jquery" scheme="https://chiwai.tang99.club/tags/Jquery/"/>
+      <category term="Jquery" scheme="http://chiwai.tang99.club/tags/Jquery/"/>
     
   </entry>
   
   <entry>
     <title>PHP简单功能汇总</title>
-    <link href="https://chiwai.tang99.club/posts/346954664.html"/>
-    <id>https://chiwai.tang99.club/posts/346954664.html</id>
+    <link href="http://chiwai.tang99.club/posts/346954664.html"/>
+    <id>http://chiwai.tang99.club/posts/346954664.html</id>
     <published>2020-01-26T04:47:05.000Z</published>
     <updated>2020-04-17T05:33:07.760Z</updated>
     
@@ -357,19 +383,19 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="汇总" scheme="https://chiwai.tang99.club/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="汇总" scheme="http://chiwai.tang99.club/tags/%E6%B1%87%E6%80%BB/"/>
     
   </entry>
   
   <entry>
     <title>thinkphp5+workerman的定时器实现定时任务</title>
-    <link href="https://chiwai.tang99.club/posts/2129457668.html"/>
-    <id>https://chiwai.tang99.club/posts/2129457668.html</id>
+    <link href="http://chiwai.tang99.club/posts/2129457668.html"/>
+    <id>http://chiwai.tang99.club/posts/2129457668.html</id>
     <published>2020-01-13T12:07:19.000Z</published>
     <updated>2020-04-17T05:27:38.886Z</updated>
     
@@ -385,19 +411,19 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="Tp5.0" scheme="https://chiwai.tang99.club/tags/Tp5-0/"/>
+      <category term="Tp5.0" scheme="http://chiwai.tang99.club/tags/Tp5-0/"/>
     
-      <category term="Workerman定时器" scheme="https://chiwai.tang99.club/tags/Workerman%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
+      <category term="Workerman定时器" scheme="http://chiwai.tang99.club/tags/Workerman%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
     
   </entry>
   
   <entry>
     <title>Laravel 出现 No application encryption key has been specified.</title>
-    <link href="https://chiwai.tang99.club/posts/3359811951.html"/>
-    <id>https://chiwai.tang99.club/posts/3359811951.html</id>
+    <link href="http://chiwai.tang99.club/posts/3359811951.html"/>
+    <id>http://chiwai.tang99.club/posts/3359811951.html</id>
     <published>2019-12-20T10:02:49.000Z</published>
     <updated>2020-04-07T07:11:39.525Z</updated>
     
@@ -413,17 +439,17 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="Laravel" scheme="https://chiwai.tang99.club/tags/Laravel/"/>
+      <category term="Laravel" scheme="http://chiwai.tang99.club/tags/Laravel/"/>
     
   </entry>
   
   <entry>
     <title>php将导出文件生成压缩包并下载</title>
-    <link href="https://chiwai.tang99.club/posts/3149816056.html"/>
-    <id>https://chiwai.tang99.club/posts/3149816056.html</id>
+    <link href="http://chiwai.tang99.club/posts/3149816056.html"/>
+    <id>http://chiwai.tang99.club/posts/3149816056.html</id>
     <published>2019-12-09T13:14:31.000Z</published>
     <updated>2020-03-14T13:31:10.714Z</updated>
     
@@ -439,21 +465,21 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="Excel" scheme="https://chiwai.tang99.club/tags/Excel/"/>
+      <category term="Excel" scheme="http://chiwai.tang99.club/tags/Excel/"/>
     
-      <category term="压缩包" scheme="https://chiwai.tang99.club/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/"/>
+      <category term="压缩包" scheme="http://chiwai.tang99.club/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>Win10 Nginx+PHP+MySQL 开机自启</title>
-    <link href="https://chiwai.tang99.club/posts/2324507981.html"/>
-    <id>https://chiwai.tang99.club/posts/2324507981.html</id>
+    <link href="http://chiwai.tang99.club/posts/2324507981.html"/>
+    <id>http://chiwai.tang99.club/posts/2324507981.html</id>
     <published>2019-12-08T14:57:08.000Z</published>
     <updated>2020-04-03T13:11:45.691Z</updated>
     
@@ -469,17 +495,17 @@
     </summary>
     
     
-      <category term="配置" scheme="https://chiwai.tang99.club/categories/%E9%85%8D%E7%BD%AE/"/>
+      <category term="配置" scheme="http://chiwai.tang99.club/categories/%E9%85%8D%E7%BD%AE/"/>
     
     
-      <category term="环境搭建" scheme="https://chiwai.tang99.club/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+      <category term="环境搭建" scheme="http://chiwai.tang99.club/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
   <entry>
     <title>简单laravel笔记记载</title>
-    <link href="https://chiwai.tang99.club/posts/2416442789.html"/>
-    <id>https://chiwai.tang99.club/posts/2416442789.html</id>
+    <link href="http://chiwai.tang99.club/posts/2416442789.html"/>
+    <id>http://chiwai.tang99.club/posts/2416442789.html</id>
     <published>2019-11-15T11:38:01.000Z</published>
     <updated>2020-04-17T09:20:36.295Z</updated>
     
@@ -495,19 +521,19 @@
     </summary>
     
     
-      <category term="笔记" scheme="https://chiwai.tang99.club/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://chiwai.tang99.club/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Laravel" scheme="https://chiwai.tang99.club/tags/Laravel/"/>
+      <category term="Laravel" scheme="http://chiwai.tang99.club/tags/Laravel/"/>
     
-      <category term="笔记" scheme="https://chiwai.tang99.club/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://chiwai.tang99.club/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>TP5定时任务</title>
-    <link href="https://chiwai.tang99.club/posts/2335608172.html"/>
-    <id>https://chiwai.tang99.club/posts/2335608172.html</id>
+    <link href="http://chiwai.tang99.club/posts/2335608172.html"/>
+    <id>http://chiwai.tang99.club/posts/2335608172.html</id>
     <published>2019-11-06T12:14:43.000Z</published>
     <updated>2020-04-17T05:17:41.664Z</updated>
     
@@ -523,42 +549,12 @@
     </summary>
     
     
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="定时任务" scheme="https://chiwai.tang99.club/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+      <category term="定时任务" scheme="http://chiwai.tang99.club/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
-      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php导出excel方法</title>
-    <link href="https://chiwai.tang99.club/posts/4119388635.html"/>
-    <id>https://chiwai.tang99.club/posts/4119388635.html</id>
-    <published>2019-10-27T15:39:10.000Z</published>
-    <updated>2020-01-31T12:40:22.440Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="php实现Excel导出方法"><a href="#php实现Excel导出方法" class="headerlink" title="php实现Excel导出方法"></a>php实现Excel导出方法</h1><p>工作中用到的功能，记录一下！</p><p>实例:</p><pre class="line-numbers language-php"><code class="language-php"> <span class="token comment" spellcheck="true">/**     * 导出机构信息     */</span>    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">daochu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//用户名</span>        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'uname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token variable">$where</span><span class="token punctuation">[</span><span class="token string">'uname'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'like'</span><span class="token punctuation">,</span><span class="token string">'%'</span><span class="token punctuation">.</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'uname'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'uname'</span><span class="token punctuation">,</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'uname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//机构名称</span>        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'organization'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token variable">$where</span><span class="token punctuation">[</span><span class="token string">'organization'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'like'</span><span class="token punctuation">,</span><span class="token string">'%'</span><span class="token punctuation">.</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'organization'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'organization'</span><span class="token punctuation">,</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'organization'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//委托单号</span>        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'number'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token variable">$where</span><span class="token punctuation">[</span><span class="token string">'number'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'like'</span><span class="token punctuation">,</span><span class="token string">'%'</span><span class="token punctuation">.</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'number'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">,</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'number'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//链表查询数据集</span>        <span class="token variable">$toll_list</span> <span class="token operator">=</span> <span class="token function">M</span><span class="token punctuation">(</span><span class="token string">'cost'</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'ce_order o on c.oid = o.id'</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'ce_user u on o.user = u.id'</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'ce_r_mechanism r on o.xmec = r.id'</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'c.*,o.number,o.user,o.xmec,u.id,u.name as name1,r.id,r.name as name2'</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">where</span><span class="token punctuation">(</span><span class="token variable">$where</span><span class="token punctuation">)</span>            <span class="token operator">-</span><span class="token operator">></span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//序号|时间</span>        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$toll_list</span> <span class="token keyword">as</span> <span class="token variable">$k</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$v</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token variable">$toll_list</span><span class="token punctuation">[</span><span class="token variable">$k</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'xu'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$k</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token variable">$toll_list</span><span class="token punctuation">[</span><span class="token variable">$k</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'addtime'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">'Y-m-d'</span><span class="token punctuation">,</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token string">'addtime'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//设置字段名称</span>        <span class="token variable">$xlsCell</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'xu'</span><span class="token punctuation">,</span><span class="token string">'序号'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'name1'</span><span class="token punctuation">,</span><span class="token string">'委托人'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'name2'</span><span class="token punctuation">,</span><span class="token string">'机构名称'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">,</span><span class="token string">'委托单号'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'cost1'</span><span class="token punctuation">,</span><span class="token string">'应收费用'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'cost2'</span><span class="token punctuation">,</span><span class="token string">'实收费用'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'title1'</span><span class="token punctuation">,</span><span class="token string">'详细费用单'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'title2'</span><span class="token punctuation">,</span><span class="token string">'盖章收费单'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'addtime'</span><span class="token punctuation">,</span><span class="token string">'创建时间'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'note'</span><span class="token punctuation">,</span><span class="token string">'备注'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>        <span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//导入类库</span>        <span class="token function">vendor</span><span class="token punctuation">(</span><span class="token string">"PHPExcel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$objPHPExcel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>PHPExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$cellName</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">,</span><span class="token string">'D'</span><span class="token punctuation">,</span><span class="token string">'E'</span><span class="token punctuation">,</span><span class="token string">'F'</span><span class="token punctuation">,</span><span class="token string">'G'</span><span class="token punctuation">,</span><span class="token string">'H'</span><span class="token punctuation">,</span><span class="token string">'I'</span><span class="token punctuation">,</span><span class="token string">'J'</span><span class="token punctuation">,</span><span class="token string">'K'</span><span class="token punctuation">,</span><span class="token string">'L'</span><span class="token punctuation">,</span><span class="token string">'M'</span><span class="token punctuation">,</span><span class="token string">'N'</span><span class="token punctuation">,</span><span class="token string">'O'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'Q'</span><span class="token punctuation">,</span><span class="token string">'R'</span><span class="token punctuation">,</span><span class="token string">'S'</span><span class="token punctuation">,</span><span class="token string">'T'</span><span class="token punctuation">,</span><span class="token string">'U'</span><span class="token punctuation">,</span><span class="token string">'V'</span><span class="token punctuation">,</span><span class="token string">'W'</span><span class="token punctuation">,</span><span class="token string">'X'</span><span class="token punctuation">,</span><span class="token string">'Y'</span><span class="token punctuation">,</span><span class="token string">'Z'</span><span class="token punctuation">,</span><span class="token string">'AA'</span><span class="token punctuation">,</span><span class="token string">'AB'</span><span class="token punctuation">,</span><span class="token string">'AC'</span><span class="token punctuation">,</span><span class="token string">'AD'</span><span class="token punctuation">,</span><span class="token string">'AE'</span><span class="token punctuation">,</span><span class="token string">'AF'</span><span class="token punctuation">,</span><span class="token string">'AG'</span><span class="token punctuation">,</span><span class="token string">'AH'</span><span class="token punctuation">,</span><span class="token string">'AI'</span><span class="token punctuation">,</span><span class="token string">'AJ'</span><span class="token punctuation">,</span><span class="token string">'AK'</span><span class="token punctuation">,</span><span class="token string">'AL'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//循环设置列宽</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getActiveSheet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getColumnDimension</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setWidth</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">// 清空（擦掉）输出缓冲区</span>        <span class="token function">ob_clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//xls总列数</span>        <span class="token variable">$cellNum</span> <span class="token operator">=</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$xlsCell</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//chr()该函数用于将ASCII码值转化为字符串</span>        <span class="token comment" spellcheck="true">//ord()该函数用于将字符串转化为ASCII码值</span>        <span class="token variable">$key</span> <span class="token operator">=</span> <span class="token function">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$key2</span> <span class="token operator">=</span> <span class="token function">ord</span><span class="token punctuation">(</span><span class="token string">'@'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$cellName1</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$cellNum</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token operator">></span><span class="token function">ord</span><span class="token punctuation">(</span><span class="token string">'Z'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                <span class="token variable">$key2</span> <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token variable">$key</span> <span class="token operator">=</span> <span class="token function">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token variable">$cellName1</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$key2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$key2</span><span class="token operator">>=</span><span class="token function">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                    <span class="token variable">$cellName1</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$key2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>                    <span class="token variable">$cellName1</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">}</span>            <span class="token punctuation">}</span>            <span class="token variable">$key</span> <span class="token operator">++</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//设置单元格值&amp;合并单元格</span>        <span class="token variable">$name</span><span class="token operator">=</span><span class="token string">"费用信息"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">'Y-m-d'</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getActiveSheet</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setCellValue</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//设置align</span>        <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getActiveSheet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getStyle</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getAlignment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setHorizontal</span><span class="token punctuation">(</span><span class="token string">'center'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getActiveSheet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">mergeCells</span><span class="token punctuation">(</span><span class="token string">'A1:'</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token variable">$cellName1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//合并</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$cellNum</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setActiveSheetIndex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setCellValue</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token variable">$xlsCell</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getActiveSheet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getStyle</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">'2'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getAlignment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setHorizontal</span><span class="token punctuation">(</span><span class="token string">'center'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">//查询的结果集总数</span>        <span class="token variable">$dataNum</span> <span class="token operator">=</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$toll_list</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$dataNum</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$j</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$j</span><span class="token operator">&lt;</span><span class="token variable">$cellNum</span><span class="token punctuation">;</span><span class="token variable">$j</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                <span class="token variable">$objPHPExcel</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getActiveSheet</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setCellValue</span><span class="token punctuation">(</span><span class="token variable">$cellName</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$toll_list</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token variable">$xlsCell</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>        <span class="token variable">$xlsName</span> <span class="token operator">=</span> <span class="token variable">$name</span><span class="token punctuation">;</span>        <span class="token variable">$xlsTitle</span> <span class="token operator">=</span> <span class="token function">iconv</span><span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">,</span> <span class="token string">'gb2312'</span><span class="token punctuation">,</span> <span class="token variable">$xlsName</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//文件名称</span>        <span class="token variable">$fileName</span> <span class="token operator">=</span> <span class="token variable">$xlsTitle</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//or $xlsTitle 文件名称可根据自己情况设定</span>        <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">'pragma:public'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">'Content-type:application/vnd.ms-excel;charset=utf-8;name="'</span><span class="token punctuation">.</span><span class="token variable">$xlsTitle</span><span class="token punctuation">.</span><span class="token string">'.xls"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">"Content-Disposition:attachment;filename=$fileName.xls"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//attachment新窗口打印inline本窗口打印</span>        <span class="token variable">$objWriter</span> <span class="token operator">=</span> \<span class="token package">PHPExcel_IOFactory</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">createWriter</span><span class="token punctuation">(</span><span class="token variable">$objPHPExcel</span><span class="token punctuation">,</span> <span class="token string">'Excel5'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token variable">$objWriter</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">save</span><span class="token punctuation">(</span>'php<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//output');</span>    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>学习阶段，写的不是很好，有哪些错误还需要欢迎指出!</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
-    
-      <category term="Excel" scheme="https://chiwai.tang99.club/tags/Excel/"/>
-    
-      <category term="导出" scheme="https://chiwai.tang99.club/tags/%E5%AF%BC%E5%87%BA/"/>
+      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
     
   </entry>
   

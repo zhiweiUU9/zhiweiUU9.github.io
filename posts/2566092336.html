@@ -695,17 +695,17 @@ vrrp_instance VI_1 {
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="编写-Nginx-状态检测脚本"><a href="#编写-Nginx-状态检测脚本" class="headerlink" title="编写 Nginx 状态检测脚本"></a>编写 Nginx 状态检测脚本</h2><p>编写 Nginx 状态检测脚本 /etc/keepalived/nginx_check.sh (已在 keepalived.conf 中配置)脚本要求：如果 nginx 停止运行，尝试启动，如果无法启动则杀死本机的 keepalived 进程， keepalied将虚拟 ip 绑定到 BACKUP 机器上。 内容如下：</p>
 <pre class="line-numbers language-ini"><code class="language-ini"># 编辑nginx_check.sh文件
-vi /etc/keepalived/nginx_check.sh
-
+vi /etc/keepalived/nginx_check.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-ini"><code class="language-ini">#!/bin/bash
 <span class="token constant">A</span><span class="token attr-value"><span class="token punctuation">=</span>`ps -C nginx –no-header |wc -l`</span>
 if [ $A -eq 0 ];then
-/usr/local/nginx/sbin/nginx   #你的nginx启动文件
+/usr/local/nginx/sbin/nginx  
 sleep 2
 if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then
     killall keepalived
 fi
 fi
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>保存后，给脚本赋执行权限： </p>
 <pre class="line-numbers language-ini"><code class="language-ini">chmod +x /etc/keepalived/nginx_check.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="启动-Keepalived"><a href="#启动-Keepalived" class="headerlink" title="启动 Keepalived"></a>启动 Keepalived</h2><pre class="line-numbers language-ini"><code class="language-ini">service keepalived start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>

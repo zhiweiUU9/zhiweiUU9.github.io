@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>keepalived出现主备机同时绑定vip的解决方法</title>
+      <link href="/posts/4120007045.html"/>
+      <url>/posts/4120007045.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>配置完keepalived之后出现一点小问题，就是启动keepalived之后，发现主备机上同时绑定了虚拟IP，跟预期结果不一样。</p><p><span style="color:red;"><b>1.</b></span>检查keepalived.conf配置文件，是否配置出现问题。</p><p>主机配置(192.168.178.129)：</p><pre class="line-numbers language-ini"><code class="language-ini">! Configuration File for keepalivedglobal_defs {   router_id number_one}vrrp_script chk_nginx{    script "/etc/keepalived/nginx_check.sh"    interval 2    weight -20}vrrp_instance VI_1 {    state MASTER    interface ens33    mcast_src_ip 192.168.178.129    virtual_router_id 51    priority 100    nopreempt    advert_int 1    authentication {        auth_type PASS        auth_pass 1111    }    track_script{    chk_nginx     }    virtual_ipaddress {        192.168.178.125    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>备机配置(192.168.178.130)：</p><pre class="line-numbers language-ini"><code class="language-ini">! Configuration File for keepalivedglobal_defs {   router_id number_two}vrrp_script chk_nginx{    script "/etc/keepalived/nginx_check.sh"    interval 2    weight -20}vrrp_instance VI_1 {    state BACKUP    interface ens33    virtual_router_id 51    mcast_src_ip 192.168.178.130    priority 90    nopreempt     advert_int 1    authentication {        auth_type PASS        auth_pass 1111    }    track_script{    chk_nginx    }    virtual_ipaddress {        192.168.178.125    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>通过检查对比发现没有什么问题。</p><p><span style="color:red;"><b>2.</b></span>通过tcpdump抓包检查,同时在主、备机(129、130)都监听一遍ens33网卡</p><p>输入如下命令:</p><pre class="line-numbers language-ini"><code class="language-ini">sudo tcpdump -i ens33 vrrp -n<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200502230223.png" alt></p><p>结果你会发现129（主机）和130（备份机）两台机器在轮询往224.0.0.18（vrrp的组播地址）发送报文。<br>理论上来说，主机处于活跃状态的时候，备份机收到报文之后是不会发送组播消息的，这个很明显就是备份机没收到主机的组播报文。</p><p><span style="color:red;"><b>3.</b></span>开启组播通信<br>注意：我的防火墙是<code>firewall</code>,如果防火墙是<code>iptables</code>可能不受用(猜测的，没试过)</p><p>运行以下命令<span style="color:red;">(主、备机都要运行)</span>:</p><pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-interface ens33 --destination 224.0.0.18 --protocol vrrp -j ACCEPTfirewall-cmd --reload; # 刷新防火墙<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>其中<span style="color:red">INPUT 0 –in-interface ens33</span>,这段的<span style="color:red;">ens33</span>是绑定得vip的网卡，替换成你自己的网卡就可以了。</p><p>运行之后，再查看vip绑定情况，发现已经恢复正常:</p><p>(主机仍然绑定)<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200502231437.png" alt="主机仍然绑定"></p><p>(备机解除绑定)<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200502231609.png" alt="备机解除绑定"></p><p>再监控一下ens33网卡报文情况：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200502231646.png" alt="一切正常"></p><p>参考：<br><a href="https://blog.csdn.net/liu1160848595/article/details/104653226/" target="_blank" rel="noopener">https://blog.csdn.net/liu1160848595/article/details/104653226/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> keepalived </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> keepalived </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux下安装keepalived与配置</title>
       <link href="/posts/2566092336.html"/>
       <url>/posts/2566092336.html</url>

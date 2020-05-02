@@ -5,7 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="nginx+keepalived可用热备负载均衡, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
-    <meta name="description" content="nginx+keepalived可用热备负载均衡 | 志伟&amp;博客">
+    <meta name="description" content="nginx+keepalived可用热备负载均衡Linux下安装nginx安装方法请查看我另外写的一篇内容。http://chiwai.tang99.club/posts/3979785611.html
+什么是负载均衡呢？经过资料查阅，做一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -556,14 +557,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        0
+                        1.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -579,7 +580,65 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="nginx-keepalived可用热备负载均衡"><a href="#nginx-keepalived可用热备负载均衡" class="headerlink" title="nginx+keepalived可用热备负载均衡"></a>nginx+keepalived可用热备负载均衡</h1><h1 id="Linux下安装nginx"><a href="#Linux下安装nginx" class="headerlink" title="Linux下安装nginx"></a>Linux下安装nginx</h1><p>安装方法请查看我另外写的一篇内容。<br><a href="http://chiwai.tang99.club/posts/3979785611.html">http://chiwai.tang99.club/posts/3979785611.html</a></p>
+<h1 id="什么是负载均衡呢？"><a href="#什么是负载均衡呢？" class="headerlink" title="什么是负载均衡呢？"></a>什么是负载均衡呢？</h1><p>经过资料查阅，做一个简单的总结。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;负载均衡是集群技术的一种应用。负载均衡可以将工作任务分摊到多个处理单元。就是我们需要一个调度者，保证所有后端服务器都能将性能充分发挥，从而保持服务器集群的整体性能。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;由于单个处理节点发生故障不影响整个服务，负载均衡集群同时也实现了<span style="color:red;">高可用性</span>。</p>
+<p>举个简单的例子，我们每天早上上班挤地铁，由于人特别多，你会注意到地铁工作人员拿个大喇叭喊话:着急的人请走B口，B口人少。而这个地铁工作人员就是负载均衡，负责分发客流量。</p>
+<h1 id="集群分类"><a href="#集群分类" class="headerlink" title="集群分类"></a>集群分类</h1><ul>
+<li><p><span style="color:red;">高性能集群</span>：将多台计算机的计算能力合并到一起，就像是一个超级计算机，从而实现一个超越单台计算机计算能力的强力系统。</p>
+</li>
+<li><p><span style="color:red;">高可用集群</span>：当其中一个服务出现故障时，系统会立刻分发到另外一个服务。提高冗余单元，避免单点故障。</p>
+</li>
+<li><p><span style="color:red;">负载均衡集群</span>：将大量的并发请求分担到多个处理节点。</p>
+</li>
+</ul>
+<h1 id="常用的负载均衡"><a href="#常用的负载均衡" class="headerlink" title="常用的负载均衡"></a>常用的负载均衡</h1><ul>
+<li><p><span style="color:red;">HTTP重定向</span><br>&nbsp;&nbsp;&nbsp;在日常web开发中，我们常用会用它来完成自动跳转，比如登录成功后跳转到其他页面。<br>&nbsp;&nbsp;&nbsp;这种重定向完全由HTTP定义，并且由HTTP代理和web服务器共同实现。简单来说当浏览器向web服务器请求某个URL后，Web服务器可以通过HTTP响应头信息中的Location标记来返回一个新的URL，这就意味着HTTP代理需要继续请求这个新的URL，这便完成了自动跳转。也正是因为这种重定向具备请求转移和自动跳转的本领，可以用来实现负载均衡。</p>
+</li>
+<li><p><span style="color:red;">DNS负载均衡</span><br>&nbsp;&nbsp;&nbsp;以域名作为访问入口，通过配置多条DNS A记录使得请求可以分配到不同的服务器。<br>&nbsp;&nbsp;&nbsp;但是有一个问题，似乎是解决了负载均衡，但是怎么保持你的会话在一台服务器上，还有一个问题就是，当服务器出现问题后，是不是还要改DNS配置，我们都知道，在配置当中有一个TTL时间，是不能将时间改为0的，所以，这是一种弊端。</p>
+</li>
+<li><p><span style="color:red;">反向代理负载均衡</span></p>
+<blockquote>
+<p>代理分为<span style="color:red;">正向代理</span>和<span style="color:red;">反向代理</span><br><span style="color:red;">正向代理</span>：用户将请求交给代理服务器，代理服务器访问网站获取数据，之后代理服务器在将数据返回给用户。在这个过程中，应用服务器并不知道用户的存在，只知道代理服务器的访问。VPN就是我们常用的一种代理，正向代理。<br><span style="color:red;">反向代理</span>：是服务器端的代理，代理服务器接收用户的请求，再转发给真实服务器，之后在返回给代理服务器，由代理服务器返回给用户，在这个过程中，用户并不知道真实服务器的存在。</p>
+</blockquote>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;一句话概括为代理服务器将请求均匀转发给内部多台Web服务器之一，从而达到负载均衡的目的。</p>
+<h1 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h1><ul>
+<li><p><span style="color:red;">轮询法</span><br>将请求按顺序轮流分配到后端服务器上，它均衡的对待后端的每一台服务器，而不关心服务器的实际连接数和当前系统的负载。<span style="color:red;">(默认为轮询法)</span><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501095119.png" alt="轮询法"></p>
+</li>
+<li><p><span style="color:red;">加权轮询法</span><br>不同的后端服务器可能机器的配置不同和当前系统的负载也不同，因此他们的服务器性能不统一。将性能好的服务器分配更高的权重，让其处理更多的请求，将性能低的服务器分配较低的权重，降低服务器的压力。<br>属性：<span style="color:red;">(weight)</span><br>如下配置轮询三台服务。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501105229.png" alt="加权轮询法"></p>
+</li>
+<li><p><span style="color:red;">源地址哈希法</span><br>通过对访问用户的IP进行哈希计算，根据得出的结果进行分配该请求哪台服务器，这样每一个用户固定请求同一个后端服务器，能够保持用户的会话存储。例如：用户A第一次访问的是列表中第一台服务器，那么用户第二次请求还会访问第一台服务器。（ip_hash可以和weight配合使用）<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501111113.png" alt="源地址哈希法"></p>
+</li>
+<li><p><span style="color:red;">最少连接法</span><br>将请求分配到连接数最少的服务上。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501121147.png" alt="最少连接法"></p>
+</li>
+<li><p><span style="color:red;">fair法</span><br>按照服务器响应时间的长短来进行分发的，服务器响应时间越短，优先分发</p>
+<blockquote>
+<p>fair为非官方模块，如过没有安装会报错，安装方法自行百度，挺简单的。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501141826.png" alt="fair法"></p>
+<h1 id="负载均衡实现方式"><a href="#负载均衡实现方式" class="headerlink" title="负载均衡实现方式"></a>负载均衡实现方式</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;我有3台虚拟主机和一台服务器，IP分别为：<span style="color:red;">192.168.178.129</span>，<span style="color:red;">192.168.178.130</span>，<span style="color:red;">192.168.**.1</span>，<span style="color:red;">47.103.*.**</span>端口号都默认为80端口。<br>&nbsp;&nbsp;&nbsp;&nbsp;其中，我以IP为<span style="color:red;">192.168.178.129</span>的作为负载均衡服务器，分别将请求分发给另外三个服务器。配置方式如下：</p>
+<ol>
+<li>进入到nginx安装目录，找到<code>nginx.conf</code>配置文件。编辑nginx.conf文件(192.168.178.129)<pre class="line-numbers language-ini"><code class="language-ini">vi nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501091046.png" alt><br>在http配置项里面将会看到include到其它配置文件，根据引入的地址，找到.conf相关文件。这里不是唯一的，根据每个人配置情况而定，也可以不引入，直接在里面配置也行。</li>
+</ol>
+<pre class="line-numbers language-ini"><code class="language-ini">cd conf.d
+vi default.conf <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501092007.png" alt></p>
+<ol start="2">
+<li><p>配置如下代码<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501092804.png" alt></p>
+</li>
+<li><p>结果说明，在浏览器中输入IP为<code>192.168.178.129</code>，第一次请求将展示<code>upstream</code>模块的第一个ip地址，刷新浏览器，第二次将转换到<code>upstream</code>模块的第二个ip地址，第三次为第三个地址，以此类推，按顺序轮询展示，这是因为<code>upstream</code>模块默认就是轮询法，每个ip分发一次。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501094400.png" alt="第一次"><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501094511.png" alt="第二次"><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200501094534.png" alt="第三次"></p>
+</li>
+<li><p>默认为轮询法，其它方法请看上面的<code># 负载均衡算法</code> 说明。</p>
+</li>
+</ol>
+<h1 id="高可用keepalived安装与搭建"><a href="#高可用keepalived安装与搭建" class="headerlink" title="高可用keepalived安装与搭建"></a>高可用keepalived安装与搭建</h1><p>地址：<a href="http://chiwai.tang99.club/posts/2566092336.html#toc-heading-2">http://chiwai.tang99.club/posts/2566092336.html#toc-heading-2</a></p>
+
             </div>
             <hr/>
 
@@ -1041,48 +1100,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2236109518.html">
+                <a href="/posts/2566092336.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="nginx+keepalived可用热备负载均衡">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux下安装keepalived与配置">
                         
-                        <span class="card-title">nginx+keepalived可用热备负载均衡</span>
+                        <span class="card-title">Linux下安装keepalived与配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
+nginx搭建负载均衡可查看 http://chiwai.tang99.club/posts/2236109518.html
+
+安装keepalivedhttps://www.keepalived.org/download.html
+下载
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/nginx/" class="post-category">
-                                    nginx
+                            <a href="/categories/keepalived/" class="post-category">
+                                    keepalived
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/负载均衡/">
-                        <span class="chip bg-color">负载均衡</span>
+                    <a href="/tags/keepalived/">
+                        <span class="chip bg-color">keepalived</span>
                     </a>
                     
                 </div>
@@ -1109,7 +1170,7 @@
                     <div class="summary block-with-text">
                         
                             Linux 下安装nginx两种安装方式:第一种是通过nginx官网提供的存储库安装，第二种是编译安装。
-存储库安装nginx1.&nbsp;&nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:http://n
+yum存储库安装nginx1.&nbsp;&nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:http:
                         
                     </div>
                     <div class="publish-info">
@@ -1296,7 +1357,7 @@
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.2k</span>&nbsp;字
+                        class="white-color">20.1k</span>&nbsp;字
             
             
             

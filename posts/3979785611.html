@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Linux下安装nginx, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
     <meta name="description" content="Linux 下安装nginx两种安装方式:第一种是通过nginx官网提供的存储库安装，第二种是编译安装。
-存储库安装nginx1.&amp;nbsp;&amp;nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:http://n">
+yum存储库安装nginx1.&amp;nbsp;&amp;nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:http:">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -557,14 +557,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        890
+                        977
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        4 分
                     </div>
                     
                 
@@ -581,34 +581,63 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Linux-下安装nginx"><a href="#Linux-下安装nginx" class="headerlink" title="Linux 下安装nginx"></a>Linux 下安装nginx</h1><p>两种安装方式:第一种是通过nginx官网提供的存储库安装，第二种是编译安装。</p>
-<h1 id="存储库安装nginx"><a href="#存储库安装nginx" class="headerlink" title="存储库安装nginx"></a>存储库安装nginx</h1><p><b style="font-size:18px;">1.</b>&nbsp;&nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">http://nginx.org/en/linux_packages.html#stable</a></p>
-<p><b style="font-size:18px;">2.</b>&nbsp;&nbsp;进来后将看到以下页面：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428013835.png" alt><br>找到以下位置：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428014416.png" alt><br><b style="font-size:16px;">2.1.</b>&nbsp;&nbsp;上面有写安装说明，然后对应的下面分为几种不同的操作系统安装方式，这里我选择第一个，执行以下命令。<br><code>sudo yum install yum-utils</code><br><span style="color:red;">yum-utils</span>表示是用于管理yum 存储库，安装调试软件包，源软件包，来自存储库的扩展信息和管理的工具和程序的集合。</p>
-<p><b style="font-size:16px;">2.2.</b>&nbsp;&nbsp;To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents<br>意思是在<code>/etc/yum.repos.d</code>这个目录下创建<code>nginx.repo</code>文件，并填写以下内容,其中<code>[nginx-stable]</code>表示稳定仓库，而<code>[nginx-mainline]</code>表示主线仓库，<br>根据自己要求设置。</p>
-<pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[nginx-stable]</span>
+<h1 id="yum存储库安装nginx"><a href="#yum存储库安装nginx" class="headerlink" title="yum存储库安装nginx"></a>yum存储库安装nginx</h1><p><b style="font-size:18px;">1.</b>&nbsp;&nbsp;通过nginx官网安装最新稳定版nginx，上面提供了安装方法,地址:<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">http://nginx.org/en/linux_packages.html#stable</a></p>
+<p><b style="font-size:18px;">2.</b>&nbsp;&nbsp;找到以下位置：</p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428014416.png" alt><br><b style="font-size:16px;">2.1.</b>&nbsp;&nbsp;分为几种不同的操作系统安装方式，是CentOS系统就选CentOS的,然后执行以下命令。</p>
+<pre class="line-numbers language-ini"><code class="language-ini">sudo yum install yum-utils<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><span style="color:red;">yum-utils</span>表示是用于管理yum 存储库，安装调试软件包，源软件包，来自存储库的扩展信息和管理的工具和程序的集合。</p>
+<p><b style="font-size:16px;">2.2.</b>&nbsp;&nbsp;<span style="color:red;">To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents</span></p>
+<p>这句话的意思是在<code>/etc/yum.repos.d</code>这个目录下创建<code>nginx.repo</code>文件。</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 创建nginx.repo文件
+touch nginx.repo   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>创建完之后将以下内容写入到<code>nginx.repo</code>文件。</p>
+<p>其中<code>[nginx-stable]</code>表示稳定仓库，而<code>[nginx-mainline]</code>表示主线仓库，用哪个仓库写哪个仓库。</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 将以下内容写入到nginx.repo文件。
+
+<span class="token selector">[nginx-stable]</span>
 <span class="token constant">name</span><span class="token attr-value"><span class="token punctuation">=</span>nginx stable repo</span>
 <span class="token constant">baseurl</span><span class="token attr-value"><span class="token punctuation">=</span>http://nginx.org/packages/centos/$releasever/$basearch/</span>
 <span class="token constant">gpgcheck</span><span class="token attr-value"><span class="token punctuation">=</span>1</span>
 <span class="token constant">enabled</span><span class="token attr-value"><span class="token punctuation">=</span>1</span>
 <span class="token constant">gpgkey</span><span class="token attr-value"><span class="token punctuation">=</span>https://nginx.org/keys/nginx_signing.key</span>
-<span class="token constant">module_hotfixes</span><span class="token attr-value"><span class="token punctuation">=</span>true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><b style="font-size:16px;">2.3.</b>&nbsp;&nbsp;执行以下命令安装nginx<br><code>sudo yum install nginx</code></p>
+<span class="token constant">module_hotfixes</span><span class="token attr-value"><span class="token punctuation">=</span>true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><b style="font-size:16px;">2.3.</b>&nbsp;&nbsp;执行以下命令安装nginx</p>
+<pre class="line-numbers language-ini"><code class="language-ini">sudo yum install nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><b style="font-size:16px;">2.4.</b>&nbsp;&nbsp;查看nginx版本</p>
 <pre class="line-numbers language-ini"><code class="language-ini"># 查看nginx版本
 nginx -v
 
 # 查看编译参数
 nginx -V<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><b style="font-size:16px;">2.5.</b>&nbsp;&nbsp;查看安装目录<br><code>rpm -ql nginx</code></p>
-<p><b style="font-size:18px;">3.</b>&nbsp;&nbsp;一键安装依赖包，执行以下命令:<br><code>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</code></p>
-<p><b style="font-size:18px;">4.</b>&nbsp;&nbsp;测试一下是否安装成功，进入<code>cd usr/sbin/</code>这个目录，不一定都是这个目录，根据你安装路径来确定。<br><code>nginx -t</code><br>出现以下内容，及成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021621.png" alt></p>
-<p><b style="font-size:18px;">5.</b>&nbsp;&nbsp;查看nginx进程是否启动：<br><code>ps -ef | grep nginx</code><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021750.png" alt></p>
-<p>如果没启动，启动nginx<br>/usr/sbin/nginx -s reload</p>
-<p><b style="font-size:18px;">6.</b>&nbsp;&nbsp;这个时候，如果你想要在浏览器中访问nginx是访问不了的，需要关闭虚拟机的防火墙。</p>
-<pre class="line-numbers language-ini"><code class="language-ini">centOS6及以前版本使用命令： systemctl stop iptables.service
+<p><b style="font-size:16px;">2.5.</b>&nbsp;&nbsp;查看安装目录</p>
+<pre class="line-numbers language-ini"><code class="language-ini">rpm -ql nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><b style="font-size:18px;">3.</b>&nbsp;&nbsp;一键安装依赖包，执行以下命令:</p>
+<pre class="line-numbers language-ini"><code class="language-ini">yum -y install gcc pcre-devel zlib-devel openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><b style="font-size:18px;">4.</b>&nbsp;&nbsp;测试一下是否安装成功，进入<code>cd usr/sbin/</code>这个目录，不一定都是这个目录，根据你安装路径来确定。</p>
+<pre class="line-numbers language-ini"><code class="language-ini">nginx -t<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>出现以下内容，则成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021621.png" alt="成功效果"></p>
+<p><b style="font-size:18px;">5.</b>&nbsp;&nbsp;查看nginx进程是否启动：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">ps -ef | grep nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428021750.png" alt></p>
+<p>如果没启动，启动nginx</p>
+<pre class="line-numbers language-ini"><code class="language-ini">cd /usr/sbin/
 
-centOS7关闭防火墙命令： systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>随后访问该ip即可看到nginx界面。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428022324.png" alt></p>
-<h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><p><b style="font-size:18px;">1.</b>&nbsp;&nbsp;一键安装依赖包，执行以下命令:<br><code>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel</code></p>
+# 启动nginx
+./nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><b style="font-size:18px;">6.</b>&nbsp;&nbsp;这个时候，如果你想要在浏览器中访问nginx是访问不了的，因为你的80端口还没有启动。</p>
+<p>验证80端口是否启动：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --query-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224920.png" alt="no表示没启动"></p>
+<p><b style="font-size:18px;">7.</b>&nbsp;&nbsp;开启80端口,重启防火墙</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 开端口, --permanent表示永久生效，没有此参数重启后失效
+firewall-cmd --add-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp --permanent </span>
+
+# 重启防火墙
+systemctl restart firewalld     
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428022324.png" alt="访问成功"></p>
+<h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><p><b style="font-size:18px;">1.</b>&nbsp;&nbsp;一键安装依赖包，执行以下命令:</p>
+<pre class="line-numbers language-ini"><code class="language-ini">yum -y install gcc pcre-devel zlib-devel openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><b style="font-size:18px;">2.</b>&nbsp;&nbsp;在usr/local目录下新建nginx文件夹</p>
 <pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local
 
@@ -618,40 +647,53 @@ mkdir nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 
 wget http://nginx.org/download/nginx-1.18.0.tar.gz
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><b style="font-size:18px;">4.</b>&nbsp;&nbsp;解压tar<br><code>tar -xvf nginx-1.18.0.tar.gz</code><br><b style="font-size:18px;">5.</b>&nbsp;&nbsp;配置安装nginx，执行make，执行make install</p>
+<p><b style="font-size:18px;">4.</b>&nbsp;&nbsp;解压tar</p>
+<pre class="line-numbers language-ini"><code class="language-ini">tar -xvf nginx-1.18.0.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><b style="font-size:18px;">5.</b>&nbsp;&nbsp;配置安装nginx，执行make，执行make install</p>
 <pre class="line-numbers language-ini"><code class="language-ini">./configure --prefix<span class="token attr-value"><span class="token punctuation">=</span>/usr/local/nginx</span>
 
 make
 
 make install
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><b style="font-size:18px;">6.</b>&nbsp;&nbsp;测试是否安装成功,进入到刚才配置的安装目录<br><code>./sbin/nginx -t</code></p>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224426.png" alt="表示安装成功!"></p>
+<p><b style="font-size:18px;">6.</b>&nbsp;&nbsp;测试是否安装成功,进入到刚才配置的安装目录</p>
+<pre class="line-numbers language-ini"><code class="language-ini">./sbin/nginx -t<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224426.png" alt="安装成功!"></p>
 <p><b style="font-size:18px;">7.</b>&nbsp;&nbsp;启动nginx</p>
 <pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local/nginx/sbin
-./nginx //启动nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+# 启动nginx
+./nginx <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><b style="font-size:18px;">8.</b>&nbsp;&nbsp;这个时候如果你去网页上输入ip地址是打不开的，因为你的80端口还没有启动。<br>因为我使用的linux系统版本是CentOS7，所以可以在服务器中执行如下命令来验证</p>
 <pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --query-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224920.png" alt><br>显然80端口没有开启</p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428224920.png" alt="no表示没启用"><br>显然80端口没有开启</p>
 <p><b style="font-size:18px;">9.</b>&nbsp;&nbsp;开启80端口,重启防火墙</p>
-<pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --add-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp --permanent //开端口, --permanent表示永久生效，没有此参数重启后失效</span>
+<pre class="line-numbers language-ini"><code class="language-ini"># 开端口, --permanent表示永久生效，没有此参数重启后失效
+firewall-cmd --add-port<span class="token attr-value"><span class="token punctuation">=</span>80/tcp --permanent </span>
 
-systemctl restart firewalld     //重启防火墙
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428225218.png" alt><br>访问成功!</p>
+# 重启防火墙
+systemctl restart firewalld     
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428225218.png" alt="访问成功!"></p>
 <p><b style="font-size:18px;">10.</b>&nbsp;&nbsp;配置开机自启</p>
 <pre class="line-numbers language-ini"><code class="language-ini">vi /etc/rc.d/rc.local
 
 /usr/local/nginx/sbin/nginx   
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200428225728.png" alt></p>
-<p>常用命令说明:</p>
-<p>进入到安装目录中,<code>cd usr/sbin/</code>。</p>
+<h1 id="常用命令说明"><a href="#常用命令说明" class="headerlink" title="常用命令说明:"></a>常用命令说明:</h1><p>nginx相关命令：<br>进入到安装目录中,<code>cd usr/sbin/</code>。</p>
 <pre class="line-numbers language-ini"><code class="language-ini">./nginx 启动
 
 ./nginx -s stop 关闭
 
 ./nginx -s reload 重启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>防火墙相关命令：</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 重启防火墙
+systemctl restart firewalld  
+
+centOS6及以前版本使用命令： systemctl stop iptables.service
+
+centOS7关闭防火墙命令： systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>参考：<br><a href="https://www.cnblogs.com/xxoome/p/5866475.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxoome/p/5866475.html</a></p>
 
             </div>
@@ -1131,7 +1173,8 @@ systemctl restart firewalld     //重启防火墙
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            nginx+keepalived可用热备负载均衡Linux下安装nginx安装方法请查看我另外写的一篇内容。http://chiwai.tang99.club/posts/3979785611.html
+什么是负载均衡呢？经过资料查阅，做一
                         
                     </div>
                     <div class="publish-info">
@@ -1368,7 +1411,7 @@ systemctl restart firewalld     //重启防火墙
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.2k</span>&nbsp;字
+                        class="white-color">20.1k</span>&nbsp;字
             
             
             

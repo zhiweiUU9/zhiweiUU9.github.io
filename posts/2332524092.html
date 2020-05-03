@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="FlashFXP连接服务器的方法, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
-    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;记录一下使用FlashFXP连接服务器的方法。
-1.打开FlashFXP -&amp;gt;站点-&amp;gt;站点管理器2.新建站点 -&amp;gt; 填写站点名称3.常规 -&amp;gt; 连接类型选择SFTP o">
+    <meta name="keywords" content="Linux下安装MySQL, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
+    <meta name="description" content="Linux下安装MySQLMySQL官方下载地址：https://dev.mysql.com/downloads/mysql/
+下载安装MySQL1.下载并移动MySQL至/usr/local/目录下
+# 下载mysql
+wget http">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>FlashFXP连接服务器的方法 | 志伟&amp;博客</title>
+    <title>Linux下安装MySQL | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -408,13 +410,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        FlashFXP连接服务器的方法
+                        Linux下安装MySQL
                     </div>
                 </div>
             </div>
@@ -437,8 +439,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/FlashFXP/">
-                                <span class="chip bg-color">FlashFXP</span>
+                            <a href="/tags/MySQL安装/">
+                                <span class="chip bg-color">MySQL安装</span>
                             </a>
                         
                     </div>
@@ -449,8 +451,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
                             </a>
                         
                     </div>
@@ -461,21 +463,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-15
+                    2020-05-01
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        160
+                        856
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -491,11 +493,121 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;记录一下使用FlashFXP连接服务器的方法。</p>
-<p>1.打开FlashFXP -&gt;站点-&gt;站点管理器<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417160839.png" alt="站点管理器"><br>2.新建站点 -&gt; 填写站点名称<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417160906.png" alt="站点名称"><br>3.常规 -&gt; 连接类型选择SFTP over SSH连接<br>       -&gt;地址填写服务器端公网IP地址<br>       -&gt; 端口号默认22 (不用改)<br>       -&gt; 登录类型选择默认即可<br>       -&gt; 用户名称是服务器端登录的用户,密码是对应密码<br>       -&gt; 都输入正确后，正常点连接就可以连接到服务器了。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417160930.png" alt="连接"></p>
-<blockquote>
-<p>也可以选择会话 -&gt; 快速连接 -&gt; 填写步骤和上面一样。</p>
-</blockquote>
+                <h1 id="Linux下安装MySQL"><a href="#Linux下安装MySQL" class="headerlink" title="Linux下安装MySQL"></a>Linux下安装MySQL</h1><p>MySQL官方下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></p>
+<h1 id="下载安装MySQL"><a href="#下载安装MySQL" class="headerlink" title="下载安装MySQL"></a>下载安装MySQL</h1><p><span style="font-size:18px;"><b>1.</b></span>下载并移动MySQL至<code>/usr/local/</code>目录下</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 下载mysql
+wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz
+
+# 下载完成后解压MySQL
+tar -xzvf mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz
+
+
+# 将解压好的文件移动到/usr/local/目录下
+mv mysql-5.7.30-linux-glibc2.12-x86_64 /usr/local/
+
+cd /usr/local/
+
+# 重命名为mysql
+mv mysql-5.7.30-linux-glibc2.12-x86_64 mysql
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503202825.png" alt></p>
+<p><span style="font-size:18px;"><b>2.</b></span>在/usr/local/mysql目录下创建data目录</p>
+<pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local/mysql
+
+mkdir data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>3.</b></span>更改mysql目录下所有的目录及文件夹所属的用户组和用户，以及权限</p>
+<pre class="line-numbers language-ini"><code class="language-ini">chown -R mysql:mysql /usr/local/mysql
+
+chmod -R 755 /usr/local/mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如果出现<span style="color:red">chown: 无效的用户: “mysql:mysql”</span>的错误，需要先创建组和用户。</p>
+<pre class="line-numbers language-ini"><code class="language-ini">#创建mysql组
+groupadd mysql
+
+#创建mysql用户添加到mysql组
+useradd -r -g mysql mysql
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>4.</b></span>编译安装并初始化mysql,务必记住初始化输出日志末尾的密码（数据库管理员临时密码）</p>
+<pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local/mysql/bin
+
+./mysqld --initialize --user<span class="token attr-value"><span class="token punctuation">=</span>mysql --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>5.</b></span>运行初始化命令成功后，输出日志如下：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503210305.png" alt><br>记住末尾那段字符串，此字符串为mysql管理员临时登陆密码。</p>
+<p><span style="font-size:18px;"><b>6.</b></span>编辑配置文件my.cnf，添加配置如下</p>
+<pre class="line-numbers language-ini"><code class="language-ini">vi /etc/my.cnf
+
+
+<span class="token selector">[mysqld]</span>
+<span class="token constant">datadir</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mysql/data</span>
+<span class="token constant">basedir</span> <span class="token attr-value"><span class="token punctuation">=</span> /usr/local/mysql</span>
+
+<span class="token constant">character-set-server</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span>
+
+<span class="token constant">socket</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql/mysql.sock</span>
+# Disabling symbolic-links is recommended to prevent assorted security risks
+<span class="token constant">symbolic-links</span><span class="token attr-value"><span class="token punctuation">=</span>0</span>
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+<span class="token selector">[mysqld_safe]</span>
+<span class="token constant">log-error</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mysql/data/mariadb/mariadb.log</span>
+<span class="token constant">pid-file</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mysql/data/mariadb/mariadb.pid</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503224413.png" alt></p>
+<p><span style="font-size:18px;"><b>7.</b></span>启动mysql服务器</p>
+<pre class="line-numbers language-ini"><code class="language-ini">/usr/local/mysql/support-files/mysql.server start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>显示如下，则代表成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503224618.png" alt></p>
+<p>如果出现如下错误，<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503224752.png" alt><br>出现错误原因说明:<br><b>1.</b> 在这个目录下没有这个目录或文件，并且用户权限不够，无法自动创建。</p>
+<p><b>2.</b> 说白了也就是权限不够，无法创建socket套接字连接文件</p>
+<p>解决方法：<br><span style="font-size:16px;"><b>7.1</b></span>需要在/usr/local/mysql/data/创建目录<code>mariadb</code>以及文件<code>mariadb.log</code></p>
+<pre class="line-numbers language-ini"><code class="language-ini">mkdir mariadb
+
+cd mariadb
+
+touch mariadb.log
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:16px;"><b>7.2</b></span>给/usr/local/mysql/下的data目录升权限</p>
+<pre class="line-numbers language-ini"><code class="language-ini">chmod -R 777 data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>8.</b></span>添加软连接，并重启mysql服务</p>
+<pre class="line-numbers language-ini"><code class="language-ini">ln -s /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
+
+ln -s /usr/local/mysql/bin/mysql /usr/bin/mysql
+
+service mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>9.</b></span>登录mysql，修改密码(密码为第5步的临时密码)</p>
+<pre class="line-numbers language-ini"><code class="language-ini">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>输入完密码后，如果报以下错误：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503232659.png" alt><br>是因为你my.cnf 配置文件中设置了 [mysqld] 的参数 socket ，而没有设置[client]的参数socket。</p>
+<p>解决方法：<br>添加 [client] 配置项，如下所示</p>
+<pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[client]</span>
+<span class="token constant">port</span><span class="token attr-value"><span class="token punctuation">=</span>3306</span>
+<span class="token constant">socket</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql/mysql.sock</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503232744.png" alt="红圈的是新添加的"><br>然后重启服务</p>
+<pre class="line-numbers language-ini"><code class="language-ini">service mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>再次重新输入密码后就成功了。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503232850.png" alt="成功进入"></p>
+<p><span style="font-size:18px;"><b>10.</b></span>修改密码</p>
+<pre class="line-numbers language-ini"><code class="language-ini">set password for root@localhost <span class="token attr-value"><span class="token punctuation">=</span> password('yourpass');</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503233023.png" alt></p>
+<p><span style="font-size:18px;"><b>11.</b></span>开放远程连接</p>
+<pre class="line-numbers language-ini"><code class="language-ini">use mysql;
+
+update user set user.Host<span class="token attr-value"><span class="token punctuation">=</span>'%' where user.User='root';</span>
+
+flush privileges;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503233159.png" alt></p>
+<p><span style="font-size:18px;"><b>12.</b></span>设置开机自动启动</p>
+<pre class="line-numbers language-ini"><code class="language-ini">1、将服务文件拷贝到init.d下，并重命名为mysql
+cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
+2、赋予可执行权限
+chmod +x /etc/init.d/mysqld
+3、添加服务
+chkconfig --add mysqld
+4、显示服务列表
+chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>到这里就结束了，过程很坎坷，步步报错，还好都解决了。</p>
+<p>参考:<br><a href="https://www.jianshu.com/p/276d59cbc529" target="_blank" rel="noopener">https://www.jianshu.com/p/276d59cbc529</a><br><a href="https://www.jb51.net/article/174244.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174244.htm</a></p>
 
             </div>
             <hr/>
@@ -658,9 +770,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《FlashFXP连接服务器的方法》
+                    《Linux下安装MySQL》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/913190664.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2332524092.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -958,89 +1070,39 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/2672848395.html">
+                <a href="/posts/2332524092.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="hexo-admin安装使用及遇到的问题">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Linux下安装MySQL">
                         
-                        <span class="card-title">hexo-admin安装使用及遇到的问题</span>
+                        <span class="card-title">Linux下安装MySQL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hexo-admin安装使用及遇到得问题安装hexo-admin1.安装管理&amp;启动npm install --save hexo-admin
-hexo g
-hexo s
-http://localhost:4000/admin
-效果图
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo-admin/">
-                        <span class="chip bg-color">hexo-admin</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/913190664.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/images/447.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="FlashFXP连接服务器的方法">
-                        
-                        <span class="card-title">FlashFXP连接服务器的方法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            &nbsp;&nbsp;&nbsp;&nbsp;记录一下使用FlashFXP连接服务器的方法。
-1.打开FlashFXP -&gt;站点-&gt;站点管理器2.新建站点 -&gt; 填写站点名称3.常规 -&gt; 连接类型选择SFTP o
+                            Linux下安装MySQLMySQL官方下载地址：https://dev.mysql.com/downloads/mysql/
+下载安装MySQL1.下载并移动MySQL至/usr/local/目录下
+# 下载mysql
+wget http
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
                                 </a>
                             
                             
@@ -1051,8 +1113,59 @@ http://localhost:4000/admin
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/FlashFXP/">
-                        <span class="chip bg-color">FlashFXP</span>
+                    <a href="/tags/MySQL安装/">
+                        <span class="chip bg-color">MySQL安装</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/4120007045.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/447.gif" data-original="/medias/featureimages/6.jpg" class="responsive-img" alt="keepalived出现主备机同时绑定vip的解决方法">
+                        
+                        <span class="card-title">keepalived出现主备机同时绑定vip的解决方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            配置完keepalived之后出现一点小问题，就是启动keepalived之后，发现主备机上同时绑定了虚拟IP，跟预期结果不一样。
+1.检查keepalived.conf配置文件，是否配置出现问题。
+主机配置(192.168.178.129
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/keepalived/" class="post-category">
+                                    keepalived
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/keepalived/">
+                        <span class="chip bg-color">keepalived</span>
                     </a>
                     
                 </div>

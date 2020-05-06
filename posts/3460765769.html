@@ -4,10 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="thinkphp5+workerman的定时器实现定时任务, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
-    <meta name="description" content="1.首先需要安装，或者下载完整版tp框架里面会自带。(tp5教程https://www.kancloud.cn/manual/thinkphp5/235128)
-composer require topthink/think-worker
-">
+    <meta name="keywords" content="MySQL主从复制读写分离实现, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
+    <meta name="description" content="Linux下安装MySQL方法http://chiwai.tang99.club/posts/2332524092.html
+
+系统环境：centos7服务器：主(192.168.178.129)从(192.168.178.130)
+
+主从">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +17,7 @@ composer require topthink/think-worker
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>thinkphp5+workerman的定时器实现定时任务 | 志伟&amp;博客</title>
+    <title>MySQL主从复制读写分离实现 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -409,13 +411,13 @@ composer require topthink/think-worker
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        thinkphp5+workerman的定时器实现定时任务
+                        MySQL主从复制读写分离实现
                     </div>
                 </div>
             </div>
@@ -426,10 +428,99 @@ composer require topthink/think-worker
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -438,12 +529,8 @@ composer require topthink/think-worker
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Tp5-0/">
-                                <span class="chip bg-color">Tp5.0</span>
-                            </a>
-                        
-                            <a href="/tags/Workerman定时器/">
-                                <span class="chip bg-color">Workerman定时器</span>
+                            <a href="/tags/主从复制，读写分离/">
+                                <span class="chip bg-color">主从复制，读写分离</span>
                             </a>
                         
                     </div>
@@ -454,8 +541,8 @@ composer require topthink/think-worker
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/后端/" class="post-category">
-                                后端
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
                             </a>
                         
                     </div>
@@ -466,21 +553,21 @@ composer require topthink/think-worker
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-13
+                    2020-05-06
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        297
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -496,64 +583,113 @@ composer require topthink/think-worker
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1.首先需要安装，或者下载完整版tp框架里面会自带。(tp5教程<a href="https://www.kancloud.cn/manual/thinkphp5/235128" target="_blank" rel="noopener">https://www.kancloud.cn/manual/thinkphp5/235128</a>)</p>
-<pre class="line-numbers language-text"><code class="language-text">composer require topthink/think-worker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>2.在项目根目录(不是public目录)创建服务启动文件 server.php<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132312.png" alt></p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'APP_PATH'</span><span class="token punctuation">,</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/application/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"BIND_MODULE"</span><span class="token punctuation">,</span> <span class="token string">"server/Worker"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 加载框架引导文件</span>
-<span class="token keyword">require</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/thinkphp/start.php'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>3.在application里创建server模块，并在server里创建控制器 Worker.php<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132352.png" alt></p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>server<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
-
-<span class="token keyword">use</span> <span class="token package">think<span class="token punctuation">\</span>worker<span class="token punctuation">\</span>Server</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package">app<span class="token punctuation">\</span>index<span class="token punctuation">\</span>controller<span class="token punctuation">\</span>Index</span><span class="token punctuation">;</span>
-<span class="token keyword">class</span> <span class="token class-name">Worker</span> <span class="token keyword">extends</span> <span class="token class-name">Server</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">protected</span> <span class="token variable">$processes</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onWorkerStart</span><span class="token punctuation">(</span><span class="token variable">$work</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token variable">$handle</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$handle</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">add_timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>4.创建Index.php控制器.定义一个每秒钟执行一次的定时器，在定时器里增加条件判断，如果当前时间等于要执行的时间时，就执行此任务</p>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132416.png" alt></p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-
-<span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>index<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
-
-<span class="token keyword">use</span> <span class="token package">Workerman<span class="token punctuation">\</span>Lib<span class="token punctuation">\</span>Timer</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Index</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">add_timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        Timer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token punctuation">,</span> <span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-
-        <span class="token comment" spellcheck="true">//每天0点执行任务</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">86400</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d H:i:s"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//每天8点执行任务</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">86400</span> <span class="token operator">===</span> <span class="token number">28800</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d H:i:s"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>5.启动服务 <b>php server.php start -d</b></p>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200417132724.png" alt></p>
+                <h1 id="Linux下安装MySQL方法"><a href="#Linux下安装MySQL方法" class="headerlink" title="Linux下安装MySQL方法"></a>Linux下安装MySQL方法</h1><p><a href="http://chiwai.tang99.club/posts/2332524092.html">http://chiwai.tang99.club/posts/2332524092.html</a></p>
 <blockquote>
-<p>workerman定时器方法不止这些，具体可以看看文档。<br><a href="http://doc3.workerman.net/315179" target="_blank" rel="noopener">http://doc3.workerman.net/315179</a></p>
+<p>系统环境：centos7<br>服务器：<br>主(192.168.178.129)<br>从(192.168.178.130)</p>
 </blockquote>
-<p>参考资料:<br><a href="https://www.cnblogs.com/goufugui/p/9391035.html" target="_blank" rel="noopener">https://www.cnblogs.com/goufugui/p/9391035.html</a></p>
+<h1 id="主从复制实现"><a href="#主从复制实现" class="headerlink" title="主从复制实现"></a>主从复制实现</h1><p>什么是主从复制？为什么要实现主从复制？</p>
+<blockquote>
+<p><span style="color:red;">什么是主从复制？</span>主从复制就是将一个MySQL数据库服务器（主服务器）的数据复制到另外一个或多个MySQL数据库服务器（从服务器）。说白了就是一种数据库备份方案。<br><span style="color:red;">为什么要实现？</span> 当主数据库出现问题时，可以当从数据库代替主数据库，可以避免数据的丢失。而且也可以实现读写分离。</p>
+</blockquote>
+<p>主从复制的方式</p>
+<blockquote>
+<p>主从复制是异步的，主服务只需要完成自己的数据库操作，至于从服务是否完成复制操作，主服务不需要操心了。</p>
+</blockquote>
+<p>工作原理<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506232656.png" alt><br>1.数据库的所有操作(sql语句)都会被记录到bin-log二进制文件。<br>2.从库开启一个I/O线程，读取bin-log中的内容<br>3.将读取到的内容写入中继日志中，也就是从库的日志文件。<br>4.SQL Thread会读取中继日志，并顺序执行该日志中的SQL事件，从而与主数据库中的数据保持一致。</p>
+<h2 id="主服务器配置"><a href="#主服务器配置" class="headerlink" title="主服务器配置"></a>主服务器配置</h2><p><span style="font-size:18px;"><b>1.</b></span>编辑MySQL的<span style="color:red;">my.cnf</span>配置文件<br>添加以下内容：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">#主从复制配置
+
+#日志文件的名字
+<span class="token constant">log-bin</span><span class="token attr-value"><span class="token punctuation">=</span>master-a-bin</span>
+
+#日志文件的格式
+<span class="token constant">binlog-format</span><span class="token attr-value"><span class="token punctuation">=</span>Row</span>
+
+#服务器的id,唯一的
+<span class="token constant">server-id</span><span class="token attr-value"><span class="token punctuation">=</span>1</span>
+
+#对应需要实现主从复制的数据库,ksf为数据库名
+<span class="token constant">binlog-do-db</span><span class="token attr-value"><span class="token punctuation">=</span>ksf</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506211004.png" alt></p>
+<p><span style="font-size:18px;"><b>2.</b></span> 添加完之后需要登录主服务器给从服务器授权</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 登录MySQL
+mysql -uroot -p
+
+# 授权命令
+grant replication slave on *.* to 'root'@'192.168.178.%' identified by 'root';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506211310.png" alt="Query OK"></p>
+<p>拆分说明：<br><span style="color:red">192.168.178.%</span> 表示以178结尾的主机都可以授权</p>
+<p><span style="color:red">by ‘root’ </span>表示你数据库的密码,我的密码就是root</p>
+<p><span style="font-size:18px;"><b>3.</b></span>刷新权限</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 刷新系统权限表
+flush PRIVILEGES;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="从服务器配置"><a href="#从服务器配置" class="headerlink" title="从服务器配置"></a>从服务器配置</h2><p><span style="font-size:18px;"><b>1.</b></span>编辑MySQL的my.cnf配置文件<br>添加以下内容：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">#主从复制配置
+
+#日志文件的名字
+<span class="token constant">log-bin</span><span class="token attr-value"><span class="token punctuation">=</span>master-a-bin</span>
+
+#日志文件的格式
+<span class="token constant">binlog-format</span><span class="token attr-value"><span class="token punctuation">=</span>Row</span>
+
+#服务器的id,唯一的
+<span class="token constant">server-id</span><span class="token attr-value"><span class="token punctuation">=</span>2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="验证主从复制状态"><a href="#验证主从复制状态" class="headerlink" title="验证主从复制状态"></a>验证主从复制状态</h2><p><span style="font-size:18px;"><b>1.</b></span> 重启两台服务器</p>
+<pre class="line-numbers language-ini"><code class="language-ini">service mysqld restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>2.</b></span>查看主服务器的状态</p>
+<pre class="line-numbers language-ini"><code class="language-ini">show  master status;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506213403.png" alt><br>解释说明：<br><span style="color:red">File：</span> 表示生成的日志文件名</p>
+<p><span style="color:red">Position：</span> 表示文件名所处的一个位置（偏移量）</p>
+<p><span style="color:red">Binlog_Do_DB：</span> 表示需要实现主从复制的数据库</p>
+<h2 id="设置从服务器如何找到主服务器"><a href="#设置从服务器如何找到主服务器" class="headerlink" title="设置从服务器如何找到主服务器"></a>设置从服务器如何找到主服务器</h2><p><span style="font-size:18px;"><b>1.</b></span>设置主从复制的日志和偏移量（在从服务器下操作）<br>先登录MySQL，然后输入以下内容：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">change master to master_host<span class="token attr-value"><span class="token punctuation">=</span>'192.168.178.129',master_port=3306,master_user='root',master_password='root',master_log_file='master-a-bin.000001',master_log_pos=154;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>解释说明：<br><span style="color:red;">change master</span> 表示查找主服务器</p>
+<p><span style="color:red;">master_host</span> 表示主服务器的地址</p>
+<p><span style="color:red;">master_prot</span> 表示端口号</p>
+<p><span style="color:red;">master_user</span> 表示主服务器用户名</p>
+<p><span style="color:red;">master_password</span> 表示主服务器的密码</p>
+<p><span style="color:red;">master_log_file</span> 表示主服务器生成的日志名称</p>
+<p><span style="color:red;">master_log_pos</span> 表示日志位置</p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506215536.png" alt></p>
+<p><span style="font-size:18px;"><b>2.</b></span>启动slave的数据同步（在从服务器下操作）</p>
+<pre class="line-numbers language-ini"><code class="language-ini">#启动数据同步
+start slave;
+
+#停止数据同步
+stop slave;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>3.</b></span>查看salve的配置信息</p>
+<pre class="line-numbers language-ini"><code class="language-ini">show slave status\G;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506220050.png" alt></p>
+<p>可以使用<span style="color:red;">Navicat客户端</span>进行连接测试：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506221319.png" alt></p>
+<p><span style="font-size:18px;"><b>4.</b></span> 解决正在连接中的问题</p>
+<blockquote>
+<p>分析说明：<br>1.防火墙的问题<br>2.端口未开放<br>3.未授权</p>
+</blockquote>
+<p><span style="color:red;">防火墙解决方法：</span>关闭防火墙就好了，但是关闭防火墙不安全</p>
+<p><span style="color:red;">开放端口(建议)：</span>(主服务器操作)</p>
+<pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --zone<span class="token attr-value"><span class="token punctuation">=</span>public --add-port=3306/tcp --permanent</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重新载入防火墙</p>
+<pre class="line-numbers language-ini"><code class="language-ini">firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506221416.png" alt="连接成功"></p>
+<p><span style="color:red;">还需要授权（不然无法获取到所有表）</span>(主服务器操作)</p>
+<pre class="line-numbers language-ini"><code class="language-ini">grant all privileges on *.* to root@'%' identified by 'root' with grant option;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506222149.png" alt></p>
+<p>然后关闭数据同步，在启动数据同步(从服务器操作)</p>
+<pre class="line-numbers language-ini"><code class="language-ini">stop slave;
+
+start slave;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>查看状态：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">show slave status\G;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看出现两个yes，表示成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506222902.png" alt="主从复制成功"></p>
+<h2 id="终极测试"><a href="#终极测试" class="headerlink" title="终极测试"></a>终极测试</h2><p>在主服务器创建一张表:</p>
+<pre class="line-numbers language-ini"><code class="language-ini">create table test(id int primary key auto_increment,name varchar(32) not null)charset<span class="token attr-value"><span class="token punctuation">=</span>'utf8';</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后去从服务器上查看，发现也会出现一张表<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506223754.png" alt></p>
+<p>主从同步成功。</p>
+<h1 id="读写分离实现"><a href="#读写分离实现" class="headerlink" title="读写分离实现"></a>读写分离实现</h1><p>读写分离的前提是必须要基于主从复制才能实现。<br>（正在编写中，敬请期待）；</p>
 
             </div>
             <hr/>
@@ -716,9 +852,9 @@ composer require topthink/think-worker
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《thinkphp5+workerman的定时器实现定时任务》
+                    《MySQL主从复制读写分离实现》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2129457668.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/3460765769.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -1016,56 +1152,52 @@ composer require topthink/think-worker
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/346954664.html">
+                <a href="/posts/3460765769.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP简单功能汇总">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL主从复制读写分离实现">
                         
-                        <span class="card-title">PHP简单功能汇总</span>
+                        <span class="card-title">MySQL主从复制读写分离实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-简单做个记录，初学者，也算是记录成长的过程！
+                            Linux下安装MySQL方法http://chiwai.tang99.club/posts/2332524092.html
 
-TP5 图片上传public function files()
-    {
-        $file = request()->file('file');
-        if (!$fi
+系统环境：centos7服务器：主(192.168.178.129)从(192.168.178.130)
+
+主从
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category">
-                                    后端
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
-                    </a>
-                    
-                    <a href="/tags/汇总/">
-                        <span class="chip bg-color">汇总</span>
+                    <a href="/tags/主从复制，读写分离/">
+                        <span class="chip bg-color">主从复制，读写分离</span>
                     </a>
                     
                 </div>
@@ -1079,32 +1211,35 @@ TP5 图片上传public function files()
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/3359811951.html">
+                <a href="/posts/2332524092.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="Laravel 出现 No application encryption key has been specified.">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Linux下安装MySQL">
                         
-                        <span class="card-title">Laravel 出现 No application encryption key has been specified.</span>
+                        <span class="card-title">Linux下安装MySQL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            &nbsp;&nbsp;&nbsp;&nbsp;Linux服务器部署Laravel项目，从git克隆项目时会缺少.env文件，导致出现出现 No application encryption key has been specified.
-
+                            安装前准备1.检查是否已经安装过mysql，执行以下命令：
+rpm -qa | grep mysql
+如果存在，执行以下命令
+rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
+2. 查找所有m
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/后端/" class="post-category">
-                                    后端
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
                                 </a>
                             
                             
@@ -1114,8 +1249,8 @@ TP5 图片上传public function files()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Laravel/">
-                        <span class="chip bg-color">Laravel</span>
+                    <a href="/tags/MySQL安装/">
+                        <span class="chip bg-color">MySQL安装</span>
                     </a>
                     
                 </div>
@@ -1166,6 +1301,100 @@ TP5 图片上传public function files()
     });
 </script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 

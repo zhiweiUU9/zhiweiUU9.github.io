@@ -5,10 +5,11 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Linux下安装MySQL, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
-    <meta name="description" content="Linux下安装MySQLMySQL官方下载地址：https://dev.mysql.com/downloads/mysql/
-下载安装MySQL1.下载并移动MySQL至/usr/local/目录下
-# 下载mysql
-wget http">
+    <meta name="description" content="安装前准备1.检查是否已经安装过mysql，执行以下命令：
+rpm -qa | grep mysql
+如果存在，执行以下命令
+rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
+2. 查找所有m">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -470,14 +471,14 @@ wget http">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        856
+                        966
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        4 分
                     </div>
                     
                 
@@ -493,7 +494,18 @@ wget http">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux下安装MySQL"><a href="#Linux下安装MySQL" class="headerlink" title="Linux下安装MySQL"></a>Linux下安装MySQL</h1><p>MySQL官方下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></p>
+                <h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><p><span style="font-size:18px;"><b>1.</b></span>检查是否已经安装过mysql，执行以下命令：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">rpm -qa | grep mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200504103152.png" alt><br>如果存在，执行以下命令</p>
+<pre class="line-numbers language-ini"><code class="language-ini">rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>2.</b></span> 查找所有mysql相关的文件夹</p>
+<pre class="line-numbers language-ini"><code class="language-ini">whereis mysql
+
+find / -name mysql
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如果存在，执行以下命令删除：</p>
+<pre class="line-numbers language-ini"><code class="language-ini">rm -rf 文件地址1 文件地址2  文件地址2 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="MySQL下载地址"><a href="#MySQL下载地址" class="headerlink" title="MySQL下载地址"></a>MySQL下载地址</h1><p>MySQL官方下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></p>
 <h1 id="下载安装MySQL"><a href="#下载安装MySQL" class="headerlink" title="下载安装MySQL"></a>下载安装MySQL</h1><p><span style="font-size:18px;"><b>1.</b></span>下载并移动MySQL至<code>/usr/local/</code>目录下</p>
 <pre class="line-numbers language-ini"><code class="language-ini"># 下载mysql
 wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz
@@ -570,6 +582,8 @@ touch mariadb.log
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><span style="font-size:16px;"><b>7.2</b></span>给/usr/local/mysql/下的data目录升权限</p>
 <pre class="line-numbers language-ini"><code class="language-ini">chmod -R 777 data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><span style="font-size:16px;"><b>7.3</b></span>给/var/lib下的mysql目录升权限</p>
+<pre class="line-numbers language-ini"><code class="language-ini">chmod -R 777 mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><span style="font-size:18px;"><b>8.</b></span>添加软连接，并重启mysql服务</p>
 <pre class="line-numbers language-ini"><code class="language-ini">ln -s /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
 
@@ -1070,33 +1084,33 @@ chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2332524092.html">
+                <a href="/posts/3460765769.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Linux下安装MySQL">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL主从复制读写分离实现">
                         
-                        <span class="card-title">Linux下安装MySQL</span>
+                        <span class="card-title">MySQL主从复制读写分离实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Linux下安装MySQLMySQL官方下载地址：https://dev.mysql.com/downloads/mysql/
-下载安装MySQL1.下载并移动MySQL至/usr/local/目录下
-# 下载mysql
-wget http
+                            Linux下安装MySQL方法http://chiwai.tang99.club/posts/2332524092.html
+
+系统环境：centos7服务器：主(192.168.178.129)从(192.168.178.130)
+
+主从
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1109,12 +1123,11 @@ wget http
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL安装/">
-                        <span class="chip bg-color">MySQL安装</span>
+                    <a href="/tags/主从复制，读写分离/">
+                        <span class="chip bg-color">主从复制，读写分离</span>
                     </a>
                     
                 </div>
@@ -1235,7 +1248,7 @@ wget http
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.4k</span>&nbsp;字
+                        class="white-color">22.6k</span>&nbsp;字
             
             
             

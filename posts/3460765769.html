@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL主从复制读写分离实现, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
+    <meta name="keywords" content="MySQL主从复制实现, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
     <meta name="description" content="Linux下安装MySQL方法http://chiwai.tang99.club/posts/2332524092.html
 
 系统环境：centos7服务器：主(192.168.178.129)从(192.168.178.130)
@@ -17,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MySQL主从复制读写分离实现 | 志伟&amp;博客</title>
+    <title>MySQL主从复制实现 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -411,13 +411,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        MySQL主从复制读写分离实现
+                        MySQL主从复制实现
                     </div>
                 </div>
             </div>
@@ -529,8 +529,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/主从复制，读写分离/">
-                                <span class="chip bg-color">主从复制，读写分离</span>
+                            <a href="/tags/主从复制/">
+                                <span class="chip bg-color">主从复制</span>
                             </a>
                         
                     </div>
@@ -689,7 +689,6 @@ start slave;
 <pre class="line-numbers language-ini"><code class="language-ini">create table test(id int primary key auto_increment,name varchar(32) not null)charset<span class="token attr-value"><span class="token punctuation">=</span>'utf8';</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后去从服务器上查看，发现也会出现一张表<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200506223754.png" alt></p>
 <p>主从同步成功。</p>
-<h1 id="读写分离实现"><a href="#读写分离实现" class="headerlink" title="读写分离实现"></a>读写分离实现</h1><p>读写分离的前提是必须要基于主从复制才能实现。<br>（正在编写中，敬请期待）；</p>
 
             </div>
             <hr/>
@@ -852,7 +851,7 @@ start slave;
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《MySQL主从复制读写分离实现》
+                    《MySQL主从复制实现》
                 </span> 由
             <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/3460765769.html" property="cc:attributionName"
                rel="cc:attributionURL">
@@ -1152,34 +1151,32 @@ start slave;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/3460765769.html">
+                <a href="/posts/2900512620.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/447.gif" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL主从复制读写分离实现">
+                        <img src="/images/447.gif" data-original="/medias/featureimages/15.jpg" class="responsive-img" alt="MySQL读写分离实现">
                         
-                        <span class="card-title">MySQL主从复制读写分离实现</span>
+                        <span class="card-title">MySQL读写分离实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Linux下安装MySQL方法http://chiwai.tang99.club/posts/2332524092.html
+                            MySQL读写分离实现
+MySQL实现读写分离的前提是要先实现主从复制。可以参考我上一篇文章 http://chiwai.tang99.club/posts/3460765769.html
 
-系统环境：centos7服务器：主(192.168.178.129)从(192.168.178.130)
-
-主从
+什么是读写分离&nbsp;&nbsp;&nbsp
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1192,12 +1189,11 @@ start slave;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/主从复制，读写分离/">
-                        <span class="chip bg-color">主从复制，读写分离</span>
+                    <a href="/tags/读写分离/">
+                        <span class="chip bg-color">读写分离</span>
                     </a>
                     
                 </div>
@@ -1414,7 +1410,7 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">22.6k</span>&nbsp;字
+                        class="white-color">23.8k</span>&nbsp;字
             
             
             

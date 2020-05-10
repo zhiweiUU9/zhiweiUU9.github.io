@@ -4,12 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux下安装MySQL, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
-    <meta name="description" content="安装前准备1.检查是否已经安装过mysql，执行以下命令：
-rpm -qa | grep mysql
-如果存在，执行以下命令
-rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
-2. 查找所有m">
+    <meta name="keywords" content="MySQL读写分离实现, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
+    <meta name="description" content="MySQL读写分离实现
+MySQL实现读写分离的前提是要先实现主从复制。可以参考我上一篇文章 http://chiwai.tang99.club/posts/3460765769.html
+
+什么是读写分离&amp;nbsp;&amp;nbsp;&amp;nbsp">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +16,7 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Linux下安装MySQL | 志伟&amp;博客</title>
+    <title>MySQL读写分离实现 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -411,13 +410,13 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Linux下安装MySQL
+                        MySQL读写分离实现
                     </div>
                 </div>
             </div>
@@ -428,10 +427,99 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -440,8 +528,8 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL安装/">
-                                <span class="chip bg-color">MySQL安装</span>
+                            <a href="/tags/读写分离/">
+                                <span class="chip bg-color">读写分离</span>
                             </a>
                         
                     </div>
@@ -464,14 +552,14 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-01
+                    2020-05-07
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        966
+                        1.2k
                     </div>
                     
 
@@ -494,134 +582,121 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><p><span style="font-size:18px;"><b>1.</b></span>检查是否已经安装过mysql，执行以下命令：</p>
-<pre class="line-numbers language-ini"><code class="language-ini">rpm -qa | grep mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200504103152.png" alt><br>如果存在，执行以下命令</p>
-<pre class="line-numbers language-ini"><code class="language-ini">rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><span style="font-size:18px;"><b>2.</b></span> 查找所有mysql相关的文件夹</p>
-<pre class="line-numbers language-ini"><code class="language-ini">whereis mysql
+                <h1 id="MySQL读写分离实现"><a href="#MySQL读写分离实现" class="headerlink" title="MySQL读写分离实现"></a>MySQL读写分离实现</h1><blockquote>
+<p>MySQL实现读写分离的前提是要先实现主从复制。<br>可以参考我上一篇文章 <a href="http://chiwai.tang99.club/posts/3460765769.html">http://chiwai.tang99.club/posts/3460765769.html</a></p>
+</blockquote>
+<h2 id="什么是读写分离"><a href="#什么是读写分离" class="headerlink" title="什么是读写分离"></a>什么是读写分离</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;MySQL读写分离的原理其实就是让主服务器处理<span style="color:red;">增、删、改、更新</span>的操作，而从服务器则只完成<span style="color:red;">读</span>操作。</p>
+<h2 id="实现读写分离的四种方式"><a href="#实现读写分离的四种方式" class="headerlink" title="实现读写分离的四种方式"></a>实现读写分离的四种方式</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;实现读写分离可以基于第三方插件，也可以通过修改代码的方式实现。常见的方式有如下4种：</p>
+<p><span style="color:red">Amoeba读写分离； MySQL-Proxy读写分离； Mycat读写分离； 基于程序读写分离(效率很高，实施难度大，开发改代码)；</span></p>
+<h2 id="本次实验系统环境"><a href="#本次实验系统环境" class="headerlink" title="本次实验系统环境"></a>本次实验系统环境</h2><p>MySQL主机：192.168.178.129<br>MySQL从机：192.168.178.130<br>MyCat服务器：192.168.178.131</p>
+<h2 id="安装java-jdk"><a href="#安装java-jdk" class="headerlink" title="安装java-jdk"></a>安装java-jdk</h2><p>因为mycat是用java语言写的，所以需要安装java环境</p>
+<h3 id="下载、解压jdk地址"><a href="#下载、解压jdk地址" class="headerlink" title="下载、解压jdk地址"></a>下载、解压jdk地址</h3><p><span style="font-size:18px;"><b>1.</b></span>jdk下载地址<br><a href="https://www.oracle.com/java/technologies/javase-jdk14-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/java/technologies/javase-jdk14-downloads.html</a></p>
+<p>下载好之后通过<code>flashfxp</code>工具传到linux上。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200509163501.png" alt></p>
+<p><span style="font-size:18px;"><b>2.</b></span>解压jdk</p>
+<pre class="line-numbers language-ini"><code class="language-ini">tar -zxvf jdk-14.0.1_linux-x64_bin.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>3.</b></span>重命名jdk、并移动到/usr/目录下</p>
+<pre class="line-numbers language-ini"><code class="language-ini">mv jdk-14.0.1/ jdk14
 
-find / -name mysql
+# 移动到/usr/目录下
+mv jdk14 /usr/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><span style="font-size:18px;"><b>4.</b></span>配置环境变量</p>
+<pre class="line-numbers language-ini"><code class="language-ini">vi /etc/profile
+
+# 在最底层加上以下内容，输入wq保存
+
+<span class="token constant">JAVA_HOME</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/jdk14</span>
+<span class="token constant">CLASSPATH</span><span class="token attr-value"><span class="token punctuation">=</span>%JAVA_HOME%/lib:JAVA_HOME%/jre/lib</span>
+<span class="token constant">PATH</span><span class="token attr-value"><span class="token punctuation">=</span>$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin</span>
+export path CLASSPATH JAVA_HOME
+
+# 更新环境变量
+source /etc/profile
+
+# 查看是否成功
+java -version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200509164903.png" alt="成功"></p>
+<h2 id="安装MyCat"><a href="#安装MyCat" class="headerlink" title="安装MyCat"></a>安装MyCat</h2><p>MyCat下载地址：<a href="http://www.mycat.org.cn/" target="_blank" rel="noopener">http://www.mycat.org.cn/</a></p>
+<h3 id="下载解压mycat"><a href="#下载解压mycat" class="headerlink" title="下载解压mycat"></a>下载解压mycat</h3><pre class="line-numbers language-ini"><code class="language-ini">wget http://dl.mycat.org.cn/1.6.7.1/Mycat-server-1.6.7.1-release-20200209222254-linux.tar.gz
+
+# 解压
+tar -zxvf Mycat-server-1.6.7.1-release-20200209222254-linux.tar.gz
+
+# 将mycat移动到/usr/local/目录下
+mv mycat /usr/local
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="配置mycat环境变量"><a href="#配置mycat环境变量" class="headerlink" title="配置mycat环境变量"></a>配置mycat环境变量</h3><pre class="line-numbers language-ini"><code class="language-ini">vi /etc/profile
+
+# 添加如下内容
+export MYCAT_HOME<span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mycat</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200509232024.png" alt><br>按Esc，输入:wq保存退出</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 刷新环境变量文件
+source /etc/profile
+
+#切换目录
+cd /usr/local/mycat/bin/
+
+#启动mycat
+./mycat start
+
+# 查看mycat状态
+./mycat status
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><span style="color:red">发现mycat无法启动(坑死)</span><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510151627.png" alt="无法启动"></p>
+<h3 id="mycat无法启动解决"><a href="#mycat无法启动解决" class="headerlink" title="mycat无法启动解决"></a>mycat无法启动解决</h3><p><span style="font-size:18px;"><b>1.</b></span>查看错误日志，看看查错(错误日志在<code>logs</code>目录下)</p>
+<pre class="line-numbers language-ini"><code class="language-ini">cat wrapper.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>错误信息：<br><span style="color:red">Java HotSpot(TM) 64-Bit Server VM warning: Ignoring option MaxPermSize; support was removed in 8.0</span><br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510151952.png" alt="错误信息"></p>
+<p>大致意思是java8以后不支持MaxPermSize的配置。</p>
+<p>找到该配置项，在<code>mycat/conf</code>里面的<code>wrapper.conf</code>文件。</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 编辑wrapper.conf文件
+vi wrapper.conf
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>找到<code>wrapper.java.additional.3=-XX:MaxPermSize=64M</code>配置项，注释掉即可。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510153015.png" alt></p>
+<p>然后在启动mycat，成功运行。</p>
+<pre class="line-numbers language-ini"><code class="language-ini">./mycat start
+
+./mycat status
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>如果存在，执行以下命令删除：</p>
-<pre class="line-numbers language-ini"><code class="language-ini">rm -rf 文件地址1 文件地址2  文件地址2 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="MySQL下载地址"><a href="#MySQL下载地址" class="headerlink" title="MySQL下载地址"></a>MySQL下载地址</h1><p>MySQL官方下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></p>
-<h1 id="下载安装MySQL"><a href="#下载安装MySQL" class="headerlink" title="下载安装MySQL"></a>下载安装MySQL</h1><p><span style="font-size:18px;"><b>1.</b></span>下载并移动MySQL至<code>/usr/local/</code>目录下</p>
-<pre class="line-numbers language-ini"><code class="language-ini"># 下载mysql
-wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510153225.png" alt="成功"></p>
+<h3 id="配置Mycat的连接信息-server-xml文件"><a href="#配置Mycat的连接信息-server-xml文件" class="headerlink" title="配置Mycat的连接信息(server.xml文件)"></a>配置Mycat的连接信息(server.xml文件)</h3><p>文件地址在<code>conf/</code>目录下</p>
+<p>只需要配置以下内容：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510153903.png" alt="server.xml文件"></p>
+<h3 id="配置读写分离信息-schema-xml文件"><a href="#配置读写分离信息-schema-xml文件" class="headerlink" title="配置读写分离信息(schema.xml文件)"></a>配置读写分离信息(schema.xml文件)</h3><p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510170152.png" alt="schema.xml"></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510170729.png" alt="schema.xml"><br>注：图片中有一处错误，要将<datahost>标签中<code>balance=0</code>参数修改成<code>balance=1</code></datahost></p>
+<p><span style="color:red;">对于&lt;dataHost&gt;标签，参数说明如下：</span></p>
+<blockquote>
+<p><span style="color:red;">balance指的负载均衡类型，目前的取值有4种： </span><br>1.balance=”0”, 不开启读写分离机制，所有读操作都发送到当前可用的writeHost上。<br>2.balance=”1”，全部的readHost与stand bywriteHost参与select语句的负载均衡，简单的说，当双主双从模式(M1-&gt;S1，M2-&gt;S2，并且M1与 M2互为主备)，正常情况下，M2,S1,S2都参与select语句的负载均衡。<br>3.balance=”2”，所有读操作都随机的在writeHost、readhost上分发。<br>4.balance=”3”，所有读请求随机的分发到wiriterHost对应的readhost执行，writerHost不负担读压力 </p>
+</blockquote>
+<blockquote>
+<p><span style="color:red;">writeType属性： </span><br>1.writeType=”0”,所有写操作发送到配置的第一个writeHost,第一个挂了切到还生存的第二个writeHost,重新启动后以切换后的为准，切换记录在配置文件中:dnindex.properties.<br>2.writeType=”1”,所有写操作都随机地发送到配置的writeHost。</p>
+</blockquote>
+<blockquote>
+<p><span style="color:red;">switchType指的是切换的模式，目前的取值也有4种： </span><br> 1.switchType=’-1’ 表示不自动切换<br> 2.switchType=’1’ 默认值，表示自动切换<br> 3.switchType=’2’ 基于MySQL主从同步的状态决定是否切换,心跳语句为 show slave status<br> 4.switchType=’3’基于MySQLgalary cluster的切换机制（适合集群）（1.4.1），心跳语句为 show status like ‘wsrep%’。</p>
+</blockquote>
+<p><span style="font-size:18px;"><b>5.</b></span>重启mycat。</p>
+<pre class="line-numbers language-ini"><code class="language-ini"># 切换目录
+cd /usr/local/mycat/bin
 
-# 下载完成后解压MySQL
-tar -xzvf mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz
-
-
-# 将解压好的文件移动到/usr/local/目录下
-mv mysql-5.7.30-linux-glibc2.12-x86_64 /usr/local/
-
-cd /usr/local/
-
-# 重命名为mysql
-mv mysql-5.7.30-linux-glibc2.12-x86_64 mysql
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503202825.png" alt></p>
-<p><span style="font-size:18px;"><b>2.</b></span>在/usr/local/mysql目录下创建data目录</p>
-<pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local/mysql
-
-mkdir data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><span style="font-size:18px;"><b>3.</b></span>更改mysql目录下所有的目录及文件夹所属的用户组和用户，以及权限</p>
-<pre class="line-numbers language-ini"><code class="language-ini">chown -R mysql:mysql /usr/local/mysql
-
-chmod -R 755 /usr/local/mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>如果出现<span style="color:red">chown: 无效的用户: “mysql:mysql”</span>的错误，需要先创建组和用户。</p>
-<pre class="line-numbers language-ini"><code class="language-ini">#创建mysql组
-groupadd mysql
-
-#创建mysql用户添加到mysql组
-useradd -r -g mysql mysql
+# 重启mycat
+./mycat restart
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><span style="font-size:18px;"><b>4.</b></span>编译安装并初始化mysql,务必记住初始化输出日志末尾的密码（数据库管理员临时密码）</p>
-<pre class="line-numbers language-ini"><code class="language-ini">cd /usr/local/mysql/bin
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><span style="font-size:18px;"><b>1.</b></span>将mycat的日志模式改成debug模式，方便找坑。</p>
+<pre class="line-numbers language-ini"><code class="language-ini">vi /usr/local/mycat/conf/log4j2.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510160806.png" alt></p>
+<p><span style="font-size:18px;"><b>2.</b></span>mycat两种登陆方式</p>
+<p><span style="color:red">管理端口：</span>mysql -uroot -proot -P9066 -h192.168.178.131</p>
+<p><span style="color:red">数据端口：</span>mysql -uroot -proot -P8066 -h192.168.178.131</p>
+<p><span style="font-size:18px;"><b>3.</b></span>登录mycat，查看数据库信息。</p>
+<pre class="line-numbers language-ini"><code class="language-ini">mysql -uroot -proot -P8066 -h192.168.178.131
 
-./mysqld --initialize --user<span class="token attr-value"><span class="token punctuation">=</span>mysql --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql</span>
+show databases;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><span style="font-size:18px;"><b>5.</b></span>运行初始化命令成功后，输出日志如下：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503210305.png" alt><br>记住末尾那段字符串，此字符串为mysql管理员临时登陆密码。</p>
-<p><span style="font-size:18px;"><b>6.</b></span>编辑配置文件my.cnf，添加配置如下</p>
-<pre class="line-numbers language-ini"><code class="language-ini">vi /etc/my.cnf
-
-
-<span class="token selector">[mysqld]</span>
-<span class="token constant">datadir</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mysql/data</span>
-<span class="token constant">basedir</span> <span class="token attr-value"><span class="token punctuation">=</span> /usr/local/mysql</span>
-
-<span class="token constant">character-set-server</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span>
-
-<span class="token constant">socket</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql/mysql.sock</span>
-# Disabling symbolic-links is recommended to prevent assorted security risks
-<span class="token constant">symbolic-links</span><span class="token attr-value"><span class="token punctuation">=</span>0</span>
-# Settings user and group are ignored when systemd is used.
-# If you need to run mysqld under a different user or group,
-# customize your systemd unit file for mariadb according to the
-# instructions in http://fedoraproject.org/wiki/Systemd
-
-<span class="token selector">[mysqld_safe]</span>
-<span class="token constant">log-error</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mysql/data/mariadb/mariadb.log</span>
-<span class="token constant">pid-file</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/mysql/data/mariadb/mariadb.pid</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503224413.png" alt></p>
-<p><span style="font-size:18px;"><b>7.</b></span>启动mysql服务器</p>
-<pre class="line-numbers language-ini"><code class="language-ini">/usr/local/mysql/support-files/mysql.server start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>显示如下，则代表成功<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503224618.png" alt></p>
-<p>如果出现如下错误，<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503224752.png" alt><br>出现错误原因说明:<br><b>1.</b> 在这个目录下没有这个目录或文件，并且用户权限不够，无法自动创建。</p>
-<p><b>2.</b> 说白了也就是权限不够，无法创建socket套接字连接文件</p>
-<p>解决方法：<br><span style="font-size:16px;"><b>7.1</b></span>需要在/usr/local/mysql/data/创建目录<code>mariadb</code>以及文件<code>mariadb.log</code></p>
-<pre class="line-numbers language-ini"><code class="language-ini">mkdir mariadb
-
-cd mariadb
-
-touch mariadb.log
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><span style="font-size:16px;"><b>7.2</b></span>给/usr/local/mysql/下的data目录升权限</p>
-<pre class="line-numbers language-ini"><code class="language-ini">chmod -R 777 data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><span style="font-size:16px;"><b>7.3</b></span>给/var/lib下的mysql目录升权限</p>
-<pre class="line-numbers language-ini"><code class="language-ini">chmod -R 777 mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><span style="font-size:18px;"><b>8.</b></span>添加软连接，并重启mysql服务</p>
-<pre class="line-numbers language-ini"><code class="language-ini">ln -s /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
-
-ln -s /usr/local/mysql/bin/mysql /usr/bin/mysql
-
-service mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><span style="font-size:18px;"><b>9.</b></span>登录mysql，修改密码(密码为第5步的临时密码)</p>
-<pre class="line-numbers language-ini"><code class="language-ini">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输入完密码后，如果报以下错误：<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503232659.png" alt><br>是因为你my.cnf 配置文件中设置了 [mysqld] 的参数 socket ，而没有设置[client]的参数socket。</p>
-<p>解决方法：<br>添加 [client] 配置项，如下所示</p>
-<pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[client]</span>
-<span class="token constant">port</span><span class="token attr-value"><span class="token punctuation">=</span>3306</span>
-<span class="token constant">socket</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql/mysql.sock</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503232744.png" alt="红圈的是新添加的"><br>然后重启服务</p>
-<pre class="line-numbers language-ini"><code class="language-ini">service mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>再次重新输入密码后就成功了。<br><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503232850.png" alt="成功进入"></p>
-<p><span style="font-size:18px;"><b>10.</b></span>修改密码</p>
-<pre class="line-numbers language-ini"><code class="language-ini">set password for root@localhost <span class="token attr-value"><span class="token punctuation">=</span> password('yourpass');</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503233023.png" alt></p>
-<p><span style="font-size:18px;"><b>11.</b></span>开放远程连接</p>
-<pre class="line-numbers language-ini"><code class="language-ini">use mysql;
-
-update user set user.Host<span class="token attr-value"><span class="token punctuation">=</span>'%' where user.User='root';</span>
-
-flush privileges;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200503233159.png" alt></p>
-<p><span style="font-size:18px;"><b>12.</b></span>设置开机自动启动</p>
-<pre class="line-numbers language-ini"><code class="language-ini">1、将服务文件拷贝到init.d下，并重命名为mysql
-cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
-2、赋予可执行权限
-chmod +x /etc/init.d/mysqld
-3、添加服务
-chkconfig --add mysqld
-4、显示服务列表
-chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>到这里就结束了，过程很坎坷，步步报错，还好都解决了。</p>
-<p>参考:<br><a href="https://www.jianshu.com/p/276d59cbc529" target="_blank" rel="noopener">https://www.jianshu.com/p/276d59cbc529</a><br><a href="https://www.jb51.net/article/174244.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174244.htm</a></p>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510163323.png" alt></p>
+<p><span style="font-size:18px;"><b>2.</b></span>查看datasource;</p>
+<pre class="line-numbers language-ini"><code class="language-ini">show datasource;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/20200510181419.png" alt></p>
+<p>踩坑参考：<br><a href="https://www.pianshen.com/article/1428298232/" target="_blank" rel="noopener">https://www.pianshen.com/article/1428298232/</a></p>
+<p>配置参考：<br><a href="https://blog.csdn.net/qq_15006743/article/details/104093195" target="_blank" rel="noopener">https://blog.csdn.net/qq_15006743/article/details/104093195</a></p>
 
             </div>
             <hr/>
@@ -784,9 +859,9 @@ chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Linux下安装MySQL》
+                    《MySQL读写分离实现》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2332524092.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2900512620.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 志伟
             </a> 采用
@@ -1084,9 +1159,63 @@ chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/2900512620.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/447.gif" data-original="/medias/featureimages/15.jpg" class="responsive-img" alt="MySQL读写分离实现">
+                        
+                        <span class="card-title">MySQL读写分离实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            MySQL读写分离实现
+MySQL实现读写分离的前提是要先实现主从复制。可以参考我上一篇文章 http://chiwai.tang99.club/posts/3460765769.html
+
+什么是读写分离&nbsp;&nbsp;&nbsp
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/读写分离/">
+                        <span class="chip bg-color">读写分离</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/posts/3460765769.html">
                     <div class="card-image">
@@ -1108,9 +1237,9 @@ chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1128,57 +1257,6 @@ chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span>
                     
                     <a href="/tags/主从复制/">
                         <span class="chip bg-color">主从复制</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/4120007045.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/images/447.gif" data-original="/medias/featureimages/6.jpg" class="responsive-img" alt="keepalived出现主备机同时绑定vip的解决方法">
-                        
-                        <span class="card-title">keepalived出现主备机同时绑定vip的解决方法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            配置完keepalived之后出现一点小问题，就是启动keepalived之后，发现主备机上同时绑定了虚拟IP，跟预期结果不一样。
-1.检查keepalived.conf配置文件，是否配置出现问题。
-主机配置(192.168.178.129
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/keepalived/" class="post-category">
-                                    keepalived
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/keepalived/">
-                        <span class="chip bg-color">keepalived</span>
                     </a>
                     
                 </div>
@@ -1229,6 +1307,100 @@ chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span>
     });
 </script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 

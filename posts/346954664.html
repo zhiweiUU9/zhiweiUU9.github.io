@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="PHP简单功能汇总, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
     <meta name="description" content="
-简单做个记录，初学者，也算是记录成长的过程！
+工作中的小功能，做个记录，方便使用！
 
 TP5 图片上传public function files()
     {
         $file = request()-&gt;file(&#39;file&#39;);
-        if (!$fi">
+        if (!$file){">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -590,7 +590,7 @@ TP5 图片上传public function files()
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>简单做个记录，初学者，也算是记录成长的过程！</p>
+<p>工作中的小功能，做个记录，方便使用！</p>
 </blockquote>
 <h1 id="TP5-图片上传"><a href="#TP5-图片上传" class="headerlink" title="TP5 图片上传"></a>TP5 图片上传</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">files</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
@@ -1524,6 +1524,36 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
 
     <span class="token keyword">return</span> <span class="token function">json</span><span class="token punctuation">(</span><span class="token variable">$return</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="考试试题随机分配函数封装"><a href="#考试试题随机分配函数封装" class="headerlink" title="考试试题随机分配函数封装"></a>考试试题随机分配函数封装</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ * @param string $type 题型
+ * @param int $limit 随机生成多少道题
+ * @param array $ids id值
+ * @return array 
+ *  自动生成试题
+ */</span>
+<span class="token keyword">function</span> <span class="token function">getRandomQuestions</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token operator">=</span><span class="token string">'判断题'</span><span class="token punctuation">,</span> <span class="token variable">$limit</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token variable">$ids</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$Bll_NewsShiTi</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Bll_NewsShiTi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$pConditionArr</span><span class="token operator">=</span> <span class="token string">"`type`="</span><span class="token punctuation">.</span><span class="token string">"'$type'"</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$list</span> <span class="token operator">=</span> <span class="token variable">$Bll_NewsShiTi</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getAllListDB</span><span class="token punctuation">(</span><span class="token string">'id,title,type,option_list,answer,analysis'</span><span class="token punctuation">,</span><span class="token variable">$pConditionArr</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$limit</span> <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$keys</span> <span class="token operator">=</span> <span class="token function">array_rand</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">,</span> <span class="token variable">$limit</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$limit</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token variable">$keys</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$keys</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$keys</span> <span class="token keyword">as</span> <span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token variable">$ids</span><span class="token punctuation">[</span><span class="token variable">$list</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$list</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$list</span> <span class="token keyword">as</span> <span class="token variable">$key</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$item</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$ids</span><span class="token punctuation">[</span><span class="token variable">$item</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$item</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$ids</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>

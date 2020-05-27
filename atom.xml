@@ -5,9 +5,9 @@
   <subtitle>Zhi-wei blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="%5Bobject%20Object%5D" rel="hub"/>
-  <link href="http://chiwai.tang99.club/"/>
+  <link href="https://chiwai.tang99.club/"/>
   <updated>2020-05-17T14:57:26.980Z</updated>
-  <id>http://chiwai.tang99.club/</id>
+  <id>https://chiwai.tang99.club/</id>
   
   <author>
     <name>志伟</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>linux安装redis</title>
-    <link href="http://chiwai.tang99.club/posts/2051437431.html"/>
-    <id>http://chiwai.tang99.club/posts/2051437431.html</id>
+    <link href="https://chiwai.tang99.club/posts/2051437431.html"/>
+    <id>https://chiwai.tang99.club/posts/2051437431.html</id>
     <published>2020-05-16T07:30:53.000Z</published>
     <updated>2020-05-17T14:57:26.980Z</updated>
     
@@ -35,17 +35,17 @@
     </summary>
     
     
-      <category term="redis" scheme="http://chiwai.tang99.club/categories/redis/"/>
+      <category term="redis" scheme="https://chiwai.tang99.club/categories/redis/"/>
     
     
-      <category term="redis" scheme="http://chiwai.tang99.club/tags/redis/"/>
+      <category term="redis" scheme="https://chiwai.tang99.club/tags/redis/"/>
     
   </entry>
   
   <entry>
     <title>MySQL读写分离实现</title>
-    <link href="http://chiwai.tang99.club/posts/2900512620.html"/>
-    <id>http://chiwai.tang99.club/posts/2900512620.html</id>
+    <link href="https://chiwai.tang99.club/posts/2900512620.html"/>
+    <id>https://chiwai.tang99.club/posts/2900512620.html</id>
     <published>2020-05-07T13:23:05.000Z</published>
     <updated>2020-05-10T10:15:19.120Z</updated>
     
@@ -61,17 +61,17 @@
     </summary>
     
     
-      <category term="MySQL" scheme="http://chiwai.tang99.club/categories/MySQL/"/>
+      <category term="MySQL" scheme="https://chiwai.tang99.club/categories/MySQL/"/>
     
     
-      <category term="读写分离" scheme="http://chiwai.tang99.club/tags/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/"/>
+      <category term="读写分离" scheme="https://chiwai.tang99.club/tags/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/"/>
     
   </entry>
   
   <entry>
     <title>MySQL主从复制实现</title>
-    <link href="http://chiwai.tang99.club/posts/3460765769.html"/>
-    <id>http://chiwai.tang99.club/posts/3460765769.html</id>
+    <link href="https://chiwai.tang99.club/posts/3460765769.html"/>
+    <id>https://chiwai.tang99.club/posts/3460765769.html</id>
     <published>2020-05-06T12:24:34.000Z</published>
     <updated>2020-05-07T13:22:20.992Z</updated>
     
@@ -87,17 +87,17 @@
     </summary>
     
     
-      <category term="MySQL" scheme="http://chiwai.tang99.club/categories/MySQL/"/>
+      <category term="MySQL" scheme="https://chiwai.tang99.club/categories/MySQL/"/>
     
     
-      <category term="主从复制" scheme="http://chiwai.tang99.club/tags/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/"/>
+      <category term="主从复制" scheme="https://chiwai.tang99.club/tags/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/"/>
     
   </entry>
   
   <entry>
     <title>Linux下安装MySQL</title>
-    <link href="http://chiwai.tang99.club/posts/2332524092.html"/>
-    <id>http://chiwai.tang99.club/posts/2332524092.html</id>
+    <link href="https://chiwai.tang99.club/posts/2332524092.html"/>
+    <id>https://chiwai.tang99.club/posts/2332524092.html</id>
     <published>2020-05-01T10:56:55.000Z</published>
     <updated>2020-05-09T15:55:13.842Z</updated>
     
@@ -113,17 +113,17 @@
     </summary>
     
     
-      <category term="MySQL" scheme="http://chiwai.tang99.club/categories/MySQL/"/>
+      <category term="MySQL" scheme="https://chiwai.tang99.club/categories/MySQL/"/>
     
     
-      <category term="MySQL安装" scheme="http://chiwai.tang99.club/tags/MySQL%E5%AE%89%E8%A3%85/"/>
+      <category term="MySQL安装" scheme="https://chiwai.tang99.club/tags/MySQL%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
   <entry>
     <title>keepalived出现主备机同时绑定vip的解决方法</title>
-    <link href="http://chiwai.tang99.club/posts/4120007045.html"/>
-    <id>http://chiwai.tang99.club/posts/4120007045.html</id>
+    <link href="https://chiwai.tang99.club/posts/4120007045.html"/>
+    <id>https://chiwai.tang99.club/posts/4120007045.html</id>
     <published>2020-04-15T14:44:19.000Z</published>
     <updated>2020-05-03T11:14:30.081Z</updated>
     
@@ -139,17 +139,17 @@
     </summary>
     
     
-      <category term="keepalived" scheme="http://chiwai.tang99.club/categories/keepalived/"/>
+      <category term="keepalived" scheme="https://chiwai.tang99.club/categories/keepalived/"/>
     
     
-      <category term="keepalived" scheme="http://chiwai.tang99.club/tags/keepalived/"/>
+      <category term="keepalived" scheme="https://chiwai.tang99.club/tags/keepalived/"/>
     
   </entry>
   
   <entry>
     <title>nginx+keepalived可用热备负载均衡</title>
-    <link href="http://chiwai.tang99.club/posts/2236109518.html"/>
-    <id>http://chiwai.tang99.club/posts/2236109518.html</id>
+    <link href="https://chiwai.tang99.club/posts/2236109518.html"/>
+    <id>https://chiwai.tang99.club/posts/2236109518.html</id>
     <published>2020-04-12T15:33:28.000Z</published>
     <updated>2020-05-03T11:13:58.596Z</updated>
     
@@ -165,17 +165,17 @@
     </summary>
     
     
-      <category term="nginx" scheme="http://chiwai.tang99.club/categories/nginx/"/>
+      <category term="nginx" scheme="https://chiwai.tang99.club/categories/nginx/"/>
     
     
-      <category term="负载均衡" scheme="http://chiwai.tang99.club/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+      <category term="负载均衡" scheme="https://chiwai.tang99.club/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
     
   </entry>
   
   <entry>
     <title>Linux下安装keepalived与配置</title>
-    <link href="http://chiwai.tang99.club/posts/2566092336.html"/>
-    <id>http://chiwai.tang99.club/posts/2566092336.html</id>
+    <link href="https://chiwai.tang99.club/posts/2566092336.html"/>
+    <id>https://chiwai.tang99.club/posts/2566092336.html</id>
     <published>2020-04-11T09:22:19.000Z</published>
     <updated>2020-05-03T11:19:00.868Z</updated>
     
@@ -191,17 +191,17 @@
     </summary>
     
     
-      <category term="keepalived" scheme="http://chiwai.tang99.club/categories/keepalived/"/>
+      <category term="keepalived" scheme="https://chiwai.tang99.club/categories/keepalived/"/>
     
     
-      <category term="keepalived" scheme="http://chiwai.tang99.club/tags/keepalived/"/>
+      <category term="keepalived" scheme="https://chiwai.tang99.club/tags/keepalived/"/>
     
   </entry>
   
   <entry>
     <title>Linux下安装nginx</title>
-    <link href="http://chiwai.tang99.club/posts/3979785611.html"/>
-    <id>http://chiwai.tang99.club/posts/3979785611.html</id>
+    <link href="https://chiwai.tang99.club/posts/3979785611.html"/>
+    <id>https://chiwai.tang99.club/posts/3979785611.html</id>
     <published>2020-04-10T17:27:23.000Z</published>
     <updated>2020-05-03T11:12:51.987Z</updated>
     
@@ -217,17 +217,17 @@
     </summary>
     
     
-      <category term="nginx" scheme="http://chiwai.tang99.club/categories/nginx/"/>
+      <category term="nginx" scheme="https://chiwai.tang99.club/categories/nginx/"/>
     
     
-      <category term="安装nginx" scheme="http://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85nginx/"/>
+      <category term="安装nginx" scheme="https://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85nginx/"/>
     
   </entry>
   
   <entry>
     <title>centos7 ip addr 无法查看虚拟机IP解决办法</title>
-    <link href="http://chiwai.tang99.club/posts/3053597239.html"/>
-    <id>http://chiwai.tang99.club/posts/3053597239.html</id>
+    <link href="https://chiwai.tang99.club/posts/3053597239.html"/>
+    <id>https://chiwai.tang99.club/posts/3053597239.html</id>
     <published>2020-04-10T13:12:11.000Z</published>
     <updated>2020-05-03T11:12:13.036Z</updated>
     
@@ -243,17 +243,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://chiwai.tang99.club/categories/Linux/"/>
+      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
     
     
-      <category term="无法查看虚拟机IP解决办法" scheme="http://chiwai.tang99.club/tags/%E6%97%A0%E6%B3%95%E6%9F%A5%E7%9C%8B%E8%99%9A%E6%8B%9F%E6%9C%BAIP%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <category term="无法查看虚拟机IP解决办法" scheme="https://chiwai.tang99.club/tags/%E6%97%A0%E6%B3%95%E6%9F%A5%E7%9C%8B%E8%99%9A%E6%8B%9F%E6%9C%BAIP%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>Linux Crontab 定时任务</title>
-    <link href="http://chiwai.tang99.club/posts/2326891732.html"/>
-    <id>http://chiwai.tang99.club/posts/2326891732.html</id>
+    <link href="https://chiwai.tang99.club/posts/2326891732.html"/>
+    <id>https://chiwai.tang99.club/posts/2326891732.html</id>
     <published>2020-04-05T13:50:43.000Z</published>
     <updated>2020-05-03T11:10:25.000Z</updated>
     
@@ -269,17 +269,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://chiwai.tang99.club/categories/Linux/"/>
+      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
     
     
-      <category term="定时任务" scheme="http://chiwai.tang99.club/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+      <category term="定时任务" scheme="https://chiwai.tang99.club/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
   <entry>
     <title>微信公众号封装CURL请求</title>
-    <link href="http://chiwai.tang99.club/posts/1881859890.html"/>
-    <id>http://chiwai.tang99.club/posts/1881859890.html</id>
+    <link href="https://chiwai.tang99.club/posts/1881859890.html"/>
+    <id>https://chiwai.tang99.club/posts/1881859890.html</id>
     <published>2020-03-20T08:39:25.000Z</published>
     <updated>2020-05-03T11:08:30.212Z</updated>
     
@@ -295,19 +295,19 @@
     </summary>
     
     
-      <category term="微信公众号" scheme="http://chiwai.tang99.club/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+      <category term="微信公众号" scheme="https://chiwai.tang99.club/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
     
     
-      <category term="CURL" scheme="http://chiwai.tang99.club/tags/CURL/"/>
+      <category term="CURL" scheme="https://chiwai.tang99.club/tags/CURL/"/>
     
-      <category term="获取token" scheme="http://chiwai.tang99.club/tags/%E8%8E%B7%E5%8F%96token/"/>
+      <category term="获取token" scheme="https://chiwai.tang99.club/tags/%E8%8E%B7%E5%8F%96token/"/>
     
   </entry>
   
   <entry>
     <title>git操作实战</title>
-    <link href="http://chiwai.tang99.club/posts/3559721766.html"/>
-    <id>http://chiwai.tang99.club/posts/3559721766.html</id>
+    <link href="https://chiwai.tang99.club/posts/3559721766.html"/>
+    <id>https://chiwai.tang99.club/posts/3559721766.html</id>
     <published>2020-03-15T04:26:41.000Z</published>
     <updated>2020-05-03T11:07:01.799Z</updated>
     
@@ -323,17 +323,17 @@
     </summary>
     
     
-      <category term="Git" scheme="http://chiwai.tang99.club/categories/Git/"/>
+      <category term="Git" scheme="https://chiwai.tang99.club/categories/Git/"/>
     
     
-      <category term="Git实战" scheme="http://chiwai.tang99.club/tags/Git%E5%AE%9E%E6%88%98/"/>
+      <category term="Git实战" scheme="https://chiwai.tang99.club/tags/Git%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>openlayers3简单demo实现</title>
-    <link href="http://chiwai.tang99.club/posts/2687365199.html"/>
-    <id>http://chiwai.tang99.club/posts/2687365199.html</id>
+    <link href="https://chiwai.tang99.club/posts/2687365199.html"/>
+    <id>https://chiwai.tang99.club/posts/2687365199.html</id>
     <published>2020-03-13T01:34:02.000Z</published>
     <updated>2020-03-16T08:05:31.160Z</updated>
     
@@ -349,17 +349,17 @@
     </summary>
     
     
-      <category term="地图" scheme="http://chiwai.tang99.club/categories/%E5%9C%B0%E5%9B%BE/"/>
+      <category term="地图" scheme="https://chiwai.tang99.club/categories/%E5%9C%B0%E5%9B%BE/"/>
     
     
-      <category term="Openlayers3" scheme="http://chiwai.tang99.club/tags/Openlayers3/"/>
+      <category term="Openlayers3" scheme="https://chiwai.tang99.club/tags/Openlayers3/"/>
     
   </entry>
   
   <entry>
     <title>Windows2012安装IIS中.NET Framework3.5报错</title>
-    <link href="http://chiwai.tang99.club/posts/724213894.html"/>
-    <id>http://chiwai.tang99.club/posts/724213894.html</id>
+    <link href="https://chiwai.tang99.club/posts/724213894.html"/>
+    <id>https://chiwai.tang99.club/posts/724213894.html</id>
     <published>2020-03-06T13:29:36.000Z</published>
     <updated>2020-04-17T04:29:25.517Z</updated>
     
@@ -375,19 +375,19 @@
     </summary>
     
     
-      <category term="服务器" scheme="http://chiwai.tang99.club/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="服务器" scheme="https://chiwai.tang99.club/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="安装" scheme="http://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85/"/>
+      <category term="安装" scheme="https://chiwai.tang99.club/tags/%E5%AE%89%E8%A3%85/"/>
     
-      <category term="IIS" scheme="http://chiwai.tang99.club/tags/IIS/"/>
+      <category term="IIS" scheme="https://chiwai.tang99.club/tags/IIS/"/>
     
   </entry>
   
   <entry>
     <title>PHP导入功能</title>
-    <link href="http://chiwai.tang99.club/posts/549686560.html"/>
-    <id>http://chiwai.tang99.club/posts/549686560.html</id>
+    <link href="https://chiwai.tang99.club/posts/549686560.html"/>
+    <id>https://chiwai.tang99.club/posts/549686560.html</id>
     <published>2020-03-02T00:42:19.000Z</published>
     <updated>2020-03-14T00:52:41.919Z</updated>
     
@@ -403,19 +403,19 @@
     </summary>
     
     
-      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="导入" scheme="http://chiwai.tang99.club/tags/%E5%AF%BC%E5%85%A5/"/>
+      <category term="导入" scheme="https://chiwai.tang99.club/tags/%E5%AF%BC%E5%85%A5/"/>
     
   </entry>
   
   <entry>
     <title>Linux系统上安装git</title>
-    <link href="http://chiwai.tang99.club/posts/3327442321.html"/>
-    <id>http://chiwai.tang99.club/posts/3327442321.html</id>
+    <link href="https://chiwai.tang99.club/posts/3327442321.html"/>
+    <id>https://chiwai.tang99.club/posts/3327442321.html</id>
     <published>2020-02-16T04:51:37.000Z</published>
     <updated>2020-04-17T06:52:06.817Z</updated>
     
@@ -431,17 +431,17 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://chiwai.tang99.club/categories/Linux/"/>
+      <category term="Linux" scheme="https://chiwai.tang99.club/categories/Linux/"/>
     
     
-      <category term="Git" scheme="http://chiwai.tang99.club/tags/Git/"/>
+      <category term="Git" scheme="https://chiwai.tang99.club/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>PHP基于phpqrcode类生成二维码</title>
-    <link href="http://chiwai.tang99.club/posts/123876002.html"/>
-    <id>http://chiwai.tang99.club/posts/123876002.html</id>
+    <link href="https://chiwai.tang99.club/posts/123876002.html"/>
+    <id>https://chiwai.tang99.club/posts/123876002.html</id>
     <published>2020-01-31T06:06:29.000Z</published>
     <updated>2020-01-31T12:40:06.606Z</updated>
     
@@ -457,19 +457,19 @@
     </summary>
     
     
-      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="二维码" scheme="http://chiwai.tang99.club/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+      <category term="二维码" scheme="https://chiwai.tang99.club/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>Vue简单功能汇总</title>
-    <link href="http://chiwai.tang99.club/posts/2780046153.html"/>
-    <id>http://chiwai.tang99.club/posts/2780046153.html</id>
+    <link href="https://chiwai.tang99.club/posts/2780046153.html"/>
+    <id>https://chiwai.tang99.club/posts/2780046153.html</id>
     <published>2020-01-30T08:40:05.000Z</published>
     <updated>2020-04-17T04:52:49.818Z</updated>
     
@@ -485,17 +485,17 @@
     </summary>
     
     
-      <category term="前端" scheme="http://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="Vue" scheme="http://chiwai.tang99.club/tags/Vue/"/>
+      <category term="Vue" scheme="https://chiwai.tang99.club/tags/Vue/"/>
     
   </entry>
   
   <entry>
     <title>Js+Jquery简单功能汇总</title>
-    <link href="http://chiwai.tang99.club/posts/1554494174.html"/>
-    <id>http://chiwai.tang99.club/posts/1554494174.html</id>
+    <link href="https://chiwai.tang99.club/posts/1554494174.html"/>
+    <id>https://chiwai.tang99.club/posts/1554494174.html</id>
     <published>2020-01-29T06:43:11.000Z</published>
     <updated>2020-01-29T07:30:26.975Z</updated>
     
@@ -511,19 +511,19 @@
     </summary>
     
     
-      <category term="前端" scheme="http://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://chiwai.tang99.club/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="Javascript" scheme="http://chiwai.tang99.club/tags/Javascript/"/>
+      <category term="Javascript" scheme="https://chiwai.tang99.club/tags/Javascript/"/>
     
-      <category term="Jquery" scheme="http://chiwai.tang99.club/tags/Jquery/"/>
+      <category term="Jquery" scheme="https://chiwai.tang99.club/tags/Jquery/"/>
     
   </entry>
   
   <entry>
     <title>PHP简单功能汇总</title>
-    <link href="http://chiwai.tang99.club/posts/346954664.html"/>
-    <id>http://chiwai.tang99.club/posts/346954664.html</id>
+    <link href="https://chiwai.tang99.club/posts/346954664.html"/>
+    <id>https://chiwai.tang99.club/posts/346954664.html</id>
     <published>2020-01-26T04:47:05.000Z</published>
     <updated>2020-05-20T13:07:33.242Z</updated>
     
@@ -539,12 +539,12 @@
     </summary>
     
     
-      <category term="后端" scheme="http://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
+      <category term="后端" scheme="https://chiwai.tang99.club/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="PHP" scheme="http://chiwai.tang99.club/tags/PHP/"/>
+      <category term="PHP" scheme="https://chiwai.tang99.club/tags/PHP/"/>
     
-      <category term="汇总" scheme="http://chiwai.tang99.club/tags/%E6%B1%87%E6%80%BB/"/>
+      <category term="汇总" scheme="https://chiwai.tang99.club/tags/%E6%B1%87%E6%80%BB/"/>
     
   </entry>
   

@@ -559,7 +559,7 @@ yum install libxml2-devel
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        834
+                        835
                     </div>
                     
 
@@ -694,11 +694,12 @@ server {
     server_name  localhost;
 
     location / {
-        index  index.htm index.html index.php;
-        if (!-e $request_filename) {
-           rewrite  ^/(.*)$  /index.php/$1  last;
-           break;
-        }
+
+                index  index.html index.htm index.php;
+                if (!-e $request_filename) {
+                    rewrite  ^/(.*)$  /index.php?s<span class="token attr-value"><span class="token punctuation">=</span>$1  last;</span>
+                    break;
+                }
     }
     location ~ \.php/?.*$ {
         fastcgi_pass   127.0.0.1:9000;
@@ -719,7 +720,7 @@ server {
         fastcgi_param   SCRIPT_NAME   $fastcgi_script_name2;
     }
 }
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>暂时结束！</p>
 <p>参考资料：<a href="https://blog.csdn.net/mxdzchallpp/article/details/82867681" target="_blank" rel="noopener">https://blog.csdn.net/mxdzchallpp/article/details/82867681</a></p>
 
@@ -1442,7 +1443,7 @@ rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.4k</span>&nbsp;字
+                        class="white-color">25.7k</span>&nbsp;字
             
             
             

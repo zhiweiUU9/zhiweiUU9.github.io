@@ -4,14 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="微信公众号封装CURL请求, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
-    <meta name="description" content="
-微信公众号封装CURL请求方法，结合Redis缓存获取access_token
-
-封装CURL请求方法/**
+    <meta name="keywords" content="微信公众号功能汇总, PHP,MySQL,thinkPHP,Laravel,Linux,JavaScript,Jquery,vue,html5,css3,前端,后端.">
+    <meta name="description" content="封装CURL请求方法/**
  * @param $api 接口地址
  * @param array $data 数据信息
- * @param string ">
+ * @param string $method 请求方法
+ * @param string $returnType ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>微信公众号封装CURL请求 | 志伟&amp;博客</title>
+    <title>微信公众号功能汇总 | 志伟&amp;博客</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -413,13 +411,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        微信公众号封装CURL请求
+                        微信公众号功能汇总
                     </div>
                 </div>
             </div>
@@ -531,12 +529,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CURL/">
-                                <span class="chip bg-color">CURL</span>
-                            </a>
-                        
-                            <a href="/tags/获取token/">
-                                <span class="chip bg-color">获取token</span>
+                            <a href="/tags/汇总/">
+                                <span class="chip bg-color">汇总</span>
                             </a>
                         
                     </div>
@@ -566,14 +560,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        278
+                        475
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -589,10 +583,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>微信公众号封装CURL请求方法，结合Redis缓存获取access_token</p>
-</blockquote>
-<h1 id="封装CURL请求方法"><a href="#封装CURL请求方法" class="headerlink" title="封装CURL请求方法"></a>封装CURL请求方法</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+                <h1 id="封装CURL请求方法"><a href="#封装CURL请求方法" class="headerlink" title="封装CURL请求方法"></a>封装CURL请求方法</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
  * @param $api 接口地址
  * @param array $data 数据信息
  * @param string $method 请求方法
@@ -643,6 +634,46 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token variable">$get_access_token</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="微信服务器验证token信息"><a href="#微信服务器验证token信息" class="headerlink" title="微信服务器验证token信息"></a>微信服务器验证token信息</h1><pre class="line-numbers language-php"><code class="language-php">    <span class="token comment" spellcheck="true">//微信开发者token</span>
+    <span class="token keyword">private</span> <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token string">'vXfY8RugnWWy1hG6HOoVu9xxxxxxxx'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//如果存在，说明时检验公众号</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'echostr'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//校验公众号</span>
+            <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">checkout</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 检验微信公众号
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">checkout</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">//验证消息的确来自微信服务器</span>
+        <span class="token variable">$signature</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'signature'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。</span>
+        <span class="token variable">$timestamp</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'timestamp'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//时间戳</span>
+        <span class="token variable">$nonce</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'nonce'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//随机数</span>
+        <span class="token variable">$echostr</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'echostr'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//随机字符串</span>
+
+
+        <span class="token comment" spellcheck="true">//1）将token、timestamp、nonce三个参数进行字典序排序</span>
+        <span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$timestamp</span><span class="token punctuation">,</span> <span class="token variable">$nonce</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 2）将三个参数字符串拼接成一个字符串进行sha1加密</span>
+        <span class="token variable">$temp</span> <span class="token operator">=</span> <span class="token function">implode</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$temp</span> <span class="token operator">=</span> <span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$temp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 3）开发者获得加密后的字符串可与signature对比，标识该请求来源于微信</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$signature</span> <span class="token operator">===</span> <span class="token variable">$temp</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$echostr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token variable">$echostr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/1.png" alt></p>
 
             </div>
             <hr/>
@@ -805,7 +836,7 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《微信公众号封装CURL请求》
+                    《微信公众号功能汇总》
                 </span> 由
             <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/1881859890.html" property="cc:attributionName"
                rel="cc:attributionURL">
@@ -1362,7 +1393,7 @@
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">26k</span>&nbsp;字
+                        class="white-color">26.2k</span>&nbsp;字
             
             
             

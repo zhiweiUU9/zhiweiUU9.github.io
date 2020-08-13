@@ -452,7 +452,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">33</a></span>
+    <span class="count"><a href="/">34</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -482,7 +482,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">33</a></span>
+    <span class="count"><a href="/">34</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -629,7 +629,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07"]
+            data: ["2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08"]
         },
         yAxis: {
             type: 'value',
@@ -639,7 +639,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,1,3,2,3,5,1,5,7,5,1,0],
+                data: [0,1,3,2,3,5,1,5,7,5,2,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -681,7 +681,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"后端","value":8},{"name":"Linux","value":4},{"name":"keepalived","value":2},{"name":"MySQL","value":3},{"name":"前端","value":4},{"name":"nginx","value":2},{"name":"PHP","value":1},{"name":"配置","value":1},{"name":"Git","value":1},{"name":"地图","value":1},{"name":"hexo","value":1},{"name":"redis","value":1},{"name":"phpstorm","value":1},{"name":"笔记","value":1},{"name":"微信公众号","value":1},{"name":"服务器","value":1}],
+                data: [{"name":"Linux","value":4},{"name":"后端","value":9},{"name":"前端","value":4},{"name":"PHP","value":1},{"name":"MySQL","value":3},{"name":"nginx","value":2},{"name":"keepalived","value":2},{"name":"配置","value":1},{"name":"服务器","value":1},{"name":"hexo","value":1},{"name":"Git","value":1},{"name":"redis","value":1},{"name":"地图","value":1},{"name":"phpstorm","value":1},{"name":"微信公众号","value":1},{"name":"笔记","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -705,7 +705,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["PHP","Laravel","定时任务","keepalived","Vue","汇总","Excel","Jquery","主从复制","安装nginx"]
+                data: ["PHP","Vue","定时任务","keepalived","汇总","Laravel","Excel","安装nginx","Javascript","Git"]
             }
         ],
         yAxis: [
@@ -718,7 +718,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [6,2,2,2,2,2,2,1,1,1],
+                data: [7,2,2,2,2,2,2,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -957,35 +957,11 @@
         <div class="tag-chips center-align">
             
             
-            
-            
             <a href="/tags/FlashFXP/">
                 <span class="chip center-align waves-effect waves-light chip-default">FlashFXP</span>
             </a>
             
             
-            
-            <a href="/tags/定时任务/">
-                <span class="chip center-align waves-effect waves-light chip-default">定时任务</span>
-            </a>
-            
-            
-            
-            <a href="/tags/keepalived/">
-                <span class="chip center-align waves-effect waves-light chip-default">keepalived</span>
-            </a>
-            
-            
-            
-            <a href="/tags/MySQL安装/">
-                <span class="chip center-align waves-effect waves-light chip-default">MySQL安装</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Git/">
-                <span class="chip center-align waves-effect waves-light chip-default">Git</span>
-            </a>
             
             
             
@@ -1001,14 +977,44 @@
             
             
             
-            <a href="/tags/主从复制/">
-                <span class="chip center-align waves-effect waves-light chip-default">主从复制</span>
+            <a href="/tags/定时任务/">
+                <span class="chip center-align waves-effect waves-light chip-default">定时任务</span>
+            </a>
+            
+            
+            
+            <a href="/tags/安装php/">
+                <span class="chip center-align waves-effect waves-light chip-default">安装php</span>
+            </a>
+            
+            
+            
+            <a href="/tags/MySQL安装/">
+                <span class="chip center-align waves-effect waves-light chip-default">MySQL安装</span>
             </a>
             
             
             
             <a href="/tags/安装nginx/">
                 <span class="chip center-align waves-effect waves-light chip-default">安装nginx</span>
+            </a>
+            
+            
+            
+            <a href="/tags/keepalived/">
+                <span class="chip center-align waves-effect waves-light chip-default">keepalived</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Git/">
+                <span class="chip center-align waves-effect waves-light chip-default">Git</span>
+            </a>
+            
+            
+            
+            <a href="/tags/主从复制/">
+                <span class="chip center-align waves-effect waves-light chip-default">主从复制</span>
             </a>
             
             
@@ -1021,14 +1027,20 @@
             
             
             
-            <a href="/tags/导入/">
-                <span class="chip center-align waves-effect waves-light chip-default">导入</span>
+            <a href="/tags/二维码/">
+                <span class="chip center-align waves-effect waves-light chip-default">二维码</span>
             </a>
             
             
             
-            <a href="/tags/安装php/">
-                <span class="chip center-align waves-effect waves-light chip-default">安装php</span>
+            <a href="/tags/汇总/">
+                <span class="chip center-align waves-effect waves-light chip-default">汇总</span>
+            </a>
+            
+            
+            
+            <a href="/tags/导入/">
+                <span class="chip center-align waves-effect waves-light chip-default">导入</span>
             </a>
             
             
@@ -1045,8 +1057,14 @@
             
             
             
-            <a href="/tags/汇总/">
-                <span class="chip center-align waves-effect waves-light chip-default">汇总</span>
+            <a href="/tags/安装/">
+                <span class="chip center-align waves-effect waves-light chip-default">安装</span>
+            </a>
+            
+            
+            
+            <a href="/tags/IIS/">
+                <span class="chip center-align waves-effect waves-light chip-default">IIS</span>
             </a>
             
             
@@ -1057,8 +1075,8 @@
             
             
             
-            <a href="/tags/二维码/">
-                <span class="chip center-align waves-effect waves-light chip-default">二维码</span>
+            <a href="/tags/hexo-admin/">
+                <span class="chip center-align waves-effect waves-light chip-default">hexo-admin</span>
             </a>
             
             
@@ -1075,6 +1093,12 @@
             
             
             
+            <a href="/tags/redis/">
+                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
+            </a>
+            
+            
+            
             <a href="/tags/负载均衡/">
                 <span class="chip center-align waves-effect waves-light chip-default">负载均衡</span>
             </a>
@@ -1087,14 +1111,8 @@
             
             
             
-            <a href="/tags/hexo-admin/">
-                <span class="chip center-align waves-effect waves-light chip-default">hexo-admin</span>
-            </a>
-            
-            
-            
-            <a href="/tags/redis/">
-                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
+            <a href="/tags/线上代码同步/">
+                <span class="chip center-align waves-effect waves-light chip-default">线上代码同步</span>
             </a>
             
             
@@ -1111,26 +1129,8 @@
             
             
             
-            <a href="/tags/线上代码同步/">
-                <span class="chip center-align waves-effect waves-light chip-default">线上代码同步</span>
-            </a>
-            
-            
-            
-            <a href="/tags/vue-element-admin/">
-                <span class="chip center-align waves-effect waves-light chip-default">vue-element-admin</span>
-            </a>
-            
-            
-            
             <a href="/tags/导出/">
                 <span class="chip center-align waves-effect waves-light chip-default">导出</span>
-            </a>
-            
-            
-            
-            <a href="/tags/笔记/">
-                <span class="chip center-align waves-effect waves-light chip-default">笔记</span>
             </a>
             
             
@@ -1147,14 +1147,14 @@
             
             
             
-            <a href="/tags/安装/">
-                <span class="chip center-align waves-effect waves-light chip-default">安装</span>
+            <a href="/tags/vue-element-admin/">
+                <span class="chip center-align waves-effect waves-light chip-default">vue-element-admin</span>
             </a>
             
             
             
-            <a href="/tags/IIS/">
-                <span class="chip center-align waves-effect waves-light chip-default">IIS</span>
+            <a href="/tags/笔记/">
+                <span class="chip center-align waves-effect waves-light chip-default">笔记</span>
             </a>
             
             
@@ -1259,7 +1259,7 @@
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">26.2k</span>&nbsp;字
+                        class="white-color">26.9k</span>&nbsp;字
             
             
             

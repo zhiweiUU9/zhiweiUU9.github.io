@@ -1601,6 +1601,172 @@ Route<span class="token punctuation">:</span><span class="token punctuation">:</
     <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">'Content-Type: image/png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token variable">$drawing</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">finish</span><span class="token punctuation">(</span>BCGDrawing<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">IMG_FORMAT_PNG</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="对接国外“马来西亚”的快递公司"><a href="#对接国外“马来西亚”的快递公司" class="headerlink" title="对接国外“马来西亚”的快递公司"></a>对接国外“马来西亚”的快递公司</h1><blockquote>
+<p>工作任务，对接外国快递公司，这次对接流程与国内完全不一样！<br>  1.国内的快递单号是由快递公司生成返回，国外是由自己生成快递单号，然后在发送给快递公司。<br>  2.国内的快递查询是由快递100或菜鸟裹裹统一包含查询，国外是单独查询。<br>  3.对接简单，就三个方法，但是跟国外沟通是真的费劲！</p>
+</blockquote>
+<p>直接上代码</p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>1.AccountCode =&gt; 账户注册代码<br>2.Waybill_No =&gt; 运单号<br>3.LocationCode =&gt; 位置代码<br>4.userName =&gt; 账户<br>5.password =&gt; 密码<br>6.clientId =&gt; 自己的账号id<br>7.发送订单接口地址<br>   <a href="http://lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/RestService/OrderUploadService.svc/OrderUpload" target="_blank" rel="noopener">http://lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/RestService/OrderUploadService.svc/OrderUpload</a><br>8.查询物流信息接口地址<br>   <a href="http://lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/services/Cust_WS_Ver2.asmx&quot;" target="_blank" rel="noopener">http://lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/services/Cust_WS_Ver2.asmx&quot;</a><br>          .”/ConsignmentTrackEvents_Details_New?userName=xxxxx&amp;password=xxxx@2017&amp;clientId=Lineclear2017&amp;DOCNO=”<br>          .$Waybill_No;  </p>
+<p>上面仅仅是一部分，发送接口参数超多！！！上代码</p>
+<h2 id="封装发送请求方法"><a href="#封装发送请求方法" class="headerlink" title="封装发送请求方法"></a>封装发送请求方法</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ * @param $method 请求方式
+ * @param $url 请求地址
+ * @param bool $header 头信息
+ * @param bool $data
+ * @return bool|string
+ */</span>
+<span class="token keyword">function</span> <span class="token function">CallAPI</span><span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">,</span> <span class="token variable">$header</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$curl</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">"POST"</span><span class="token punctuation">:</span>
+            <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_POST</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span>
+                <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_POSTFIELDS</span><span class="token punctuation">,</span> <span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//post提交的数据包</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">"PUT"</span><span class="token punctuation">:</span>
+            <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_PUT</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span>
+                <span class="token variable">$url</span> <span class="token operator">=</span> <span class="token function">sprintf</span><span class="token punctuation">(</span><span class="token string">"%s?%s"</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">,</span> <span class="token function">http_build_query</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$header</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_HTTPHEADER</span><span class="token punctuation">,</span> <span class="token variable">$header</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_RETURNTRANSFER</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$curl</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="给快递公司发送订单的方法，具体看里面参数及接口"><a href="#给快递公司发送订单的方法，具体看里面参数及接口" class="headerlink" title="给快递公司发送订单的方法，具体看里面参数及接口"></a>给快递公司发送订单的方法，具体看里面参数及接口</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">/**
+ * 生成运单号
+ * @param $piece_count 件数
+ * @param $consignee_co_name 委托公司名称
+ * @param $consignee_address_1 收货人_地址1
+ * @param $consignee_address_2 收货人_地址2
+ * @param $consignee_city  收货人_城市
+ * @param $consignee_state 收货人_国家
+ * @param $consignee_post_code 邮政编码
+ * @param $consignee_mobile 收货人_移动电话
+ * @param $amount 合计_金额
+ * @param $weight 重量
+ * @param $length 长度
+ * @param $width 寬度
+ * @param $height 高度
+ * @param $shipper_name 托运人姓名
+ * @param $shipper_mobile 发货人联系电话
+ * @param $shipper_address 托运人地址
+ * @param $shipper_post_code 发货人邮政编码
+ * @param $shipper_contact_name 托运人联系人姓名
+ * @param $shipper_city 托运城市
+ * @param $shipper_state 托运人状态
+ * @return bool|string
+ */</span>
+<span class="token keyword">function</span> <span class="token function">CreateNewOrder</span><span class="token punctuation">(</span><span class="token variable">$piece_count</span><span class="token punctuation">,</span> <span class="token variable">$consignee_co_name</span><span class="token punctuation">,</span> <span class="token variable">$consignee_address_1</span><span class="token punctuation">,</span> <span class="token variable">$consignee_address_2</span><span class="token punctuation">,</span>
+                        <span class="token variable">$consignee_city</span><span class="token punctuation">,</span> <span class="token variable">$consignee_state</span><span class="token punctuation">,</span> <span class="token variable">$consignee_post_code</span><span class="token punctuation">,</span> <span class="token variable">$consignee_mobile</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">,</span> <span class="token variable">$weight</span><span class="token punctuation">,</span>
+                        <span class="token variable">$length</span><span class="token punctuation">,</span> <span class="token variable">$width</span><span class="token punctuation">,</span> <span class="token variable">$height</span><span class="token punctuation">,</span> <span class="token variable">$shipper_name</span><span class="token punctuation">,</span> <span class="token variable">$shipper_mobile</span><span class="token punctuation">,</span> <span class="token variable">$shipper_address</span><span class="token punctuation">,</span> <span class="token variable">$shipper_post_code</span><span class="token punctuation">,</span>
+                        <span class="token variable">$shipper_contact_name</span><span class="token punctuation">,</span> <span class="token variable">$shipper_city</span><span class="token punctuation">,</span> <span class="token variable">$shipper_state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token string">"FTyc4DBrjv0kCYHr/I6795oe8nLBYi3EO048RqbpfTN4sRhvL5AkE3D9FL0s1Gk/"</span><span class="token punctuation">;</span>
+    <span class="token variable">$_timestamp</span> <span class="token operator">=</span> <span class="token string">"202004301452234644"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//gmdate("yymdHis0000");</span>
+    <span class="token variable">$GKK_LineClear_Acc_Code</span> <span class="token operator">=</span> <span class="token string">"B3112110"</span><span class="token punctuation">;</span>
+
+
+    <span class="token variable">$Waybill_No</span> <span class="token operator">=</span> <span class="token function">Generate_WayBill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//生成14位的运单号</span>
+
+    <span class="token variable">$MPSList</span> <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$piece_count</span> <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$piece_count</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$MPSList</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">','</span> <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'"'</span><span class="token punctuation">.</span><span class="token variable">$Waybill_No</span><span class="token punctuation">.</span><span class="token variable">$i</span><span class="token punctuation">.</span><span class="token string">'"'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token variable">$body</span> <span class="token operator">=</span> <span class="token string">'[{"Order_No": "","ShipperID": "","Content": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Waybill_No": "'</span><span class="token punctuation">.</span><span class="token variable">$Waybill_No</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"MPSList": ['</span><span class="token punctuation">.</span><span class="token variable">$MPSList</span><span class="token punctuation">.</span><span class="token string">']'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Num_of_pieces": ".'</span><span class="token punctuation">.</span><span class="token variable">$piece_count</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ConsigneeCompanyName": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_co_name</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_Add1": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_address_1</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_Add2": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_address_2</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_City": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_city</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_State": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_state</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Post_Code": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_post_code</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_TeleNo": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_MobileNo": "'</span><span class="token punctuation">.</span><span class="token variable">$consignee_mobile</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Consignee_TeleNo2": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Total_Amt": "'</span><span class="token punctuation">.</span><span class="token variable">$amount</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Payment_Mode": "PREPAID"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Collectable_amount": "0"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Weight": "'</span><span class="token punctuation">.</span><span class="token variable">$weight</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Length": "'</span><span class="token punctuation">.</span><span class="token variable">$length</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Width": "'</span><span class="token punctuation">.</span><span class="token variable">$width</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Height": "'</span><span class="token punctuation">.</span><span class="token variable">$height</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Unit_of_Measure": "Per KG","Type_of_Service": "Express","Shipment_Type": "PARCEL"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"Shipper_reference_number": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"AccountCode": "'</span><span class="token punctuation">.</span><span class="token variable">$GKK_LineClear_Acc_Code</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperName": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_name</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperContactPerson": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperContactNumber": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_mobile</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperAddress": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_address</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperPostCode": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_post_code</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"VAS_Type": "0","ContactPerson": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"LocationCode": "'</span><span class="token punctuation">.</span><span class="token function">GetLocationCode</span><span class="token punctuation">(</span><span class="token variable">$consignee_post_code</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'"'</span> <span class="token comment" spellcheck="true">//位置代码，根据提供位置代码，查询相应代码</span>
+        <span class="token punctuation">.</span><span class="token string">',"LocationCode": "'</span><span class="token punctuation">.</span><span class="token string">'ZSHM'</span><span class="token punctuation">.</span><span class="token string">'"'</span> <span class="token comment" spellcheck="true">//位置代码</span>
+        <span class="token punctuation">.</span><span class="token string">',"RouteID": "","OTPApplicable": "","Country": "","Zone": ""'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperContactName": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_contact_name</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperCity": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_city</span><span class="token punctuation">.</span><span class="token string">'"'</span>
+        <span class="token punctuation">.</span><span class="token string">',"ShipperState": "'</span><span class="token punctuation">.</span><span class="token variable">$shipper_state</span><span class="token punctuation">.</span><span class="token string">'"}]'</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$url</span> <span class="token operator">=</span> "http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/RestService/OrderUploadService.svc/OrderUpload";  //接口地址</span>
+    <span class="token variable">$method</span> <span class="token operator">=</span> <span class="token string">"POST"</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$header</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+        <span class="token string">"Content-Type: application/json"</span><span class="token punctuation">,</span>
+        <span class="token string">"Content-Length: "</span><span class="token punctuation">.</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$body</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"XX-Authentication-Token: "</span><span class="token punctuation">.</span><span class="token variable">$token</span><span class="token punctuation">,</span>
+        <span class="token string">"TimeStamp: "</span><span class="token punctuation">.</span><span class="token variable">$_timestamp</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">CallAPI</span><span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">,</span> <span class="token variable">$header</span><span class="token punctuation">,</span> <span class="token variable">$body</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="查询物流信息方法"><a href="#查询物流信息方法" class="headerlink" title="查询物流信息方法"></a>查询物流信息方法</h2><pre class="line-numbers language-php"><code class="language-php">
+<span class="token comment" spellcheck="true">/**
+ * 查询物流信息
+ * @param userName 用户名
+ * @param password 密码
+ * @param DOCNO $Waybill_No 运单号
+ * @param clientId 客户Id
+ * @return bool|string
+ */</span>
+<span class="token keyword">function</span> <span class="token function">TraceWayBill</span><span class="token punctuation">(</span><span class="token variable">$Waybill_No</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//测试版地址</span>
+    <span class="token comment" spellcheck="true">/*$url = "http://lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/services/Cust_WS_Ver2.asmx"
+        ."/ConsignmentTrackEvents_Details_New?userName=xxxxxxx&amp;password=xxxxxxx&amp;clientId=xxxxxxx&amp;DOCNO="
+        .$Waybill_No;*/</span>
+    <span class="token comment" spellcheck="true">//测试版地址</span>
+    <span class="token variable">$url</span> <span class="token operator">=</span> "http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//lineclear.southeastasia.cloudapp.azure.com/LineClear_Quality/services/Cust_WS_Ver2.asmx";</span>
+
+    <span class="token comment" spellcheck="true">//正式版地址</span>
+    <span class="token comment" spellcheck="true">/*$url = "http://lineclear.southeastasia.cloudapp.azure.com/LineClear/services/Cust_WS_Ver2.asmx"
+        ."/ConsignmentTrackEvents_Details_New?userName=xxxxxxx&amp;password=xxxxxxxx&amp;clientId=xxxxxxxx&amp;DOCNO="
+        .$Waybill_No;*/</span>
+
+    <span class="token variable">$method</span> <span class="token operator">=</span> <span class="token string">"GET"</span><span class="token punctuation">;</span>
+    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">CallAPI</span><span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">,</span> <span class="token variable">$header</span><span class="token punctuation">,</span> <span class="token variable">$xmlData</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//TraceWayBill('W1000014895882');</span>
+<span class="token function">TraceWayBill</span><span class="token punctuation">(</span><span class="token string">'GKK77424536138'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>

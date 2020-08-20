@@ -681,7 +681,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Linux","value":4},{"name":"后端","value":9},{"name":"PHP","value":1},{"name":"keepalived","value":2},{"name":"MySQL","value":3},{"name":"nginx","value":2},{"name":"前端","value":4},{"name":"配置","value":1},{"name":"服务器","value":1},{"name":"hexo","value":1},{"name":"Git","value":1},{"name":"地图","value":1},{"name":"redis","value":1},{"name":"笔记","value":1},{"name":"微信公众号","value":1},{"name":"phpstorm","value":1}],
+                data: [{"name":"Linux","value":4},{"name":"后端","value":9},{"name":"PHP","value":1},{"name":"前端","value":4},{"name":"keepalived","value":2},{"name":"nginx","value":2},{"name":"MySQL","value":3},{"name":"配置","value":1},{"name":"hexo","value":1},{"name":"Git","value":1},{"name":"服务器","value":1},{"name":"地图","value":1},{"name":"redis","value":1},{"name":"phpstorm","value":1},{"name":"笔记","value":1},{"name":"微信公众号","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -705,7 +705,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["PHP","定时任务","keepalived","Vue","汇总","Laravel","Excel","安装","FlashFXP","二维码"]
+                data: ["PHP","定时任务","keepalived","Vue","汇总","Laravel","Excel","vue-element-admin","安装nginx","读写分离"]
             }
         ],
         yAxis: [
@@ -957,108 +957,22 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/FlashFXP/">
-                <span class="chip center-align waves-effect waves-light chip-default">FlashFXP</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/安装php/">
-                <span class="chip center-align waves-effect waves-light chip-default">安装php</span>
-            </a>
-            
-            
-            
             <a href="/tags/定时任务/">
                 <span class="chip center-align waves-effect waves-light chip-default">定时任务</span>
             </a>
             
             
             
-            <a href="/tags/Git/">
-                <span class="chip center-align waves-effect waves-light chip-default">Git</span>
+            
+            
+            <a href="/tags/FlashFXP/">
+                <span class="chip center-align waves-effect waves-light chip-default">FlashFXP</span>
             </a>
             
             
             
-            <a href="/tags/keepalived/">
-                <span class="chip center-align waves-effect waves-light chip-default">keepalived</span>
-            </a>
-            
-            
-            
-            <a href="/tags/主从复制/">
-                <span class="chip center-align waves-effect waves-light chip-default">主从复制</span>
-            </a>
-            
-            
-            
-            <a href="/tags/安装nginx/">
-                <span class="chip center-align waves-effect waves-light chip-default">安装nginx</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/二维码/">
-                <span class="chip center-align waves-effect waves-light chip-default">二维码</span>
-            </a>
-            
-            
-            
-            <a href="/tags/MySQL安装/">
-                <span class="chip center-align waves-effect waves-light chip-default">MySQL安装</span>
-            </a>
-            
-            
-            
-            <a href="/tags/导入/">
-                <span class="chip center-align waves-effect waves-light chip-default">导入</span>
-            </a>
-            
-            
-            
-            <a href="/tags/读写分离/">
-                <span class="chip center-align waves-effect waves-light chip-default">读写分离</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Vue/">
-                <span class="chip center-align waves-effect waves-light chip-default">Vue</span>
-            </a>
-            
-            
-            
-            <a href="/tags/无法查看虚拟机IP解决办法/">
-                <span class="chip center-align waves-effect waves-light chip-default">无法查看虚拟机IP解决办法</span>
-            </a>
-            
-            
-            
-            <a href="/tags/环境搭建/">
-                <span class="chip center-align waves-effect waves-light chip-default">环境搭建</span>
-            </a>
-            
-            
-            
-            <a href="/tags/汇总/">
-                <span class="chip center-align waves-effect waves-light chip-default">汇总</span>
-            </a>
-            
-            
-            
-            <a href="/tags/安装/">
-                <span class="chip center-align waves-effect waves-light chip-default">安装</span>
-            </a>
-            
-            
-            
-            <a href="/tags/IIS/">
-                <span class="chip center-align waves-effect waves-light chip-default">IIS</span>
+            <a href="/tags/安装php/">
+                <span class="chip center-align waves-effect waves-light chip-default">安装php</span>
             </a>
             
             
@@ -1075,6 +989,74 @@
             
             
             
+            <a href="/tags/Git/">
+                <span class="chip center-align waves-effect waves-light chip-default">Git</span>
+            </a>
+            
+            
+            
+            <a href="/tags/keepalived/">
+                <span class="chip center-align waves-effect waves-light chip-default">keepalived</span>
+            </a>
+            
+            
+            
+            <a href="/tags/安装nginx/">
+                <span class="chip center-align waves-effect waves-light chip-default">安装nginx</span>
+            </a>
+            
+            
+            
+            <a href="/tags/读写分离/">
+                <span class="chip center-align waves-effect waves-light chip-default">读写分离</span>
+            </a>
+            
+            
+            
+            <a href="/tags/MySQL安装/">
+                <span class="chip center-align waves-effect waves-light chip-default">MySQL安装</span>
+            </a>
+            
+            
+            
+            
+            
+            <a href="/tags/二维码/">
+                <span class="chip center-align waves-effect waves-light chip-default">二维码</span>
+            </a>
+            
+            
+            
+            <a href="/tags/导入/">
+                <span class="chip center-align waves-effect waves-light chip-default">导入</span>
+            </a>
+            
+            
+            
+            <a href="/tags/主从复制/">
+                <span class="chip center-align waves-effect waves-light chip-default">主从复制</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Vue/">
+                <span class="chip center-align waves-effect waves-light chip-default">Vue</span>
+            </a>
+            
+            
+            
+            <a href="/tags/汇总/">
+                <span class="chip center-align waves-effect waves-light chip-default">汇总</span>
+            </a>
+            
+            
+            
+            <a href="/tags/环境搭建/">
+                <span class="chip center-align waves-effect waves-light chip-default">环境搭建</span>
+            </a>
+            
+            
+            
             <a href="/tags/hexo-admin/">
                 <span class="chip center-align waves-effect waves-light chip-default">hexo-admin</span>
             </a>
@@ -1087,14 +1069,26 @@
             
             
             
-            <a href="/tags/负载均衡/">
-                <span class="chip center-align waves-effect waves-light chip-default">负载均衡</span>
+            <a href="/tags/安装/">
+                <span class="chip center-align waves-effect waves-light chip-default">安装</span>
             </a>
             
             
             
-            <a href="/tags/Openlayers3/">
-                <span class="chip center-align waves-effect waves-light chip-default">Openlayers3</span>
+            <a href="/tags/IIS/">
+                <span class="chip center-align waves-effect waves-light chip-default">IIS</span>
+            </a>
+            
+            
+            
+            <a href="/tags/无法查看虚拟机IP解决办法/">
+                <span class="chip center-align waves-effect waves-light chip-default">无法查看虚拟机IP解决办法</span>
+            </a>
+            
+            
+            
+            <a href="/tags/负载均衡/">
+                <span class="chip center-align waves-effect waves-light chip-default">负载均衡</span>
             </a>
             
             
@@ -1105,8 +1099,8 @@
             
             
             
-            <a href="/tags/redis/">
-                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
+            <a href="/tags/Openlayers3/">
+                <span class="chip center-align waves-effect waves-light chip-default">Openlayers3</span>
             </a>
             
             
@@ -1117,8 +1111,32 @@
             
             
             
+            <a href="/tags/压缩包/">
+                <span class="chip center-align waves-effect waves-light chip-default">压缩包</span>
+            </a>
+            
+            
+            
             <a href="/tags/导出/">
                 <span class="chip center-align waves-effect waves-light chip-default">导出</span>
+            </a>
+            
+            
+            
+            <a href="/tags/redis/">
+                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
+            </a>
+            
+            
+            
+            <a href="/tags/线上代码同步/">
+                <span class="chip center-align waves-effect waves-light chip-default">线上代码同步</span>
+            </a>
+            
+            
+            
+            <a href="/tags/笔记/">
+                <span class="chip center-align waves-effect waves-light chip-default">笔记</span>
             </a>
             
             
@@ -1131,24 +1149,6 @@
             
             <a href="/tags/Workerman定时器/">
                 <span class="chip center-align waves-effect waves-light chip-default">Workerman定时器</span>
-            </a>
-            
-            
-            
-            <a href="/tags/压缩包/">
-                <span class="chip center-align waves-effect waves-light chip-default">压缩包</span>
-            </a>
-            
-            
-            
-            <a href="/tags/笔记/">
-                <span class="chip center-align waves-effect waves-light chip-default">笔记</span>
-            </a>
-            
-            
-            
-            <a href="/tags/线上代码同步/">
-                <span class="chip center-align waves-effect waves-light chip-default">线上代码同步</span>
             </a>
             
             

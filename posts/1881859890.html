@@ -560,14 +560,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        475
+                        769
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -674,6 +674,70 @@
     <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/images/447.gif" data-original="http://chiwaifigurebed.tang99.club/myblog_picgo/1.png" alt></p>
+<h1 id="微信分享功能"><a href="#微信分享功能" class="headerlink" title="微信分享功能"></a>微信分享功能</h1><pre class="line-numbers language-js"><code class="language-js"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://res.wx.qq.com/open/js/jweixin-1.0.0.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+        <span class="token comment" spellcheck="true">//微信的配置信息</span>
+        wx<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            debug<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            appId<span class="token punctuation">:</span> <span class="token string">'{$signPackage.appId}'</span><span class="token punctuation">,</span>
+            timestamp<span class="token punctuation">:</span> <span class="token string">'{$signPackage.timestamp}'</span><span class="token punctuation">,</span>
+            nonceStr<span class="token punctuation">:</span> <span class="token string">'{$signPackage.nonceStr}'</span><span class="token punctuation">,</span>
+            signature<span class="token punctuation">:</span> <span class="token string">'{$signPackage.signature}'</span><span class="token punctuation">,</span>
+            jsApiList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token comment" spellcheck="true">// 所有要调用的 API 都要加到这个列表中</span>
+                <span class="token string">'onMenuShareAppMessage'</span><span class="token punctuation">,</span>
+                <span class="token string">'onMenuShareTimeline'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        wx<span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment" spellcheck="true">//分享到朋友圈</span>
+            wx<span class="token punctuation">.</span><span class="token function">onMenuShareTimeline</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                title<span class="token punctuation">:</span> <span class="token string">'{$share_tiele}'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享标题</span>
+                link<span class="token punctuation">:</span> <span class="token string">'https://mgsm.oeob.net/mobile?suppid='</span><span class="token operator">+</span><span class="token punctuation">{</span>$suppId<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享链接</span>
+                imgUrl<span class="token punctuation">:</span> <span class="token string">'{$share_img}'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享图标</span>
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 用户确认分享后执行的回调函数</span>
+                    weui<span class="token punctuation">.</span><span class="token function">toast</span><span class="token punctuation">(</span><span class="token string">'分享成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                cancel<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 用户取消分享后执行的回调函数</span>
+                    weui<span class="token punctuation">.</span><span class="token function">toast</span><span class="token punctuation">(</span><span class="token string">'取消分享'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//分享到朋友</span>
+            wx<span class="token punctuation">.</span><span class="token function">onMenuShareAppMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                title<span class="token punctuation">:</span> <span class="token string">'{$share_tiele}'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享标题</span>
+                desc<span class="token punctuation">:</span> <span class="token string">'{$sharemsg}'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享描述</span>
+                link<span class="token punctuation">:</span> <span class="token string">'https://mgsm.oeob.net/mobile?fxsuppid='</span><span class="token operator">+</span><span class="token punctuation">{</span>$suppId<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享链接</span>
+                imgUrl<span class="token punctuation">:</span> <span class="token string">'{$share_img}'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 分享图标</span>
+
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 用户确认分享后执行的回调函数</span>
+                    weui<span class="token punctuation">.</span><span class="token function">toast</span><span class="token punctuation">(</span><span class="token string">'分享成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                cancel<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 用户取消分享后执行的回调函数</span>
+                    weui<span class="token punctuation">.</span><span class="token function">toast</span><span class="token punctuation">(</span><span class="token string">'取消分享'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//检查微信接口是否调用成功</span>
+            wx<span class="token punctuation">.</span><span class="token function">checkJsApi</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                jsApiList<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'onMenuShareTimeline'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 需要检测的JS接口列表，所有JS接口列表见附录2,</span>
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 以键值对的形式返回，可用的api值true，不可用为false</span>
+                    <span class="token comment" spellcheck="true">// 如：{*{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}*}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1393,7 +1457,7 @@
             <br>
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">26.9k</span>&nbsp;字
+                        class="white-color">27.7k</span>&nbsp;字
             
             
             
